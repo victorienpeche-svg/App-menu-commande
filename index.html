@@ -2,7 +2,7 @@
 
 
 Icône HTML
-desimenu-v7
+desimenu-v8
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -1549,10 +1549,10 @@ label.btn {
     <div class="modal-card">
       <div class="modal-title">🔑 Clé API Gemini (Google AI Studio)</div>
       <p style="font-size:12px;color:var(--text-secondary);line-height:1.4;">
-        Copiez votre clé personnelle sur <strong>aistudio.google.com/api-keys</strong> (elle commence obligatoirement par <code>AIza...</code>), puis collez-la ci-dessous :
+        Copiez votre clé personnelle sur <strong>aistudio.google.com/api-keys</strong> (format <code>AQ....</code> ou <code>AIza...</code>), puis collez-la ci-dessous :
       </p>
       <div class="api-input-row">
-        <input id="apiKeyInput" class="modal-input" type="text" autocomplete="off" spellcheck="false" placeholder="AIzaSy..." />
+        <input id="apiKeyInput" class="modal-input" type="text" autocomplete="off" spellcheck="false" placeholder="AQ.Ab8RN6... ou AIzaSy..." />
         <button id="pasteApiKeyBtn" type="button" class="icon-mini-btn" title="Coller">📋 Coller</button>
         <button id="clearApiKeyBtn" type="button" class="icon-mini-btn" title="Effacer">✕</button>
       </div>
@@ -2473,12 +2473,15 @@ label.btn {
 
     function sanitizeApiKey(raw) {
       const cleaned = (raw || '').trim().replace(/^["']|["']$/g, '');
-      const extracted = cleaned.match(/AIza[A-Za-z0-9_-]{20,}/);
-      return extracted ? extracted[0] : cleaned;
+      const extractedAQ = cleaned.match(/AQ\.[A-Za-z0-9._-]{20,}/);
+      if (extractedAQ) return extractedAQ[0];
+      const extractedAIza = cleaned.match(/AIza[A-Za-z0-9_-]{20,}/);
+      if (extractedAIza) return extractedAIza[0];
+      return cleaned;
     }
 
     function isValidApiKeyFormat(key) {
-      return /^AIza[A-Za-z0-9_-]{25,}$/.test(key || '');
+      return /^(AQ\.[A-Za-z0-9._-]{20,}|AIza[A-Za-z0-9_-]{20,})$/.test(key || '');
     }
 
     function extractJsonFromText(rawText) {
@@ -2530,7 +2533,7 @@ label.btn {
     }
 
     async function callGeminiWithFallback(apiKey, bodyPayload) {
-      const candidates = ['gemini-2.5-flash', 'gemini-2.5-flash-lite', 'gemini-3.8-flash'];
+      const candidates = ['gemini-3.8-flash', 'gemini-2.5-flash', 'gemini-3.0-flash'];
       const tried = new Set();
       let lastError = null;
 
@@ -2983,10 +2986,10 @@ Rules: extract all readable dishes from the photo; if price is missing estimate 
           document.getElementById('apiKeyInput').value = cleaned;
           if (isValidApiKeyFormat(cleaned)) {
             apiTestStatus.className = 'api-test-status ok';
-            apiTestStatus.textContent = '📋 Clé AIza... collée ! Cliquez sur Tester ou Enregistrer.';
+            apiTestStatus.textContent = '📋 Clé API collée ! Cliquez sur Tester ou Enregistrer.';
           } else {
             apiTestStatus.className = 'api-test-status err';
-            apiTestStatus.textContent = '⚠️ Le presse-papiers ne contient pas une clé AIza... valide.';
+            apiTestStatus.textContent = '⚠️ Le presse-papiers ne contient pas une clé API valide (AQ.... ou AIza...).';
           }
         } catch (_) {
           document.getElementById('apiKeyInput').focus();
@@ -3009,12 +3012,12 @@ Rules: extract all readable dishes from the photo; if price is missing estimate 
         document.getElementById('apiKeyInput').value = candidate;
         if (!candidate) {
           apiTestStatus.className = 'api-test-status err';
-          apiTestStatus.textContent = '❌ Collez d’abord votre clé API (AIza...).';
+          apiTestStatus.textContent = '❌ Collez d’abord votre clé API (AQ.... ou AIza...).';
           return;
         }
         if (!isValidApiKeyFormat(candidate)) {
           apiTestStatus.className = 'api-test-status err';
-          apiTestStatus.textContent = '⚠️ Ce texte n’est pas une clé API (il doit commencer par AIza...). Effacez-le et collez votre clé Google AI Studio.';
+          apiTestStatus.textContent = '⚠️ Format de clé invalide (attendu : AQ.... ou AIza...). Effacez le champ et collez votre clé Google AI Studio.';
           return;
         }
         apiTestStatus.className = 'api-test-status';
@@ -3038,7 +3041,7 @@ Rules: extract all readable dishes from the photo; if price is missing estimate 
         const candidate = sanitizeApiKey(document.getElementById('apiKeyInput').value);
         if (candidate && !isValidApiKeyFormat(candidate)) {
           apiTestStatus.className = 'api-test-status err';
-          apiTestStatus.textContent = '⚠️ Impossible d’enregistrer : la clé doit commencer par AIza...';
+          apiTestStatus.textContent = '⚠️ Impossible d’enregistrer : collez une clé valide (AQ.... ou AIza...).';
           return;
         }
         state.apiKey = candidate;
@@ -3063,4 +3066,4 @@ Rules: extract all readable dishes from the photo; if price is missing estimate 
   </script>
 </body>
 </html>
-Traité et analysé dans le code
+Analyse…
