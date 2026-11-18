@@ -2,7 +2,7 @@
 
 
 Icône HTML
-desimenu-v8
+desimenu-v9
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -2510,35 +2510,46 @@ label.btn {
       document.getElementById('scanErrorBox').style.display = 'none';
     }
 
-    async function discoverActiveGeminiModel(apiKey) {
+    const sleep = (ms) => new Promise(r => setTimeout(r, ms));
+
+    async function discoverActiveGeminiModels(apiKey) {
       try {
         const res = await fetch(
           `https://generativelanguage.googleapis.com/v1beta/models?key=${encodeURIComponent(apiKey)}`
         );
-        if (!res.ok) return null;
+        if (!res.ok) return [];
         const data = await res.json();
-        const models = (data.models || []).filter(m =>
-          Array.isArray(m.supportedGenerationMethods) &&
-          m.supportedGenerationMethods.includes('generateContent') &&
-          typeof m.name === 'string'
-        );
-        const flashFull = models.find(m => /gemini-.*flash/i.test(m.name) && !/lite|8b|tts|image/i.test(m.name));
-        const flashAny = models.find(m => /gemini-.*flash/i.test(m.name) && !/tts|image/i.test(m.name));
-        const anyGemini = models.find(m => /gemini-/i.test(m.name) && !/embedding|tts|image/i.test(m.name));
-        const picked = flashFull || flashAny || anyGemini;
-        return picked ? picked.name.replace(/^models\//, '') : null;
+        const valid = (data.models || [])
+          .filter(m =>
+            Array.isArray(m.supportedGenerationMethods) &&
+            m.supportedGenerationMethods.includes('generateContent') &&
+            typeof m.name === 'string' &&
+            /gemini-/i.test(m.name) &&
+            !/embedding|tts|image|vision-001|pro-vision|aqa/i.test(m.name)
+          )
+          .map(m => m.name.replace(/^models\//, ''));
+
+        const flashModels = valid.filter(n => /flash/i.test(n));
+        const otherModels = valid.filter(n => !/flash/i.test(n));
+        return [...flashModels, ...otherModels];
       } catch (_) {
-        return null;
+        return [];
       }
     }
 
-    async function callGeminiWithFallback(apiKey, bodyPayload) {
-      const candidates = ['gemini-3.8-flash', 'gemini-2.5-flash', 'gemini-3.0-flash'];
-      const tried = new Set();
+    async function callGeminiWithFallback(apiKey, bodyPayload, onStatus) {
+      const baseCandidates = [
+        'gemini-2.5-flash',
+        'gemini-2.5-flash-lite',
+        'gemini-3.8-flash',
+        'gemini-3.0-flash',
+        'gemini-2.0-flash',
+        'gemini-2.0-flash-lite'
+      ];
       let lastError = null;
+      let sawOverload = false;
 
       const tryModel = async (model) => {
-        tried.add(model);
         const res = await fetch(
           `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${encodeURIComponent(apiKey)}`,
           {
@@ -2552,37 +2563,74 @@ label.btn {
           return { ok: true, model, data: await res.json() };
         }
 
+        let rawMsg = '';
         let errMsg = `HTTP ${res.status}`;
         try {
           const errJson = await res.json();
           if (errJson?.error?.message) {
-            errMsg = `HTTP ${res.status} (${model}) : ${errJson.error.message}`;
+            rawMsg = errJson.error.message;
+            errMsg = `HTTP ${res.status} (${model}) : ${rawMsg}`;
           }
         } catch (_) {}
 
-        return { ok: false, status: res.status, error: new Error(errMsg) };
+        const isAuthError =
+          res.status === 401 ||
+          res.status === 403 ||
+          (res.status === 400 && /api key not valid|api_key_invalid|permission/i.test(rawMsg));
+
+        const isRetryable =
+          res.status === 404 ||
+          res.status === 429 ||
+          res.status === 500 ||
+          res.status === 502 ||
+          res.status === 503 ||
+          res.status === 504 ||
+          /high demand|overloaded|try again|rate limit|quota/i.test(rawMsg);
+
+        return { ok: false, status: res.status, isAuthError, isRetryable, error: new Error(errMsg) };
       };
 
-      for (const model of candidates) {
-        const result = await tryModel(model);
-        if (result.ok) return result;
-        lastError = result.error;
-        if (result.status !== 404 && result.status !== 400) {
-          throw lastError;
+      const runPass = async (modelList, passLabel) => {
+        for (const model of modelList) {
+          if (onStatus) onStatus(`${passLabel} (${model})...`);
+          const result = await tryModel(model);
+          if (result.ok) return result;
+          lastError = result.error;
+          if (result.isAuthError) {
+            throw lastError;
+          }
+          if (result.status === 503 || result.status === 429) {
+            sawOverload = true;
+            if (onStatus) onStatus(`⚡ ${model} saturé, bascule automatique...`);
+            await sleep(350);
+          }
         }
+        return null;
+      };
+
+      // Pass 1: standard candidates + dynamically discovered models on this API key
+      const discovered = await discoverActiveGeminiModels(apiKey);
+      const allModels = Array.from(new Set([...baseCandidates, ...discovered]));
+
+      const firstPass = await runPass(allModels, t('analyzing'));
+      if (firstPass) return firstPass;
+
+      // Pass 2: if servers were experiencing a temporary spike (503/429), wait 2s and retry lighter models
+      if (sawOverload) {
+        if (onStatus) onStatus('⏳ Pic de trafic Google, nouvelle tentative automatique...');
+        await sleep(2000);
+        const retryOrder = [
+          ...allModels.filter(m => /lite/i.test(m)),
+          ...allModels.filter(m => !/lite/i.test(m))
+        ];
+        const secondPass = await runPass(retryOrder, '🔄 Nouvelle tentative');
+        if (secondPass) return secondPass;
       }
 
-      const discovered = await discoverActiveGeminiModel(apiKey);
-      if (discovered && !tried.has(discovered)) {
-        const result = await tryModel(discovered);
-        if (result.ok) return result;
-        lastError = result.error;
-      }
-
-      throw lastError || new Error('Échec de connexion à Gemini');
+      throw lastError || new Error('Tous les serveurs Gemini sont temporairement saturés. Réessayez dans quelques secondes.');
     }
 
-    async function callGeminiVision(apiKey, prompt, base64) {
+    async function callGeminiVision(apiKey, prompt, base64, onStatus) {
       const bodyPayload = {
         contents: [{
           parts: [
@@ -2596,7 +2644,7 @@ label.btn {
         }
       };
 
-      const result = await callGeminiWithFallback(apiKey, bodyPayload);
+      const result = await callGeminiWithFallback(apiKey, bodyPayload, onStatus);
       return result.data;
     }
 
@@ -2642,7 +2690,10 @@ label.btn {
 }
 Rules: extract all readable dishes from the photo; if price is missing estimate typical INR price; spice is 1..5 (European palate), hygiene is 1 (safe cooked), 2 (caution), or 3 (high street-food water/raw risk), richness is 1..3, proteinGrams is estimated grams of protein per standard serving, protein is 1 (<10g), 2 (10-19g), or 3 (>=20g).`;
 
-        const data = await callGeminiVision(cleanKey, prompt, base64);
+        const loaderTextEl = document.querySelector('#scanLoader strong');
+        const data = await callGeminiVision(cleanKey, prompt, base64, (statusMsg) => {
+          if (loaderTextEl) loaderTextEl.textContent = statusMsg;
+        });
         const parts = data.candidates?.[0]?.content?.parts || [];
         const rawText = parts.map(p => p.text || '').join('\n').trim();
         if (!rawText) {
@@ -3025,10 +3076,14 @@ Rules: extract all readable dishes from the photo; if price is missing estimate 
         apiTestStatus.textContent = '⏳ Test de connexion à Gemini...';
 
         try {
-          const result = await callGeminiWithFallback(candidate, {
-            contents: [{ parts: [{ text: 'Reply with OK' }] }],
-            generationConfig: { maxOutputTokens: 32 }
-          });
+          const result = await callGeminiWithFallback(
+            candidate,
+            {
+              contents: [{ parts: [{ text: 'Reply with OK' }] }],
+              generationConfig: { maxOutputTokens: 32 }
+            },
+            (statusMsg) => { apiTestStatus.textContent = statusMsg; }
+          );
           apiTestStatus.className = 'api-test-status ok';
           apiTestStatus.textContent = `✅ Clé API valide (${result.model}) ! Cliquez sur Enregistrer.`;
         } catch (err) {
