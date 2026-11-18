@@ -1,2634 +1,2137 @@
-Icône HTML desimenu-v2
 <!DOCTYPE html>
 <html lang="fr">
-  <head>
-    <meta charset="UTF-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
-    />
-    <title>DesiMenu — Visual Indian Menu Decoder</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@600;700&family=Noto+Sans+Malayalam:wght@600;700&family=Noto+Sans+Tamil:wght@600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap"
-      rel="stylesheet"
-    />
-    <style>
-      /* ==========================================================================
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>DesiMenu — Visual Indian Menu Decoder</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@600;700&family=Noto+Sans+Malayalam:wght@600;700&family=Noto+Sans+Tamil:wght@600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+/* ==========================================================================
    DesiMenu — Stylesheet (style-v2.css)
    Airy Ivory & Warm Indian Palette with Crisp Framed Boxes & Color Gauges
    ========================================================================== */
 
-      :root {
-        --bg-page: #f6f2eb;
-        --bg-surface: #ffffff;
-        --bg-subtle: #efe9df;
-        --bg-hover: #e5ddd0;
+:root {
+  --bg-page: #F6F2EB;
+  --bg-surface: #FFFFFF;
+  --bg-subtle: #EFE9DF;
+  --bg-hover: #E5DDD0;
 
-        /* Crisp, clearly visible frame borders */
-        --border-light: #d8cfc2;
-        --border-strong: #b8ac9c;
+  /* Crisp, clearly visible frame borders */
+  --border-light: #D8CFC2;
+  --border-strong: #B8AC9C;
 
-        --text-primary: #1c1917;
-        --text-secondary: #44403c;
-        --text-muted: #78716c;
+  --text-primary: #1C1917;
+  --text-secondary: #44403C;
+  --text-muted: #78716C;
 
-        /* Warm Indian Spice Palette */
-        --accent: #c2410c;
-        --accent-bright: #ea580c;
-        --accent-soft: #fff7ed;
-        --accent-border: #fdba74;
+  /* Warm Indian Spice Palette */
+  --accent: #C2410C;
+  --accent-bright: #EA580C;
+  --accent-soft: #FFF7ED;
+  --accent-border: #FDBA74;
 
-        --turmeric: #d97706;
-        --turmeric-soft: #fefce8;
-        --turmeric-border: #fde047;
+  --turmeric: #D97706;
+  --turmeric-soft: #FEFCE8;
+  --turmeric-border: #FDE047;
 
-        --safe: #15803d;
-        --safe-soft: #f0fdf4;
-        --safe-border: #86efac;
+  --safe: #15803D;
+  --safe-soft: #F0FDF4;
+  --safe-border: #86EFAC;
 
-        --warn: #b45309;
-        --warn-soft: #fffbeb;
-        --warn-border: #fcd34d;
+  --warn: #B45309;
+  --warn-soft: #FFFBEB;
+  --warn-border: #FCD34D;
 
-        --risk: #b91c1c;
-        --risk-soft: #fef2f2;
-        --risk-border: #fca5a5;
+  --risk: #B91C1C;
+  --risk-soft: #FEF2F2;
+  --risk-border: #FCA5A5;
 
-        --gauge-track: #e2d9cc;
-        --shadow-sm: 0 2px 6px rgba(28, 25, 23, 0.06);
-        --shadow-md: 0 8px 22px rgba(28, 25, 23, 0.09);
-        --shadow-lg: 0 16px 38px rgba(28, 25, 23, 0.16);
+  --gauge-track: #E2D9CC;
+  --shadow-sm: 0 2px 6px rgba(28, 25, 23, 0.06);
+  --shadow-md: 0 8px 22px rgba(28, 25, 23, 0.09);
+  --shadow-lg: 0 16px 38px rgba(28, 25, 23, 0.16);
 
-        --radius-sm: 10px;
-        --radius-md: 15px;
-        --radius-lg: 20px;
-        --radius-pill: 999px;
+  --radius-sm: 10px;
+  --radius-md: 15px;
+  --radius-lg: 20px;
+  --radius-pill: 999px;
 
-        --font-sans: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont,
-          "Segoe UI", Roboto, sans-serif;
-        --font-indic: "Noto Sans Devanagari", "Noto Sans Malayalam",
-          "Noto Sans Tamil", sans-serif;
-      }
+  --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-indic: 'Noto Sans Devanagari', 'Noto Sans Malayalam', 'Noto Sans Tamil', sans-serif;
+}
 
-      * {
-        box-sizing: border-box;
-        margin: 0;
-        padding: 0;
-        -webkit-tap-highlight-color: transparent;
-      }
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-tap-highlight-color: transparent;
+}
 
-      html,
-      body {
-        background-color: #e6dfd3;
-        color: var(--text-primary);
-        font-family: var(--font-sans);
-        font-size: 15px;
-        line-height: 1.45;
-        min-height: 100vh;
-        -webkit-font-smoothing: antialiased;
-      }
+html, body {
+  background-color: #E6DFD3;
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  font-size: 15px;
+  line-height: 1.45;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+}
 
-      /* App Shell */
-      .app-shell {
-        max-width: 480px;
-        min-height: 100vh;
-        margin: 0 auto;
-        background-color: var(--bg-page);
-        border-left: 1.5px solid var(--border-light);
-        border-right: 1.5px solid var(--border-light);
-        position: relative;
-        display: flex;
-        flex-direction: column;
-        box-shadow: 0 0 48px rgba(28, 25, 23, 0.1);
-      }
+/* App Shell */
+.app-shell {
+  max-width: 480px;
+  min-height: 100vh;
+  margin: 0 auto;
+  background-color: var(--bg-page);
+  border-left: 1.5px solid var(--border-light);
+  border-right: 1.5px solid var(--border-light);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 0 48px rgba(28, 25, 23, 0.1);
+}
 
-      /* Top Header */
-      .app-header {
-        position: sticky;
-        top: 0;
-        z-index: 30;
-        background: var(--bg-surface);
-        border-top: 3.5px solid var(--accent-bright);
-        border-bottom: 1.5px solid var(--border-light);
-        padding: 13px 16px;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 10px;
-        box-shadow: var(--shadow-sm);
-      }
+/* Top Header */
+.app-header {
+  position: sticky;
+  top: 0;
+  z-index: 30;
+  background: var(--bg-surface);
+  border-top: 3.5px solid var(--accent-bright);
+  border-bottom: 1.5px solid var(--border-light);
+  padding: 13px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  box-shadow: var(--shadow-sm);
+}
 
-      .brand {
-        display: flex;
-        align-items: center;
-        gap: 10px;
-      }
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
 
-      .brand-mark {
-        width: 38px;
-        height: 38px;
-        border-radius: 12px;
-        background: linear-gradient(135deg, #ea580c 0%, #b45309 100%);
-        border: 1.5px solid #9a3412;
-        color: #ffffff;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 19px;
-        box-shadow: 0 4px 10px rgba(194, 65, 12, 0.25);
-      }
+.brand-mark {
+  width: 38px;
+  height: 38px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #EA580C 0%, #B45309 100%);
+  border: 1.5px solid #9A3412;
+  color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 19px;
+  box-shadow: 0 4px 10px rgba(194, 65, 12, 0.25);
+}
 
-      .brand-title {
-        font-weight: 800;
-        font-size: 18px;
-        letter-spacing: -0.02em;
-        color: var(--text-primary);
-      }
+.brand-title {
+  font-weight: 800;
+  font-size: 18px;
+  letter-spacing: -0.02em;
+  color: var(--text-primary);
+}
 
-      .brand-sub {
-        font-size: 10.5px;
-        font-weight: 700;
-        color: var(--accent);
-        letter-spacing: 0.04em;
-        text-transform: uppercase;
-      }
+.brand-sub {
+  font-size: 10.5px;
+  font-weight: 700;
+  color: var(--accent);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
 
-      .header-controls {
-        display: flex;
-        align-items: center;
-        gap: 6px;
-      }
+.header-controls {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
 
-      .pill-select {
-        appearance: none;
-        background: var(--bg-page);
-        border: 1.5px solid var(--border-light);
-        border-radius: var(--radius-pill);
-        padding: 6px 11px;
-        font-family: var(--font-sans);
-        font-size: 12px;
-        font-weight: 800;
-        color: var(--text-primary);
-        cursor: pointer;
-        transition: border-color 0.2s, background-color 0.2s;
-      }
+.pill-select {
+  appearance: none;
+  background: var(--bg-page);
+  border: 1.5px solid var(--border-light);
+  border-radius: var(--radius-pill);
+  padding: 6px 11px;
+  font-family: var(--font-sans);
+  font-size: 12px;
+  font-weight: 800;
+  color: var(--text-primary);
+  cursor: pointer;
+  transition: border-color 0.2s, background-color 0.2s;
+}
 
-      .pill-select:hover,
-      .pill-select:focus {
-        border-color: var(--accent-bright);
-        background: var(--accent-soft);
-        outline: none;
-      }
+.pill-select:hover, .pill-select:focus {
+  border-color: var(--accent-bright);
+  background: var(--accent-soft);
+  outline: none;
+}
 
-      .icon-btn {
-        width: 34px;
-        height: 34px;
-        border-radius: 50%;
-        border: 1.5px solid var(--border-light);
-        background: var(--bg-page);
-        color: var(--text-secondary);
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        cursor: pointer;
-        font-size: 15px;
-        transition: all 0.2s ease;
-      }
+.icon-btn {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: 1.5px solid var(--border-light);
+  background: var(--bg-page);
+  color: var(--text-secondary);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 15px;
+  transition: all 0.2s ease;
+}
 
-      .icon-btn:hover {
-        border-color: var(--border-strong);
-        background: var(--bg-subtle);
-      }
+.icon-btn:hover {
+  border-color: var(--border-strong);
+  background: var(--bg-subtle);
+}
 
-      .icon-btn.has-key {
-        border-color: var(--safe-border);
-        background: var(--safe-soft);
-        color: var(--safe);
-      }
+.icon-btn.has-key {
+  border-color: var(--safe-border);
+  background: var(--safe-soft);
+  color: var(--safe);
+}
 
-      /* Main Content Area */
-      .main-content {
-        flex: 1;
-        padding: 18px 16px 104px;
-        display: flex;
-        flex-direction: column;
-        gap: 18px;
-      }
+/* Main Content Area */
+.main-content {
+  flex: 1;
+  padding: 18px 16px 104px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
 
-      .tab-panel {
-        display: none;
-        flex-direction: column;
-        gap: 16px;
-        animation: fadeSlide 0.22s ease-out;
-      }
+.tab-panel {
+  display: none;
+  flex-direction: column;
+  gap: 16px;
+  animation: fadeSlide 0.22s ease-out;
+}
 
-      .tab-panel.active {
-        display: flex;
-      }
+.tab-panel.active {
+  display: flex;
+}
 
-      @keyframes fadeSlide {
-        from {
-          opacity: 0;
-          transform: translateY(6px);
-        }
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
-      }
+@keyframes fadeSlide {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
 
-      /* Section Headers */
-      .section-head {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 12px;
-        padding: 0 2px;
-      }
+/* Section Headers */
+.section-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 0 2px;
+}
 
-      .section-title {
-        font-size: 19px;
-        font-weight: 800;
-        letter-spacing: -0.02em;
-        color: var(--text-primary);
-      }
+.section-title {
+  font-size: 19px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--text-primary);
+}
 
-      .badge-count {
-        background: var(--accent-soft);
-        color: var(--accent);
-        border: 1.5px solid var(--accent-border);
-        font-size: 12px;
-        font-weight: 800;
-        padding: 3px 11px;
-        border-radius: var(--radius-pill);
-      }
+.badge-count {
+  background: var(--accent-soft);
+  color: var(--accent);
+  border: 1.5px solid var(--accent-border);
+  font-size: 12px;
+  font-weight: 800;
+  padding: 3px 11px;
+  border-radius: var(--radius-pill);
+}
 
-      /* Scan Hero & Capture Zone */
-      .scan-card {
-        background: var(--bg-surface);
-        border: 1.5px solid var(--border-light);
-        border-radius: var(--radius-lg);
-        padding: 20px 16px;
-        box-shadow: var(--shadow-sm);
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-        gap: 15px;
-      }
+/* Scan Hero & Capture Zone */
+.scan-card {
+  background: var(--bg-surface);
+  border: 1.5px solid var(--border-light);
+  border-radius: var(--radius-lg);
+  padding: 20px 16px;
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 15px;
+}
 
-      .scan-visual-ring {
-        width: 66px;
-        height: 66px;
-        border-radius: 20px;
-        background: linear-gradient(145deg, #fff7ed 0%, #ffedd5 100%);
-        border: 2px dashed var(--accent-bright);
-        color: var(--accent);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 30px;
-      }
+.scan-visual-ring {
+  width: 66px;
+  height: 66px;
+  border-radius: 20px;
+  background: linear-gradient(145deg, #FFF7ED 0%, #FFEDD5 100%);
+  border: 2px dashed var(--accent-bright);
+  color: var(--accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 30px;
+}
 
-      .scan-actions-row {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 10px;
-        width: 100%;
-      }
+.scan-actions-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  width: 100%;
+}
 
-      .btn {
-        border: 1.5px solid transparent;
-        border-radius: var(--radius-md);
-        padding: 12px 15px;
-        font-family: var(--font-sans);
-        font-size: 14px;
-        font-weight: 700;
-        cursor: pointer;
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        gap: 8px;
-        transition: transform 0.14s ease, background-color 0.2s,
-          border-color 0.2s;
-      }
+.btn {
+  border: 1.5px solid transparent;
+  border-radius: var(--radius-md);
+  padding: 12px 15px;
+  font-family: var(--font-sans);
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: transform 0.14s ease, background-color 0.2s, border-color 0.2s;
+}
 
-      .btn:active {
-        transform: scale(0.98);
-      }
+.btn:active {
+  transform: scale(0.98);
+}
 
-      .btn-primary {
-        background: linear-gradient(135deg, #ea580c 0%, #c2410c 100%);
-        border-color: #9a3412;
-        color: #ffffff;
-        box-shadow: 0 5px 14px rgba(194, 65, 12, 0.25);
-      }
+.btn-primary {
+  background: linear-gradient(135deg, #EA580C 0%, #C2410C 100%);
+  border-color: #9A3412;
+  color: #FFFFFF;
+  box-shadow: 0 5px 14px rgba(194, 65, 12, 0.25);
+}
 
-      .btn-primary:hover {
-        background: #9a3412;
-      }
+.btn-primary:hover {
+  background: #9A3412;
+}
 
-      .btn-secondary {
-        background: var(--bg-page);
-        color: var(--text-primary);
-        border-color: var(--border-light);
-      }
+.btn-secondary {
+  background: var(--bg-page);
+  color: var(--text-primary);
+  border-color: var(--border-light);
+}
 
-      .btn-secondary:hover {
-        background: var(--bg-subtle);
-        border-color: var(--border-strong);
-      }
+.btn-secondary:hover {
+  background: var(--bg-subtle);
+  border-color: var(--border-strong);
+}
 
-      .btn-sm {
-        padding: 7px 12px;
-        font-size: 12px;
-        border-radius: var(--radius-sm);
-      }
+.btn-sm {
+  padding: 7px 12px;
+  font-size: 12px;
+  border-radius: var(--radius-sm);
+}
 
-      .hidden-input {
-        display: none;
-      }
+.hidden-input {
+  display: none;
+}
 
-      /* Demo Pills Strip */
-      .demo-strip {
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-        gap: 9px;
-        padding-top: 12px;
-        border-top: 1.5px dashed var(--border-light);
-      }
+/* Demo Pills Strip */
+.demo-strip {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  padding-top: 12px;
+  border-top: 1.5px dashed var(--border-light);
+}
 
-      .demo-label {
-        font-size: 11px;
-        font-weight: 800;
-        text-transform: uppercase;
-        letter-spacing: 0.06em;
-        color: var(--text-muted);
-      }
+.demo-label {
+  font-size: 11px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--text-muted);
+}
 
-      .demo-buttons {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 8px;
-      }
+.demo-buttons {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+}
 
-      .demo-chip {
-        background: var(--bg-page);
-        border: 1.5px solid var(--border-light);
-        border-radius: var(--radius-sm);
-        padding: 9px 6px;
-        font-family: var(--font-sans);
-        font-size: 11.5px;
-        font-weight: 800;
-        color: var(--text-primary);
-        cursor: pointer;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 3px;
-        transition: all 0.18s;
-      }
+.demo-chip {
+  background: var(--bg-page);
+  border: 1.5px solid var(--border-light);
+  border-radius: var(--radius-sm);
+  padding: 9px 6px;
+  font-family: var(--font-sans);
+  font-size: 11.5px;
+  font-weight: 800;
+  color: var(--text-primary);
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  transition: all 0.18s;
+}
 
-      .demo-chip[data-demo="delhi"] {
-        background: #fff7ed;
-        border-color: #fdba74;
-      }
+.demo-chip[data-demo="delhi"] {
+  background: #FFF7ED;
+  border-color: #FDBA74;
+}
 
-      .demo-chip[data-demo="kerala"] {
-        background: #f0fdf4;
-        border-color: #86efac;
-      }
+.demo-chip[data-demo="kerala"] {
+  background: #F0FDF4;
+  border-color: #86EFAC;
+}
 
-      .demo-chip[data-demo="mumbai"] {
-        background: #fefce8;
-        border-color: #fde047;
-      }
+.demo-chip[data-demo="mumbai"] {
+  background: #FEFCE8;
+  border-color: #FDE047;
+}
 
-      .demo-chip:hover {
-        transform: translateY(-1px);
-        box-shadow: var(--shadow-sm);
-      }
+.demo-chip:hover {
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-sm);
+}
 
-      .demo-chip span.sub {
-        font-size: 9.5px;
-        font-weight: 700;
-        color: var(--text-secondary);
-      }
+.demo-chip span.sub {
+  font-size: 9.5px;
+  font-weight: 700;
+  color: var(--text-secondary);
+}
 
-      /* Preview & Compression Bar */
-      .preview-box {
-        width: 100%;
-        position: relative;
-        border-radius: var(--radius-md);
-        overflow: hidden;
-        border: 1.5px solid var(--border-strong);
-        background: #1c1917;
-      }
+/* Preview & Compression Bar */
+.preview-box {
+  width: 100%;
+  position: relative;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  border: 1.5px solid var(--border-strong);
+  background: #1C1917;
+}
 
-      .preview-box img {
-        width: 100%;
-        max-height: 200px;
-        object-fit: cover;
-        display: block;
-      }
+.preview-box img {
+  width: 100%;
+  max-height: 200px;
+  object-fit: cover;
+  display: block;
+}
 
-      .compression-pill {
-        position: absolute;
-        bottom: 10px;
-        right: 10px;
-        background: rgba(28, 25, 23, 0.88);
-        border: 1px solid rgba(255, 255, 255, 0.22);
-        color: #ffffff;
-        font-size: 11px;
-        font-weight: 700;
-        padding: 4px 10px;
-        border-radius: var(--radius-pill);
-      }
+.compression-pill {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  background: rgba(28, 25, 23, 0.88);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  color: #FFFFFF;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: var(--radius-pill);
+}
 
-      /* Loader */
-      .loader-box {
-        background: var(--bg-surface);
-        border: 1.5px solid var(--accent-border);
-        border-radius: var(--radius-lg);
-        padding: 26px 20px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 12px;
-        text-align: center;
-      }
+/* Loader */
+.loader-box {
+  background: var(--bg-surface);
+  border: 1.5px solid var(--accent-border);
+  border-radius: var(--radius-lg);
+  padding: 26px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  text-align: center;
+}
 
-      .spinner {
-        width: 34px;
-        height: 34px;
-        border: 3.5px solid var(--accent-soft);
-        border-top-color: var(--accent-bright);
-        border-radius: 50%;
-        animation: spin 0.8s linear infinite;
-      }
+.scan-error-box {
+  background: var(--risk-soft);
+  border: 1.5px solid var(--risk-border);
+  border-radius: var(--radius-lg);
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  color: var(--text-primary);
+}
 
-      @keyframes spin {
-        to {
-          transform: rotate(360deg);
-        }
-      }
+.scan-error-title {
+  font-size: 14px;
+  font-weight: 800;
+  color: var(--risk);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
 
-      /* ==========================================================================
+.scan-error-detail {
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  background: rgba(255, 255, 255, 0.75);
+  border: 1px solid var(--risk-border);
+  border-radius: var(--radius-sm);
+  padding: 8px 10px;
+  word-break: break-word;
+}
+
+.scan-error-actions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.api-test-status {
+  font-size: 12px;
+  font-weight: 700;
+  padding: 8px 10px;
+  border-radius: var(--radius-sm);
+  display: none;
+}
+
+.api-test-status.ok {
+  display: block;
+  background: var(--safe-soft);
+  border: 1px solid var(--safe-border);
+  color: var(--safe);
+}
+
+.api-test-status.err {
+  display: block;
+  background: var(--risk-soft);
+  border: 1px solid var(--risk-border);
+  color: var(--risk);
+}
+
+.spinner {
+  width: 34px;
+  height: 34px;
+  border: 3.5px solid var(--accent-soft);
+  border-top-color: var(--accent-bright);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ==========================================================================
    Dish Cards & Framed Color Gauges
    ========================================================================== */
-      .dish-list {
-        display: flex;
-        flex-direction: column;
-        gap: 14px;
-      }
+.dish-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
 
-      .dish-card {
-        background: var(--bg-surface);
-        border: 1.5px solid var(--border-light);
-        border-left: 5px solid var(--safe);
-        border-radius: var(--radius-lg);
-        padding: 15px;
-        box-shadow: var(--shadow-sm);
-        display: flex;
-        flex-direction: column;
-        gap: 13px;
-        transition: transform 0.16s ease, box-shadow 0.2s ease,
-          border-color 0.2s;
-      }
+.dish-card {
+  background: var(--bg-surface);
+  border: 1.5px solid var(--border-light);
+  border-left: 5px solid var(--safe);
+  border-radius: var(--radius-lg);
+  padding: 15px;
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  gap: 13px;
+  transition: transform 0.16s ease, box-shadow 0.2s ease, border-color 0.2s;
+}
 
-      .dish-card.hygiene-level-2 {
-        border-left-color: #f59e0b;
-      }
+.dish-card.hygiene-level-2 {
+  border-left-color: #F59E0B;
+}
 
-      .dish-card.hygiene-level-3 {
-        border-left-color: #dc2626;
-      }
+.dish-card.hygiene-level-3 {
+  border-left-color: #DC2626;
+}
 
-      .dish-card:hover {
-        border-color: var(--border-strong);
-        box-shadow: var(--shadow-md);
-      }
+.dish-card:hover {
+  border-color: var(--border-strong);
+  box-shadow: var(--shadow-md);
+}
 
-      .dish-top {
-        display: flex;
-        align-items: flex-start;
-        justify-content: space-between;
-        gap: 10px;
-      }
+.dish-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 10px;
+}
 
-      .dish-identity {
-        display: flex;
-        align-items: center;
-        gap: 11px;
-        flex: 1;
-        min-width: 0;
-      }
+.dish-identity {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  flex: 1;
+  min-width: 0;
+}
 
-      .dish-thumb {
-        width: 56px;
-        height: 56px;
-        border-radius: 14px;
-        background: linear-gradient(145deg, #fff7ed 0%, #f3efea 100%);
-        border: 1.5px solid var(--accent-border);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 27px;
-        flex-shrink: 0;
-        overflow: hidden;
-      }
+.dish-thumb {
+  width: 56px;
+  height: 56px;
+  border-radius: 14px;
+  background: linear-gradient(145deg, #FFF7ED 0%, #F3EFEA 100%);
+  border: 1.5px solid var(--accent-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 27px;
+  flex-shrink: 0;
+  overflow: hidden;
+}
 
-      .dish-thumb img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-      }
+.dish-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
 
-      .dish-titles {
-        display: flex;
-        flex-direction: column;
-        gap: 2px;
-        min-width: 0;
-      }
+.dish-titles {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
 
-      .dish-name {
-        font-size: 16px;
-        font-weight: 800;
-        color: var(--text-primary);
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-      }
+.dish-name {
+  font-size: 16px;
+  font-weight: 800;
+  color: var(--text-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
 
-      .dish-local {
-        font-family: var(--font-indic);
-        font-size: 13px;
-        font-weight: 700;
-        color: var(--accent);
-      }
+.dish-local {
+  font-family: var(--font-indic);
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--accent);
+}
 
-      .dish-essence {
-        font-size: 12px;
-        font-weight: 600;
-        color: var(--text-secondary);
-      }
+.dish-essence {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
 
-      /* Framed Price Box */
-      .dish-price-col {
-        background: var(--accent-soft);
-        border: 1.5px solid var(--accent-border);
-        border-radius: 12px;
-        padding: 6px 10px;
-        display: flex;
-        flex-direction: column;
-        align-items: flex-end;
-        gap: 1px;
-        flex-shrink: 0;
-      }
+/* Framed Price Box */
+.dish-price-col {
+  background: var(--accent-soft);
+  border: 1.5px solid var(--accent-border);
+  border-radius: 12px;
+  padding: 6px 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 1px;
+  flex-shrink: 0;
+}
 
-      .price-converted {
-        font-size: 15px;
-        font-weight: 800;
-        color: var(--accent);
-      }
+.price-converted {
+  font-size: 15px;
+  font-weight: 800;
+  color: var(--accent);
+}
 
-      .price-inr {
-        font-size: 11px;
-        font-weight: 700;
-        color: var(--text-secondary);
-      }
+.price-inr {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--text-secondary);
+}
 
-      /* Individually Framed Segmented Gauges Grid */
-      .gauges-grid {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 8px;
-      }
+/* Individually Framed Segmented Gauges Grid */
+.gauges-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
 
-      .gauge-block {
-        background: var(--bg-page);
-        border: 1.5px solid var(--border-light);
-        border-radius: 12px;
-        padding: 8px 9px;
-        display: flex;
-        flex-direction: column;
-        gap: 6px;
-      }
+.gauge-block {
+  background: var(--bg-page);
+  border: 1.5px solid var(--border-light);
+  border-radius: 12px;
+  padding: 8px 9px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
 
-      .gauge-block.spice-box {
-        background: #fff9f5;
-        border-color: #fed7aa;
-      }
+.gauge-block.spice-box {
+  background: #FFF9F5;
+  border-color: #FED7AA;
+}
 
-      .gauge-block.hygiene-box-1 {
-        background: var(--safe-soft);
-        border-color: var(--safe-border);
-      }
+.gauge-block.hygiene-box-1 {
+  background: var(--safe-soft);
+  border-color: var(--safe-border);
+}
 
-      .gauge-block.hygiene-box-2 {
-        background: var(--warn-soft);
-        border-color: var(--warn-border);
-      }
+.gauge-block.hygiene-box-2 {
+  background: var(--warn-soft);
+  border-color: var(--warn-border);
+}
 
-      .gauge-block.hygiene-box-3 {
-        background: var(--risk-soft);
-        border-color: var(--risk-border);
-      }
+.gauge-block.hygiene-box-3 {
+  background: var(--risk-soft);
+  border-color: var(--risk-border);
+}
 
-      .gauge-block.richness-box {
-        background: #fefce8;
-        border-color: #fde68a;
-      }
+.gauge-block.richness-box {
+  background: #FEFCE8;
+  border-color: #FDE68A;
+}
 
-      .gauge-block.protein-box {
-        background: #eff6ff;
-        border-color: #bfdbfe;
-      }
+.gauge-block.protein-box {
+  background: #EFF6FF;
+  border-color: #BFDBFE;
+}
 
-      .gauge-seg.protein-1 {
-        background: #60a5fa;
-      }
-      .gauge-seg.protein-2 {
-        background: #2563eb;
-      }
-      .gauge-seg.protein-3 {
-        background: #1d4ed8;
-      }
+.gauge-seg.protein-1 { background: #60A5FA; }
+.gauge-seg.protein-2 { background: #2563EB; }
+.gauge-seg.protein-3 { background: #1D4ED8; }
 
-      .gauge-header {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        font-size: 10.5px;
-        font-weight: 800;
-        color: var(--text-primary);
-      }
+.gauge-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 10.5px;
+  font-weight: 800;
+  color: var(--text-primary);
+}
 
-      .gauge-bars {
-        display: flex;
-        gap: 4px;
-        height: 8px;
-      }
+.gauge-bars {
+  display: flex;
+  gap: 4px;
+  height: 8px;
+}
 
-      .gauge-seg {
-        flex: 1;
-        border-radius: 4px;
-        background: var(--gauge-track);
-        transition: background-color 0.25s ease;
-      }
+.gauge-seg {
+  flex: 1;
+  border-radius: 4px;
+  background: var(--gauge-track);
+  transition: background-color 0.25s ease;
+}
 
-      /* Spice Colors (1-5) */
-      .gauge-seg.spice-1 {
-        background: #f59e0b;
-      }
-      .gauge-seg.spice-2 {
-        background: #ea580c;
-      }
-      .gauge-seg.spice-3 {
-        background: #e11d48;
-      }
-      .gauge-seg.spice-4 {
-        background: #dc2626;
-      }
-      .gauge-seg.spice-5 {
-        background: #991b1b;
-      }
+/* Spice Colors (1-5) */
+.gauge-seg.spice-1 { background: #F59E0B; }
+.gauge-seg.spice-2 { background: #EA580C; }
+.gauge-seg.spice-3 { background: #E11D48; }
+.gauge-seg.spice-4 { background: #DC2626; }
+.gauge-seg.spice-5 { background: #991B1B; }
 
-      /* Hygiene / Stomach Safety Colors (1-3) */
-      .gauge-seg.hygiene-safe {
-        background: #16a34a;
-      }
-      .gauge-seg.hygiene-warn {
-        background: #d97706;
-      }
-      .gauge-seg.hygiene-risk {
-        background: #dc2626;
-      }
+/* Hygiene / Stomach Safety Colors (1-3) */
+.gauge-seg.hygiene-safe { background: #16A34A; }
+.gauge-seg.hygiene-warn { background: #D97706; }
+.gauge-seg.hygiene-risk { background: #DC2626; }
 
-      /* Richness Dots (1-3) */
-      .gauge-dots {
-        display: flex;
-        align-items: center;
-        gap: 5px;
-        height: 8px;
-      }
+/* Richness Dots (1-3) */
+.gauge-dots {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  height: 8px;
+}
 
-      .gauge-dot {
-        width: 10px;
-        height: 10px;
-        border-radius: 50%;
-        background: var(--gauge-track);
-        border: 1px solid rgba(120, 53, 15, 0.15);
-      }
+.gauge-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--gauge-track);
+  border: 1px solid rgba(120, 53, 15, 0.15);
+}
 
-      .gauge-dot.active {
-        background: #b45309;
-        border-color: #78350f;
-      }
+.gauge-dot.active {
+  background: #B45309;
+  border-color: #78350F;
+}
 
-      /* Pictogram Tags & Card Footer */
-      .dish-footer {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 8px;
-        flex-wrap: wrap;
-      }
+/* Pictogram Tags & Card Footer */
+.dish-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  flex-wrap: wrap;
+}
 
-      .picto-row {
-        display: flex;
-        align-items: center;
-        gap: 5px;
-        flex-wrap: wrap;
-      }
+.picto-row {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  flex-wrap: wrap;
+}
 
-      .picto-badge {
-        display: inline-flex;
-        align-items: center;
-        gap: 4px;
-        font-size: 11px;
-        font-weight: 800;
-        padding: 4px 9px;
-        border-radius: var(--radius-pill);
-        border: 1.5px solid var(--border-light);
-        background: var(--bg-subtle);
-        color: var(--text-secondary);
-      }
+.picto-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 11px;
+  font-weight: 800;
+  padding: 4px 9px;
+  border-radius: var(--radius-pill);
+  border: 1.5px solid var(--border-light);
+  background: var(--bg-subtle);
+  color: var(--text-secondary);
+}
 
-      .picto-badge.veg {
-        background: var(--safe-soft);
-        border-color: var(--safe-border);
-        color: var(--safe);
-      }
+.picto-badge.veg {
+  background: var(--safe-soft);
+  border-color: var(--safe-border);
+  color: var(--safe);
+}
 
-      .picto-badge.non-veg {
-        background: var(--risk-soft);
-        border-color: var(--risk-border);
-        color: var(--risk);
-      }
+.picto-badge.non-veg {
+  background: var(--risk-soft);
+  border-color: var(--risk-border);
+  color: var(--risk);
+}
 
-      .picto-badge.allergen {
-        background: var(--warn-soft);
-        border-color: var(--warn-border);
-        color: var(--warn);
-      }
+.picto-badge.allergen {
+  background: var(--warn-soft);
+  border-color: var(--warn-border);
+  color: var(--warn);
+}
 
-      .card-actions {
-        display: flex;
-        align-items: center;
-        gap: 6px;
-        margin-left: auto;
-      }
+.card-actions {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-left: auto;
+}
 
-      .action-chip {
-        border: 1.5px solid var(--border-light);
-        background: var(--bg-page);
-        color: var(--text-primary);
-        border-radius: var(--radius-pill);
-        padding: 6px 10px;
-        font-family: var(--font-sans);
-        font-size: 11px;
-        font-weight: 800;
-        cursor: pointer;
-        display: inline-flex;
-        align-items: center;
-        gap: 4px;
-        transition: all 0.15s;
-      }
+.action-chip {
+  border: 1.5px solid var(--border-light);
+  background: var(--bg-page);
+  color: var(--text-primary);
+  border-radius: var(--radius-pill);
+  padding: 6px 10px;
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: 800;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  transition: all 0.15s;
+}
 
-      .action-chip:hover {
-        border-color: var(--border-strong);
-        background: var(--bg-subtle);
-      }
+.action-chip:hover {
+  border-color: var(--border-strong);
+  background: var(--bg-subtle);
+}
 
-      .action-chip.primary-chip {
-        background: var(--accent-bright);
-        border-color: var(--accent);
-        color: #ffffff;
-      }
+.action-chip.primary-chip {
+  background: var(--accent-bright);
+  border-color: var(--accent);
+  color: #FFFFFF;
+}
 
-      .action-chip.primary-chip:hover {
-        background: var(--accent);
-      }
+.action-chip.primary-chip:hover {
+  background: var(--accent);
+}
 
-      .action-chip.fav-active {
-        background: #fef3c7;
-        border-color: #f59e0b;
-        color: #b45309;
-      }
+.action-chip.fav-active {
+  background: #FEF3C7;
+  border-color: #F59E0B;
+  color: #B45309;
+}
 
-      /* ==========================================================================
+/* ==========================================================================
    Catalog Library Tab
    ========================================================================== */
-      .filter-bar {
-        display: flex;
-        gap: 7px;
-        overflow-x: auto;
-        scrollbar-width: none;
-        padding-bottom: 2px;
-      }
+.filter-bar {
+  display: flex;
+  gap: 7px;
+  overflow-x: auto;
+  scrollbar-width: none;
+  padding-bottom: 2px;
+}
 
-      .filter-bar::-webkit-scrollbar {
-        display: none;
-      }
+.filter-bar::-webkit-scrollbar {
+  display: none;
+}
 
-      .filter-pill {
-        border: 1.5px solid var(--border-light);
-        background: var(--bg-surface);
-        color: var(--text-secondary);
-        border-radius: var(--radius-pill);
-        padding: 7px 13px;
-        font-family: var(--font-sans);
-        font-size: 12px;
-        font-weight: 800;
-        white-space: nowrap;
-        cursor: pointer;
-        transition: all 0.15s;
-      }
+.filter-pill {
+  border: 1.5px solid var(--border-light);
+  background: var(--bg-surface);
+  color: var(--text-secondary);
+  border-radius: var(--radius-pill);
+  padding: 7px 13px;
+  font-family: var(--font-sans);
+  font-size: 12px;
+  font-weight: 800;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: all 0.15s;
+}
 
-      .filter-pill:hover {
-        border-color: var(--border-strong);
-      }
+.filter-pill:hover {
+  border-color: var(--border-strong);
+}
 
-      .filter-pill.active {
-        background: var(--accent);
-        color: #ffffff;
-        border-color: #9a3412;
-      }
+.filter-pill.active {
+  background: var(--accent);
+  color: #FFFFFF;
+  border-color: #9A3412;
+}
 
-      .search-input {
-        width: 100%;
-        background: var(--bg-surface);
-        border: 1.5px solid var(--border-light);
-        border-radius: var(--radius-md);
-        padding: 11px 14px;
-        font-family: var(--font-sans);
-        font-size: 14px;
-        font-weight: 600;
-        color: var(--text-primary);
-        outline: none;
-        box-shadow: var(--shadow-sm);
-      }
+.search-input {
+  width: 100%;
+  background: var(--bg-surface);
+  border: 1.5px solid var(--border-light);
+  border-radius: var(--radius-md);
+  padding: 11px 14px;
+  font-family: var(--font-sans);
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-primary);
+  outline: none;
+  box-shadow: var(--shadow-sm);
+}
 
-      .search-input:focus {
-        border-color: var(--accent-bright);
-      }
+.search-input:focus {
+  border-color: var(--accent-bright);
+}
 
-      .catalog-meta-row {
-        display: flex;
-        align-items: center;
-        gap: 8px;
-        padding: 8px 10px;
-        background: var(--bg-page);
-        border: 1.5px solid var(--border-light);
-        border-radius: var(--radius-sm);
-      }
+.catalog-meta-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 10px;
+  background: var(--bg-page);
+  border: 1.5px solid var(--border-light);
+  border-radius: var(--radius-sm);
+}
 
-      .star-rating {
-        display: inline-flex;
-        gap: 2px;
-      }
+.star-rating {
+  display: inline-flex;
+  gap: 2px;
+}
 
-      .star-btn {
-        background: none;
-        border: none;
-        font-size: 16px;
-        cursor: pointer;
-        color: #d6d3d1;
-        padding: 0 1px;
-      }
+.star-btn {
+  background: none;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  color: #D6D3D1;
+  padding: 0 1px;
+}
 
-      .star-btn.lit {
-        color: #f59e0b;
-      }
+.star-btn.lit {
+  color: #F59E0B;
+}
 
-      .note-input {
-        flex: 1;
-        background: var(--bg-surface);
-        border: 1.5px solid var(--border-light);
-        border-radius: 8px;
-        padding: 6px 10px;
-        font-family: var(--font-sans);
-        font-size: 12px;
-        font-weight: 600;
-        color: var(--text-primary);
-      }
+.note-input {
+  flex: 1;
+  background: var(--bg-surface);
+  border: 1.5px solid var(--border-light);
+  border-radius: 8px;
+  padding: 6px 10px;
+  font-family: var(--font-sans);
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
 
-      .note-input:focus {
-        outline: none;
-        border-color: var(--accent-bright);
-      }
+.note-input:focus {
+  outline: none;
+  border-color: var(--accent-bright);
+}
 
-      /* ==========================================================================
+/* ==========================================================================
    Waiter Card Tab (High Contrast Show-to-Server Mode)
    ========================================================================== */
-      .waiter-board {
-        background: linear-gradient(165deg, #1e1b18 0%, #292524 100%);
-        color: #faf8f5;
-        border: 2px solid #ea580c;
-        border-radius: var(--radius-lg);
-        padding: 20px 16px;
-        display: flex;
-        flex-direction: column;
-        gap: 16px;
-        box-shadow: var(--shadow-lg);
-      }
+.waiter-board {
+  background: linear-gradient(165deg, #1E1B18 0%, #292524 100%);
+  color: #FAF8F5;
+  border: 2px solid #EA580C;
+  border-radius: var(--radius-lg);
+  padding: 20px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  box-shadow: var(--shadow-lg);
+}
 
-      .waiter-board-head {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        border-bottom: 1.5px solid rgba(253, 186, 116, 0.22);
-        padding-bottom: 12px;
-      }
+.waiter-board-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1.5px solid rgba(253, 186, 116, 0.22);
+  padding-bottom: 12px;
+}
 
-      .waiter-board-title {
-        font-size: 13px;
-        font-weight: 800;
-        text-transform: uppercase;
-        letter-spacing: 0.08em;
-        color: #fdba74;
-      }
+.waiter-board-title {
+  font-size: 13px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #FDBA74;
+}
 
-      .waiter-items {
-        display: flex;
-        flex-direction: column;
-        gap: 12px;
-      }
+.waiter-items {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
 
-      .waiter-item {
-        background: rgba(255, 255, 255, 0.07);
-        border: 1.5px solid rgba(253, 186, 116, 0.28);
-        border-radius: var(--radius-md);
-        padding: 13px 14px;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 12px;
-      }
+.waiter-item {
+  background: rgba(255, 255, 255, 0.07);
+  border: 1.5px solid rgba(253, 186, 116, 0.28);
+  border-radius: var(--radius-md);
+  padding: 13px 14px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
 
-      .waiter-script {
-        font-family: var(--font-indic);
-        font-size: 24px;
-        font-weight: 700;
-        color: #ffffff;
-        line-height: 1.25;
-      }
+.waiter-script {
+  font-family: var(--font-indic);
+  font-size: 24px;
+  font-weight: 700;
+  color: #FFFFFF;
+  line-height: 1.25;
+}
 
-      .waiter-phonetic {
-        font-size: 14px;
-        font-weight: 800;
-        color: #fdba74;
-        margin-top: 2px;
-      }
+.waiter-phonetic {
+  font-size: 14px;
+  font-weight: 800;
+  color: #FDBA74;
+  margin-top: 2px;
+}
 
-      .waiter-translated {
-        font-size: 12px;
-        font-weight: 600;
-        color: #d6d3d1;
-      }
+.waiter-translated {
+  font-size: 12px;
+  font-weight: 600;
+  color: #D6D3D1;
+}
 
-      .waiter-controls {
-        display: flex;
-        align-items: center;
-        gap: 8px;
-      }
+.waiter-controls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
 
-      .tts-btn {
-        width: 38px;
-        height: 38px;
-        border-radius: 50%;
-        border: 1.5px solid #fdba74;
-        background: var(--accent-bright);
-        color: #ffffff;
-        font-size: 16px;
-        cursor: pointer;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-      }
+.tts-btn {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: 1.5px solid #FDBA74;
+  background: var(--accent-bright);
+  color: #FFFFFF;
+  font-size: 16px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
-      .qty-stepper {
-        display: flex;
-        align-items: center;
-        background: rgba(255, 255, 255, 0.12);
-        border: 1.5px solid rgba(255, 255, 255, 0.22);
-        border-radius: var(--radius-pill);
-        padding: 3px;
-      }
+.qty-stepper {
+  display: flex;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1.5px solid rgba(255, 255, 255, 0.22);
+  border-radius: var(--radius-pill);
+  padding: 3px;
+}
 
-      .qty-btn {
-        width: 26px;
-        height: 26px;
-        border-radius: 50%;
-        border: none;
-        background: transparent;
-        color: #ffffff;
-        font-weight: 800;
-        cursor: pointer;
-      }
+.qty-btn {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  border: none;
+  background: transparent;
+  color: #FFFFFF;
+  font-weight: 800;
+  cursor: pointer;
+}
 
-      .qty-val {
-        min-width: 22px;
-        text-align: center;
-        font-size: 13px;
-        font-weight: 800;
-      }
+.qty-val {
+  min-width: 22px;
+  text-align: center;
+  font-size: 13px;
+  font-weight: 800;
+}
 
-      /* 2x2 Dietary / Request Toggles */
-      .request-grid {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 10px;
-      }
+/* 2x2 Dietary / Request Toggles */
+.request-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
 
-      .req-tile {
-        background: rgba(255, 255, 255, 0.06);
-        border: 1.5px solid rgba(255, 255, 255, 0.22);
-        border-radius: var(--radius-md);
-        padding: 12px;
-        color: #f5f5f4;
-        text-align: left;
-        cursor: pointer;
-        display: flex;
-        flex-direction: column;
-        gap: 4px;
-        transition: all 0.16s;
-      }
+.req-tile {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1.5px solid rgba(255, 255, 255, 0.22);
+  border-radius: var(--radius-md);
+  padding: 12px;
+  color: #F5F5F4;
+  text-align: left;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  transition: all 0.16s;
+}
 
-      .req-tile.active {
-        background: #fff7ed;
-        border-color: #ea580c;
-        color: #1c1917;
-        box-shadow: 0 4px 12px rgba(234, 88, 12, 0.35);
-      }
+.req-tile.active {
+  background: #FFF7ED;
+  border-color: #EA580C;
+  color: #1C1917;
+  box-shadow: 0 4px 12px rgba(234, 88, 12, 0.35);
+}
 
-      .req-tile .req-icon {
-        font-size: 20px;
-      }
+.req-tile .req-icon {
+  font-size: 20px;
+}
 
-      .req-tile .req-local {
-        font-family: var(--font-indic);
-        font-size: 15px;
-        font-weight: 800;
-      }
+.req-tile .req-local {
+  font-family: var(--font-indic);
+  font-size: 15px;
+  font-weight: 800;
+}
 
-      .req-tile .req-label {
-        font-size: 11px;
-        font-weight: 700;
-        opacity: 0.85;
-      }
+.req-tile .req-label {
+  font-size: 11px;
+  font-weight: 700;
+  opacity: 0.85;
+}
 
-      .waiter-total-bar {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding: 12px 14px;
-        background: rgba(234, 88, 12, 0.18);
-        border: 1.5px solid rgba(253, 186, 116, 0.35);
-        border-radius: var(--radius-md);
-        font-weight: 800;
-        color: #fdba74;
-      }
+.waiter-total-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 14px;
+  background: rgba(234, 88, 12, 0.18);
+  border: 1.5px solid rgba(253, 186, 116, 0.35);
+  border-radius: var(--radius-md);
+  font-weight: 800;
+  color: #FDBA74;
+}
 
-      /* Empty State */
-      .empty-state {
-        background: var(--bg-surface);
-        border: 2px dashed var(--border-strong);
-        border-radius: var(--radius-lg);
-        padding: 36px 20px;
-        text-align: center;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 10px;
-        font-weight: 600;
-        color: var(--text-secondary);
-      }
+/* Empty State */
+.empty-state {
+  background: var(--bg-surface);
+  border: 2px dashed var(--border-strong);
+  border-radius: var(--radius-lg);
+  padding: 36px 20px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
 
-      .empty-icon {
-        font-size: 32px;
-      }
+.empty-icon {
+  font-size: 32px;
+}
 
-      /* Bottom Navigation */
-      .bottom-nav {
-        position: fixed;
-        bottom: 0;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 100%;
-        max-width: 480px;
-        background: var(--bg-surface);
-        border-top: 1.5px solid var(--border-light);
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        padding: 7px 6px calc(7px + env(safe-area-inset-bottom));
-        z-index: 40;
-        box-shadow: 0 -4px 16px rgba(28, 25, 23, 0.05);
-      }
+/* Bottom Navigation */
+.bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 480px;
+  background: var(--bg-surface);
+  border-top: 1.5px solid var(--border-light);
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  padding: 7px 6px calc(7px + env(safe-area-inset-bottom));
+  z-index: 40;
+  box-shadow: 0 -4px 16px rgba(28, 25, 23, 0.05);
+}
 
-      .nav-item {
-        background: none;
-        border: 1.5px solid transparent;
-        border-radius: 12px;
-        margin: 0 3px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        gap: 3px;
-        padding: 6px 4px;
-        color: var(--text-muted);
-        font-family: var(--font-sans);
-        font-size: 11px;
-        font-weight: 800;
-        cursor: pointer;
-        position: relative;
-        transition: all 0.18s;
-      }
+.nav-item {
+  background: none;
+  border: 1.5px solid transparent;
+  border-radius: 12px;
+  margin: 0 3px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  padding: 6px 4px;
+  color: var(--text-muted);
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: 800;
+  cursor: pointer;
+  position: relative;
+  transition: all 0.18s;
+}
 
-      .nav-item .nav-icon {
-        font-size: 20px;
-        line-height: 1;
-      }
+.nav-item .nav-icon {
+  font-size: 20px;
+  line-height: 1;
+}
 
-      .nav-item.active {
-        color: var(--accent);
-        background: var(--accent-soft);
-        border-color: var(--accent-border);
-      }
+.nav-item.active {
+  color: var(--accent);
+  background: var(--accent-soft);
+  border-color: var(--accent-border);
+}
 
-      .nav-badge {
-        position: absolute;
-        top: 2px;
-        right: 18%;
-        background: var(--accent-bright);
-        color: #ffffff;
-        font-size: 10px;
-        font-weight: 800;
-        min-width: 17px;
-        height: 17px;
-        border-radius: 50%;
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        padding: 0 4px;
-      }
+.nav-badge {
+  position: absolute;
+  top: 2px;
+  right: 18%;
+  background: var(--accent-bright);
+  color: #FFFFFF;
+  font-size: 10px;
+  font-weight: 800;
+  min-width: 17px;
+  height: 17px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 4px;
+}
 
-      /* Modal (API Key Settings) */
-      .modal-backdrop {
-        position: fixed;
-        inset: 0;
-        background: rgba(28, 25, 23, 0.52);
-        backdrop-filter: blur(4px);
-        display: none;
-        align-items: center;
-        justify-content: center;
-        padding: 20px;
-        z-index: 60;
-      }
+/* Modal (API Key Settings) */
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(28, 25, 23, 0.52);
+  backdrop-filter: blur(4px);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  z-index: 60;
+}
 
-      .modal-backdrop.open {
-        display: flex;
-      }
+.modal-backdrop.open {
+  display: flex;
+}
 
-      .modal-card {
-        width: 100%;
-        max-width: 400px;
-        background: var(--bg-surface);
-        border: 1.5px solid var(--border-strong);
-        border-radius: var(--radius-lg);
-        padding: 22px;
-        box-shadow: var(--shadow-lg);
-        display: flex;
-        flex-direction: column;
-        gap: 14px;
-      }
+.modal-card {
+  width: 100%;
+  max-width: 400px;
+  background: var(--bg-surface);
+  border: 1.5px solid var(--border-strong);
+  border-radius: var(--radius-lg);
+  padding: 22px;
+  box-shadow: var(--shadow-lg);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
 
-      .modal-title {
-        font-size: 17px;
-        font-weight: 800;
-      }
+.modal-title {
+  font-size: 17px;
+  font-weight: 800;
+}
 
-      .modal-input {
-        width: 100%;
-        border: 1.5px solid var(--border-strong);
-        border-radius: var(--radius-sm);
-        padding: 11px 12px;
-        font-family: monospace;
-        font-size: 13px;
-      }
+.modal-input {
+  width: 100%;
+  border: 1.5px solid var(--border-strong);
+  border-radius: var(--radius-sm);
+  padding: 11px 12px;
+  font-family: monospace;
+  font-size: 13px;
+}
 
-      .modal-actions {
-        display: flex;
-        justify-content: flex-end;
-        gap: 8px;
-      }
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+}
 
-      /* Toast Notification */
-      .toast {
-        position: fixed;
-        top: 74px;
-        left: 50%;
-        transform: translateX(-50%) translateY(-16px);
-        background: #1c1917;
-        border: 1.5px solid #ea580c;
-        color: #ffffff;
-        font-size: 12px;
-        font-weight: 800;
-        padding: 9px 16px;
-        border-radius: var(--radius-pill);
-        box-shadow: var(--shadow-md);
-        opacity: 0;
-        pointer-events: none;
-        transition: all 0.22s ease;
-        z-index: 70;
-      }
+/* Toast Notification */
+.toast {
+  position: fixed;
+  top: 74px;
+  left: 50%;
+  transform: translateX(-50%) translateY(-16px);
+  background: #1C1917;
+  border: 1.5px solid #EA580C;
+  color: #FFFFFF;
+  font-size: 12px;
+  font-weight: 800;
+  padding: 9px 16px;
+  border-radius: var(--radius-pill);
+  box-shadow: var(--shadow-md);
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.22s ease;
+  z-index: 70;
+}
 
-      .toast.show {
-        opacity: 1;
-        transform: translateX(-50%) translateY(0);
-      }
-    </style>
-  </head>
-  <body>
-    <div class="app-shell">
-      <!-- Top Bar: Brand + Language + Currency + API Key -->
-      <header class="app-header">
-        <div class="brand">
-          <div class="brand-mark">🍛</div>
-          <div>
-            <div class="brand-title">DesiMenu</div>
-            <div class="brand-sub" data-i18n="tagline">India Visual Lens</div>
-          </div>
-        </div>
+.toast.show {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
 
-        <div class="header-controls">
-          <select id="langSelect" class="pill-select" aria-label="Language">
-            <option value="fr">FR</option>
-            <option value="en">EN</option>
-            <option value="es">ES</option>
-            <option value="de">DE</option>
-            <option value="it">IT</option>
-            <option value="pt">PT</option>
-          </select>
-
-          <select id="currencySelect" class="pill-select" aria-label="Currency">
-            <option value="EUR">EUR €</option>
-            <option value="USD">USD $</option>
-            <option value="CHF">CHF</option>
-            <option value="CAD">CAD $</option>
-            <option value="GBP">GBP £</option>
-            <option value="AUD">AUD $</option>
-            <option value="JPY">JPY ¥</option>
-            <option value="INR">INR ₹</option>
-          </select>
-
-          <button
-            id="apiKeyBtn"
-            class="icon-btn"
-            title="Gemini API Key"
-            aria-label="API Settings"
-          >
-            ⚙️
-          </button>
-        </div>
-      </header>
-
-      <!-- Main Content -->
-      <main class="main-content">
-        <!-- TAB 1: SCANNER IA -->
-        <section id="tab-scan" class="tab-panel active">
-          <div class="scan-card">
-            <div class="scan-visual-ring">📸</div>
-
-            <div class="scan-actions-row">
-              <button id="cameraTriggerBtn" class="btn btn-primary">
-                <span>📷</span>
-                <span data-i18n="btnCamera">Caméra</span>
-              </button>
-              <button id="galleryTriggerBtn" class="btn btn-secondary">
-                <span>🖼️</span>
-                <span data-i18n="btnGallery">Galerie</span>
-              </button>
-            </div>
-
-            <input
-              id="cameraInput"
-              class="hidden-input"
-              type="file"
-              accept="image/*"
-              capture="environment"
-            />
-            <input
-              id="galleryInput"
-              class="hidden-input"
-              type="file"
-              accept="image/*"
-            />
-            <input
-              id="dishPhotoInput"
-              class="hidden-input"
-              type="file"
-              accept="image/*"
-              capture="environment"
-            />
-
-            <div
-              id="previewContainer"
-              class="preview-box"
-              style="display: none"
-            >
-              <img id="previewImage" alt="Menu preview" />
-              <span id="compressionBadge" class="compression-pill">120 Ko</span>
-            </div>
-
-            <div class="demo-strip">
-              <span class="demo-label" data-i18n="demoLabel"
-                >Menus démo instantanés</span
-              >
-              <div class="demo-buttons">
-                <button class="demo-chip" data-demo="delhi">
-                  <span>🇮🇳 Dhaba Hindi</span>
-                  <span class="sub">Delhi · Devanagari</span>
-                </button>
-                <button class="demo-chip" data-demo="kerala">
-                  <span>🌴 Toddy Shop</span>
-                  <span class="sub">Kochi · Malayalam</span>
-                </button>
-                <button class="demo-chip" data-demo="mumbai">
-                  <span>🛺 Street-Food</span>
-                  <span class="sub">Mumbai · Chaat</span>
-                </button>
-              </div>
-            </div>
-          </div>
-
-          <div id="scanLoader" class="loader-box" style="display: none">
-            <div class="spinner"></div>
-            <strong data-i18n="analyzing">Décodage visuel en cours...</strong>
-          </div>
-
-          <div id="scanResultsHead" class="section-head" style="display: none">
-            <h2 id="detectedMenuTitle" class="section-title">Menu</h2>
-            <span id="detectedCount" class="badge-count">0</span>
-          </div>
-
-          <div id="scanResultsList" class="dish-list"></div>
-        </section>
-
-        <!-- TAB 2: CATALOGUE BIBLIOTHÈQUE -->
-        <section id="tab-catalog" class="tab-panel">
-          <div class="section-head">
-            <h2 class="section-title" data-i18n="catalogTitle">Catalogue</h2>
-            <button id="exportCatalogBtn" class="btn btn-secondary btn-sm">
-              <span>⬇️</span>
-              <span>JSON</span>
-            </button>
-          </div>
-
-          <input
-            id="catalogSearch"
-            class="search-input"
-            type="search"
-            placeholder="🔍 ..."
-          />
-
-          <div id="catalogFilters" class="filter-bar">
-            <button
-              class="filter-pill active"
-              data-filter="all"
-              data-i18n="filterAll"
-            >
-              Tous
-            </button>
-            <button class="filter-pill" data-filter="fav">★</button>
-            <button
-              class="filter-pill"
-              data-filter="safe"
-              data-i18n="filterSafe"
-            >
-              Estomac Sûr
-            </button>
-            <button
-              class="filter-pill"
-              data-filter="mild"
-              data-i18n="filterMild"
-            >
-              Doux ≤ 2
-            </button>
-            <button
-              class="filter-pill"
-              data-filter="protein"
-              data-i18n="filterProtein"
-            >
-              💪 Protéines +
-            </button>
-            <button class="filter-pill" data-filter="veg" data-i18n="filterVeg">
-              Végétarien
-            </button>
-          </div>
-
-          <div id="catalogList" class="dish-list"></div>
-        </section>
-
-        <!-- TAB 3: CARTE SERVEUR -->
-        <section id="tab-waiter" class="tab-panel">
-          <div class="waiter-board">
-            <div class="waiter-board-head">
-              <span class="waiter-board-title" data-i18n="waiterHeader"
-                >Montrer au serveur</span
-              >
-              <button
-                id="clearWaiterBtn"
-                class="btn btn-secondary btn-sm"
-                data-i18n="clearBtn"
-              >
-                Vider
-              </button>
-            </div>
-
-            <div id="waiterItemsList" class="waiter-items"></div>
-
-            <div class="request-grid" id="requestGrid">
-              <button class="req-tile" data-req="lessSpicy">
-                <span class="req-icon">🌶️</span>
-                <span class="req-local">कम तीखा</span>
-                <span class="req-label" data-i18n="reqLessSpicy"
-                  >Moins épicé</span
-                >
-              </button>
-              <button class="req-tile" data-req="noIce">
-                <span class="req-icon">🧊</span>
-                <span class="req-local">बिना बर्फ</span>
-                <span class="req-label" data-i18n="reqNoIce">Sans glaçons</span>
-              </button>
-              <button class="req-tile" data-req="bottledWater">
-                <span class="req-icon">💧</span>
-                <span class="req-local">बोतलबंद पानी</span>
-                <span class="req-label" data-i18n="reqWater"
-                  >Eau en bouteille</span
-                >
-              </button>
-              <button class="req-tile" data-req="pureVeg">
-                <span class="req-icon">🌿</span>
-                <span class="req-local">शुद्ध शाकाहारी</span>
-                <span class="req-label" data-i18n="reqVeg"
-                  >100% Végétarien</span
-                >
-              </button>
-            </div>
-
-            <div class="waiter-total-bar">
-              <span data-i18n="totalLabel">Total estimé</span>
-              <span id="waiterTotalDisplay">₹0 · €0.00</span>
-            </div>
-          </div>
-        </section>
-
-        <!-- TAB 4: REPÈRES HORS-LIGNE -->
-        <section id="tab-guide" class="tab-panel">
-          <div class="section-head">
-            <h2 class="section-title" data-i18n="guideTitle">
-              Repères Hors-Ligne
-            </h2>
-            <span class="badge-count">100% Offline</span>
-          </div>
-
-          <input
-            id="guideSearch"
-            class="search-input"
-            type="search"
-            placeholder="🔍 ..."
-          />
-
-          <div id="guideFilters" class="filter-bar">
-            <button
-              class="filter-pill active"
-              data-cat="all"
-              data-i18n="filterAll"
-            >
-              Tous
-            </button>
-            <button class="filter-pill" data-cat="bread" data-i18n="catBread">
-              Pains
-            </button>
-            <button class="filter-pill" data-cat="main" data-i18n="catMain">
-              Plats
-            </button>
-            <button class="filter-pill" data-cat="street" data-i18n="catStreet">
-              Street-Food
-            </button>
-            <button class="filter-pill" data-cat="drink" data-i18n="catDrink">
-              Boissons
-            </button>
-          </div>
-
-          <div id="guideList" class="dish-list"></div>
-        </section>
-      </main>
-
-      <!-- Bottom Navigation -->
-      <nav class="bottom-nav">
-        <button class="nav-item active" data-tab="scan">
-          <span class="nav-icon">📷</span>
-          <span data-i18n="navScan">Scanner</span>
-        </button>
-        <button class="nav-item" data-tab="catalog">
-          <span class="nav-icon">📚</span>
-          <span data-i18n="navCatalog">Catalogue</span>
-          <span id="catalogBadge" class="nav-badge" style="display: none"
-            >0</span
-          >
-        </button>
-        <button class="nav-item" data-tab="waiter">
-          <span class="nav-icon">🗣️</span>
-          <span data-i18n="navWaiter">Serveur</span>
-          <span id="waiterBadge" class="nav-badge" style="display: none"
-            >0</span
-          >
-        </button>
-        <button class="nav-item" data-tab="guide">
-          <span class="nav-icon">🧭</span>
-          <span data-i18n="navGuide">Repères</span>
-        </button>
-      </nav>
-    </div>
-
-    <!-- Modal: Gemini API Key -->
-    <div id="apiModal" class="modal-backdrop">
-      <div class="modal-card">
-        <div class="modal-title">🔑 Gemini 2.5 Flash API Key</div>
-        <input
-          id="apiKeyInput"
-          class="modal-input"
-          type="password"
-          placeholder="AIzaSy..."
-        />
-        <div class="modal-actions">
-          <button
-            id="closeModalBtn"
-            class="btn btn-secondary btn-sm"
-            data-i18n="cancelBtn"
-          >
-            Fermer
-          </button>
-          <button
-            id="saveApiKeyBtn"
-            class="btn btn-primary btn-sm"
-            data-i18n="saveBtn"
-          >
-            Enregistrer
-          </button>
+  </style>
+</head>
+<body>
+  <div class="app-shell">
+    <!-- Top Bar: Brand + Language + Currency + API Key -->
+    <header class="app-header">
+      <div class="brand">
+        <div class="brand-mark">🍛</div>
+        <div>
+          <div class="brand-title">DesiMenu</div>
+          <div class="brand-sub" data-i18n="tagline">India Visual Lens</div>
         </div>
       </div>
+
+      <div class="header-controls">
+        <select id="langSelect" class="pill-select" aria-label="Language">
+          <option value="fr">FR</option>
+          <option value="en">EN</option>
+          <option value="es">ES</option>
+          <option value="de">DE</option>
+          <option value="it">IT</option>
+          <option value="pt">PT</option>
+        </select>
+
+        <select id="currencySelect" class="pill-select" aria-label="Currency">
+          <option value="EUR">EUR €</option>
+          <option value="USD">USD $</option>
+          <option value="CHF">CHF</option>
+          <option value="CAD">CAD $</option>
+          <option value="GBP">GBP £</option>
+          <option value="AUD">AUD $</option>
+          <option value="JPY">JPY ¥</option>
+          <option value="INR">INR ₹</option>
+        </select>
+
+        <button id="apiKeyBtn" class="icon-btn" title="Gemini API Key" aria-label="API Settings">⚙️</button>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <!-- TAB 1: SCANNER IA -->
+      <section id="tab-scan" class="tab-panel active">
+        <div class="scan-card">
+          <div class="scan-visual-ring">📸</div>
+
+          <div class="scan-actions-row">
+            <button id="cameraTriggerBtn" class="btn btn-primary">
+              <span>📷</span>
+              <span data-i18n="btnCamera">Caméra</span>
+            </button>
+            <button id="galleryTriggerBtn" class="btn btn-secondary">
+              <span>🖼️</span>
+              <span data-i18n="btnGallery">Galerie</span>
+            </button>
+          </div>
+
+          <input id="cameraInput" class="hidden-input" type="file" accept="image/*" capture="environment" />
+          <input id="galleryInput" class="hidden-input" type="file" accept="image/*" />
+          <input id="dishPhotoInput" class="hidden-input" type="file" accept="image/*" capture="environment" />
+
+          <div id="previewContainer" class="preview-box" style="display:none;">
+            <img id="previewImage" alt="Menu preview" />
+            <span id="compressionBadge" class="compression-pill">120 Ko</span>
+          </div>
+
+          <div class="demo-strip">
+            <span class="demo-label" data-i18n="demoLabel">Menus démo instantanés</span>
+            <div class="demo-buttons">
+              <button class="demo-chip" data-demo="delhi">
+                <span>🇮🇳 Dhaba Hindi</span>
+                <span class="sub">Delhi · Devanagari</span>
+              </button>
+              <button class="demo-chip" data-demo="kerala">
+                <span>🌴 Toddy Shop</span>
+                <span class="sub">Kochi · Malayalam</span>
+              </button>
+              <button class="demo-chip" data-demo="mumbai">
+                <span>🛺 Street-Food</span>
+                <span class="sub">Mumbai · Chaat</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div id="scanLoader" class="loader-box" style="display:none;">
+          <div class="spinner"></div>
+          <strong data-i18n="analyzing">Décodage visuel en cours...</strong>
+        </div>
+
+        <div id="scanErrorBox" class="scan-error-box" style="display:none;">
+          <div id="scanErrorTitle" class="scan-error-title">⚠️ Échec de l'analyse photo</div>
+          <div id="scanErrorDetail" class="scan-error-detail"></div>
+          <div class="scan-error-actions">
+            <button id="retryScanBtn" class="btn btn-primary btn-sm">🔄 Réessayer l'analyse</button>
+            <button id="openKeyFromErrorBtn" class="btn btn-secondary btn-sm">🔑 Configurer la clé API</button>
+          </div>
+        </div>
+
+        <div id="scanResultsHead" class="section-head" style="display:none;">
+          <h2 id="detectedMenuTitle" class="section-title">Menu</h2>
+          <span id="detectedCount" class="badge-count">0</span>
+        </div>
+
+        <div id="scanResultsList" class="dish-list"></div>
+      </section>
+
+      <!-- TAB 2: CATALOGUE BIBLIOTHÈQUE -->
+      <section id="tab-catalog" class="tab-panel">
+        <div class="section-head">
+          <h2 class="section-title" data-i18n="catalogTitle">Catalogue</h2>
+          <button id="exportCatalogBtn" class="btn btn-secondary btn-sm">
+            <span>⬇️</span>
+            <span>JSON</span>
+          </button>
+        </div>
+
+        <input id="catalogSearch" class="search-input" type="search" placeholder="🔍 ..." />
+
+        <div id="catalogFilters" class="filter-bar">
+          <button class="filter-pill active" data-filter="all" data-i18n="filterAll">Tous</button>
+          <button class="filter-pill" data-filter="fav">★</button>
+          <button class="filter-pill" data-filter="safe" data-i18n="filterSafe">Estomac Sûr</button>
+          <button class="filter-pill" data-filter="mild" data-i18n="filterMild">Doux ≤ 2</button>
+          <button class="filter-pill" data-filter="protein" data-i18n="filterProtein">💪 Protéines +</button>
+          <button class="filter-pill" data-filter="veg" data-i18n="filterVeg">Végétarien</button>
+        </div>
+
+        <div id="catalogList" class="dish-list"></div>
+      </section>
+
+      <!-- TAB 3: CARTE SERVEUR -->
+      <section id="tab-waiter" class="tab-panel">
+        <div class="waiter-board">
+          <div class="waiter-board-head">
+            <span class="waiter-board-title" data-i18n="waiterHeader">Montrer au serveur</span>
+            <button id="clearWaiterBtn" class="btn btn-secondary btn-sm" data-i18n="clearBtn">Vider</button>
+          </div>
+
+          <div id="waiterItemsList" class="waiter-items"></div>
+
+          <div class="request-grid" id="requestGrid">
+            <button class="req-tile" data-req="lessSpicy">
+              <span class="req-icon">🌶️</span>
+              <span class="req-local">कम तीखा</span>
+              <span class="req-label" data-i18n="reqLessSpicy">Moins épicé</span>
+            </button>
+            <button class="req-tile" data-req="noIce">
+              <span class="req-icon">🧊</span>
+              <span class="req-local">बिना बर्फ</span>
+              <span class="req-label" data-i18n="reqNoIce">Sans glaçons</span>
+            </button>
+            <button class="req-tile" data-req="bottledWater">
+              <span class="req-icon">💧</span>
+              <span class="req-local">बोतलबंद पानी</span>
+              <span class="req-label" data-i18n="reqWater">Eau en bouteille</span>
+            </button>
+            <button class="req-tile" data-req="pureVeg">
+              <span class="req-icon">🌿</span>
+              <span class="req-local">शुद्ध शाकाहारी</span>
+              <span class="req-label" data-i18n="reqVeg">100% Végétarien</span>
+            </button>
+          </div>
+
+          <div class="waiter-total-bar">
+            <span data-i18n="totalLabel">Total estimé</span>
+            <span id="waiterTotalDisplay">₹0 · €0.00</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- TAB 4: REPÈRES HORS-LIGNE -->
+      <section id="tab-guide" class="tab-panel">
+        <div class="section-head">
+          <h2 class="section-title" data-i18n="guideTitle">Repères Hors-Ligne</h2>
+          <span class="badge-count">100% Offline</span>
+        </div>
+
+        <input id="guideSearch" class="search-input" type="search" placeholder="🔍 ..." />
+
+        <div id="guideFilters" class="filter-bar">
+          <button class="filter-pill active" data-cat="all" data-i18n="filterAll">Tous</button>
+          <button class="filter-pill" data-cat="bread" data-i18n="catBread">Pains</button>
+          <button class="filter-pill" data-cat="main" data-i18n="catMain">Plats</button>
+          <button class="filter-pill" data-cat="street" data-i18n="catStreet">Street-Food</button>
+          <button class="filter-pill" data-cat="drink" data-i18n="catDrink">Boissons</button>
+        </div>
+
+        <div id="guideList" class="dish-list"></div>
+      </section>
+    </main>
+
+    <!-- Bottom Navigation -->
+    <nav class="bottom-nav">
+      <button class="nav-item active" data-tab="scan">
+        <span class="nav-icon">📷</span>
+        <span data-i18n="navScan">Scanner</span>
+      </button>
+      <button class="nav-item" data-tab="catalog">
+        <span class="nav-icon">📚</span>
+        <span data-i18n="navCatalog">Catalogue</span>
+        <span id="catalogBadge" class="nav-badge" style="display:none;">0</span>
+      </button>
+      <button class="nav-item" data-tab="waiter">
+        <span class="nav-icon">🗣️</span>
+        <span data-i18n="navWaiter">Serveur</span>
+        <span id="waiterBadge" class="nav-badge" style="display:none;">0</span>
+      </button>
+      <button class="nav-item" data-tab="guide">
+        <span class="nav-icon">🧭</span>
+        <span data-i18n="navGuide">Repères</span>
+      </button>
+    </nav>
+  </div>
+
+  <!-- Modal: Gemini API Key -->
+  <div id="apiModal" class="modal-backdrop">
+    <div class="modal-card">
+      <div class="modal-title">🔑 Clé API Gemini (Google AI Studio)</div>
+      <p style="font-size:12px;color:var(--text-secondary);line-height:1.4;">
+        Créez votre clé gratuite sur <strong>aistudio.google.com/api-keys</strong> puis collez-la ci-dessous (commence par <code>AIza...</code>).
+      </p>
+      <input id="apiKeyInput" class="modal-input" type="text" autocomplete="off" spellcheck="false" placeholder="AIzaSy..." />
+      <div id="apiTestStatus" class="api-test-status"></div>
+      <div class="modal-actions">
+        <button id="testApiKeyBtn" class="btn btn-secondary btn-sm">🧪 Tester la clé</button>
+        <button id="closeModalBtn" class="btn btn-secondary btn-sm" data-i18n="cancelBtn">Fermer</button>
+        <button id="saveApiKeyBtn" class="btn btn-primary btn-sm" data-i18n="saveBtn">Enregistrer</button>
+      </div>
     </div>
+  </div>
 
-    <!-- Toast -->
-    <div id="toast" class="toast"></div>
+  <!-- Toast -->
+  <div id="toast" class="toast"></div>
 
-    <script>
-      /* ========================================================================
+  <script>
+    /* ========================================================================
        DesiMenu Application Logic
        ======================================================================== */
-      const CURRENCIES = {
-        EUR: { symbol: "€", rate: 0.011, decimals: 2 },
-        USD: { symbol: "$", rate: 0.012, decimals: 2 },
-        CHF: { symbol: "CHF ", rate: 0.0105, decimals: 2 },
-        CAD: { symbol: "CA$", rate: 0.0165, decimals: 2 },
-        GBP: { symbol: "£", rate: 0.0094, decimals: 2 },
-        AUD: { symbol: "A$", rate: 0.018, decimals: 2 },
-        JPY: { symbol: "¥", rate: 1.82, decimals: 0 },
-        INR: { symbol: "₹", rate: 1, decimals: 0 },
-      };
+    const CURRENCIES = {
+      EUR: { symbol: '€', rate: 0.011, decimals: 2 },
+      USD: { symbol: '$', rate: 0.012, decimals: 2 },
+      CHF: { symbol: 'CHF ', rate: 0.0105, decimals: 2 },
+      CAD: { symbol: 'CA$', rate: 0.0165, decimals: 2 },
+      GBP: { symbol: '£', rate: 0.0094, decimals: 2 },
+      AUD: { symbol: 'A$', rate: 0.018, decimals: 2 },
+      JPY: { symbol: '¥', rate: 1.82, decimals: 0 },
+      INR: { symbol: '₹', rate: 1, decimals: 0 }
+    };
 
-      const I18N = {
-        fr: {
-          tagline: "Décodeur visuel Inde",
-          btnCamera: "Caméra",
-          btnGallery: "Galerie",
-          demoLabel: "Menus démo instantanés",
-          analyzing: "Analyse visuelle...",
-          catalogTitle: "Catalogue",
-          filterAll: "Tous",
-          filterSafe: "Estomac Sûr",
-          filterMild: "Doux ≤ 2",
-          filterVeg: "Végétarien",
-          waiterHeader: "Montrer au serveur",
-          clearBtn: "Vider",
-          reqLessSpicy: "Moins épicé",
-          reqNoIce: "Sans glaçons",
-          reqWater: "Eau en bouteille",
-          reqVeg: "100% Végétarien",
-          totalLabel: "Total estimé",
-          guideTitle: "Repères Hors-Ligne",
-          catBread: "Pains",
-          catMain: "Plats",
-          catStreet: "Street-Food",
-          catDrink: "Boissons",
-          navScan: "Scanner",
-          navCatalog: "Catalogue",
-          navWaiter: "Serveur",
-          navGuide: "Repères",
-          gaugeSpice: "Épices",
-          gaugeHygiene: "Estomac",
-          gaugeRichness: "Richesse",
-          gaugeProtein: "Protéines",
-          filterProtein: "💪 Protéines +",
-          hygieneSafe: "Sûr",
-          hygieneWarn: "Prudence",
-          hygieneRisk: "Risque",
-          addWaiter: "+ Serveur",
-          addPhoto: "📷 Plat",
-          savedCatalog: "Ajouté au catalogue",
-          addedWaiter: "Ajouté à la carte serveur",
-          emptyCatalog: "Scannez un menu pour remplir votre bibliothèque.",
-          emptyWaiter: "Ajoutez des plats depuis le Scanner ou les Repères.",
-          notePlaceholder: "Note / Ville...",
-          cancelBtn: "Fermer",
-          saveBtn: "Enregistrer",
-        },
-        en: {
-          tagline: "Visual India Menu Lens",
-          btnCamera: "Camera",
-          btnGallery: "Gallery",
-          demoLabel: "Instant demo menus",
-          analyzing: "Visual decoding...",
-          catalogTitle: "Catalog",
-          filterAll: "All",
-          filterSafe: "Stomach Safe",
-          filterMild: "Mild ≤ 2",
-          filterVeg: "Vegetarian",
-          waiterHeader: "Show to Waiter",
-          clearBtn: "Clear",
-          reqLessSpicy: "Less spicy",
-          reqNoIce: "No ice",
-          reqWater: "Bottled water",
-          reqVeg: "100% Vegetarian",
-          totalLabel: "Estimated total",
-          guideTitle: "Offline Reference",
-          catBread: "Breads",
-          catMain: "Mains",
-          catStreet: "Street Food",
-          catDrink: "Drinks",
-          navScan: "Scan",
-          navCatalog: "Catalog",
-          navWaiter: "Waiter",
-          navGuide: "Guide",
-          gaugeSpice: "Spice",
-          gaugeHygiene: "Stomach",
-          gaugeRichness: "Richness",
-          gaugeProtein: "Protein",
-          filterProtein: "💪 High Protein",
-          hygieneSafe: "Safe",
-          hygieneWarn: "Caution",
-          hygieneRisk: "Risk",
-          addWaiter: "+ Waiter",
-          addPhoto: "📷 Dish",
-          savedCatalog: "Saved to catalog",
-          addedWaiter: "Added to waiter card",
-          emptyCatalog: "Scan a menu to build your food library.",
-          emptyWaiter: "Add dishes from Scanner or Guide.",
-          notePlaceholder: "Note / City...",
-          cancelBtn: "Close",
-          saveBtn: "Save",
-        },
-        es: {
-          tagline: "Decodificador visual India",
-          btnCamera: "Cámara",
-          btnGallery: "Galería",
-          demoLabel: "Menús demo instantáneos",
-          analyzing: "Analizando...",
-          catalogTitle: "Catálogo",
-          filterAll: "Todos",
-          filterSafe: "Estómago Seguro",
-          filterMild: "Suave ≤ 2",
-          filterVeg: "Vegetariano",
-          waiterHeader: "Mostrar al camarero",
-          clearBtn: "Vaciar",
-          reqLessSpicy: "Menos picante",
-          reqNoIce: "Sin hielo",
-          reqWater: "Agua embotellada",
-          reqVeg: "100% Vegetariano",
-          totalLabel: "Total estimado",
-          guideTitle: "Guía sin conexión",
-          catBread: "Panes",
-          catMain: "Platos",
-          catStreet: "Callejero",
-          catDrink: "Bebidas",
-          navScan: "Escanear",
-          navCatalog: "Catálogo",
-          navWaiter: "Camarero",
-          navGuide: "Guía",
-          gaugeSpice: "Picante",
-          gaugeHygiene: "Estómago",
-          gaugeRichness: "Riqueza",
-          gaugeProtein: "Proteínas",
-          filterProtein: "💪 Proteínas +",
-          gaugeProtein: "Proteínas",
-          filterProtein: "💪 Proteínas +",
-          hygieneSafe: "Seguro",
-          hygieneWarn: "Cuidado",
-          hygieneRisk: "Riesgo",
-          addWaiter: "+ Camarero",
-          addPhoto: "📷 Plato",
-          savedCatalog: "Guardado en catálogo",
-          addedWaiter: "Añadido al pedido",
-          emptyCatalog: "Escanea un menú para crear tu biblioteca.",
-          emptyWaiter: "Añade platos desde Escáner o Guía.",
-          notePlaceholder: "Nota / Ciudad...",
-          cancelBtn: "Cerrar",
-          saveBtn: "Guardar",
-        },
-        de: {
-          tagline: "Visueller Indien-Menü-Decoder",
-          btnCamera: "Kamera",
-          btnGallery: "Galerie",
-          demoLabel: "Sofort-Demo-Menüs",
-          analyzing: "Visuelle Analyse...",
-          catalogTitle: "Katalog",
-          filterAll: "Alle",
-          filterSafe: "Magenfreundlich",
-          filterMild: "Mild ≤ 2",
-          filterVeg: "Vegetarisch",
-          waiterHeader: "Kellner zeigen",
-          clearBtn: "Leeren",
-          reqLessSpicy: "Weniger scharf",
-          reqNoIce: "Ohne Eis",
-          reqWater: "Wasserflasche",
-          reqVeg: "100% Vegetarisch",
-          totalLabel: "Geschätzt",
-          guideTitle: "Offline-Kompass",
-          catBread: "Brote",
-          catMain: "Hauptgerichte",
-          catStreet: "Streetfood",
-          catDrink: "Getränke",
-          navScan: "Scannen",
-          navCatalog: "Katalog",
-          navWaiter: "Kellner",
-          navGuide: "Kompass",
-          gaugeSpice: "Schärfe",
-          gaugeHygiene: "Magen",
-          gaugeRichness: "Fülle",
-          gaugeProtein: "Proteine",
-          filterProtein: "💪 Proteinreich",
-          hygieneSafe: "Sicher",
-          hygieneWarn: "Vorsicht",
-          hygieneRisk: "Risiko",
-          addWaiter: "+ Kellner",
-          addPhoto: "📷 Foto",
-          savedCatalog: "Im Katalog gespeichert",
-          addedWaiter: "Zur Kellnerkarte hinzugefügt",
-          emptyCatalog: "Scanne ein Menü für deine Bibliothek.",
-          emptyWaiter: "Gerichte aus Scanner oder Kompass wählen.",
-          notePlaceholder: "Notiz / Stadt...",
-          cancelBtn: "Schließen",
-          saveBtn: "Speichern",
-        },
-        it: {
-          tagline: "Decodificatore visivo India",
-          btnCamera: "Fotocamera",
-          btnGallery: "Galleria",
-          demoLabel: "Menu demo istantanei",
-          analyzing: "Analisi visiva...",
-          catalogTitle: "Catalogo",
-          filterAll: "Tutti",
-          filterSafe: "Stomaco Sicuro",
-          filterMild: "Delicato ≤ 2",
-          filterVeg: "Vegetariano",
-          waiterHeader: "Mostra al cameriere",
-          clearBtn: "Svuota",
-          reqLessSpicy: "Meno piccante",
-          reqNoIce: "Senza ghiaccio",
-          reqWater: "Acqua in bottiglia",
-          reqVeg: "100% Vegetariano",
-          totalLabel: "Totale stimato",
-          guideTitle: "Guida Offline",
-          catBread: "Pani",
-          catMain: "Piatti",
-          catStreet: "Street Food",
-          catDrink: "Bevande",
-          navScan: "Scansiona",
-          navCatalog: "Catalogo",
-          navWaiter: "Cameriere",
-          navGuide: "Guida",
-          gaugeSpice: "Piccante",
-          gaugeHygiene: "Stomaco",
-          gaugeRichness: "Ricchezza",
-          gaugeProtein: "Proteine",
-          filterProtein: "💪 Proteine +",
-          hygieneSafe: "Sicuro",
-          hygieneWarn: "Cautela",
-          hygieneRisk: "Rischio",
-          addWaiter: "+ Cameriere",
-          addPhoto: "📷 Piatto",
-          savedCatalog: "Salvato nel catalogo",
-          addedWaiter: "Aggiunto per il cameriere",
-          emptyCatalog: "Scansiona un menu per creare la tua libreria.",
-          emptyWaiter: "Aggiungi piatti da Scanner o Guida.",
-          notePlaceholder: "Nota / Città...",
-          cancelBtn: "Chiudi",
-          saveBtn: "Salva",
-        },
-        pt: {
-          tagline: "Decodificador visual Índia",
-          btnCamera: "Câmera",
-          btnGallery: "Galeria",
-          demoLabel: "Menus demo instantâneos",
-          analyzing: "Análise visual...",
-          catalogTitle: "Catálogo",
-          filterAll: "Todos",
-          filterSafe: "Estômago Seguro",
-          filterMild: "Suave ≤ 2",
-          filterVeg: "Vegetariano",
-          waiterHeader: "Mostrar ao garçom",
-          clearBtn: "Limpar",
-          reqLessSpicy: "Menos picante",
-          reqNoIce: "Sem gelo",
-          reqWater: "Água engarrafada",
-          reqVeg: "100% Vegetariano",
-          totalLabel: "Total estimado",
-          guideTitle: "Guia Offline",
-          catBread: "Pães",
-          catMain: "Pratos",
-          catStreet: "Rua",
-          catDrink: "Bebidas",
-          navScan: "Escanear",
-          navCatalog: "Catálogo",
-          navWaiter: "Garçom",
-          navGuide: "Guia",
-          gaugeSpice: "Pimenta",
-          gaugeHygiene: "Estômago",
-          gaugeRichness: "Riqueza",
-          hygieneSafe: "Seguro",
-          hygieneWarn: "Cautela",
-          hygieneRisk: "Risco",
-          addWaiter: "+ Garçom",
-          addPhoto: "📷 Prato",
-          savedCatalog: "Salvo no catálogo",
-          addedWaiter: "Adicionado ao pedido",
-          emptyCatalog: "Escaneie um menu para criar sua biblioteca.",
-          emptyWaiter: "Adicione pratos do Scanner ou Guia.",
-          notePlaceholder: "Nota / Cidade...",
-          cancelBtn: "Fechar",
-          saveBtn: "Salvar",
-        },
-      };
+    const I18N = {
+      fr: {
+        tagline: 'Décodeur visuel Inde',
+        btnCamera: 'Caméra',
+        btnGallery: 'Galerie',
+        demoLabel: 'Menus démo instantanés',
+        analyzing: 'Analyse visuelle...',
+        catalogTitle: 'Catalogue',
+        filterAll: 'Tous',
+        filterSafe: 'Estomac Sûr',
+        filterMild: 'Doux ≤ 2',
+        filterVeg: 'Végétarien',
+        waiterHeader: 'Montrer au serveur',
+        clearBtn: 'Vider',
+        reqLessSpicy: 'Moins épicé',
+        reqNoIce: 'Sans glaçons',
+        reqWater: 'Eau en bouteille',
+        reqVeg: '100% Végétarien',
+        totalLabel: 'Total estimé',
+        guideTitle: 'Repères Hors-Ligne',
+        catBread: 'Pains',
+        catMain: 'Plats',
+        catStreet: 'Street-Food',
+        catDrink: 'Boissons',
+        navScan: 'Scanner',
+        navCatalog: 'Catalogue',
+        navWaiter: 'Serveur',
+        navGuide: 'Repères',
+        gaugeSpice: 'Épices',
+        gaugeHygiene: 'Estomac',
+        gaugeRichness: 'Richesse',
+        gaugeProtein: 'Protéines',
+        filterProtein: '💪 Protéines +',
+        hygieneSafe: 'Sûr',
+        hygieneWarn: 'Prudence',
+        hygieneRisk: 'Risque',
+        addWaiter: '+ Serveur',
+        addPhoto: '📷 Plat',
+        savedCatalog: 'Ajouté au catalogue',
+        addedWaiter: 'Ajouté à la carte serveur',
+        emptyCatalog: 'Scannez un menu pour remplir votre bibliothèque.',
+        emptyWaiter: 'Ajoutez des plats depuis le Scanner ou les Repères.',
+        notePlaceholder: 'Note / Ville...',
+        cancelBtn: 'Fermer',
+        saveBtn: 'Enregistrer'
+      },
+      en: {
+        tagline: 'Visual India Menu Lens',
+        btnCamera: 'Camera',
+        btnGallery: 'Gallery',
+        demoLabel: 'Instant demo menus',
+        analyzing: 'Visual decoding...',
+        catalogTitle: 'Catalog',
+        filterAll: 'All',
+        filterSafe: 'Stomach Safe',
+        filterMild: 'Mild ≤ 2',
+        filterVeg: 'Vegetarian',
+        waiterHeader: 'Show to Waiter',
+        clearBtn: 'Clear',
+        reqLessSpicy: 'Less spicy',
+        reqNoIce: 'No ice',
+        reqWater: 'Bottled water',
+        reqVeg: '100% Vegetarian',
+        totalLabel: 'Estimated total',
+        guideTitle: 'Offline Reference',
+        catBread: 'Breads',
+        catMain: 'Mains',
+        catStreet: 'Street Food',
+        catDrink: 'Drinks',
+        navScan: 'Scan',
+        navCatalog: 'Catalog',
+        navWaiter: 'Waiter',
+        navGuide: 'Guide',
+        gaugeSpice: 'Spice',
+        gaugeHygiene: 'Stomach',
+        gaugeRichness: 'Richness',
+        gaugeProtein: 'Protein',
+        filterProtein: '💪 High Protein',
+        hygieneSafe: 'Safe',
+        hygieneWarn: 'Caution',
+        hygieneRisk: 'Risk',
+        addWaiter: '+ Waiter',
+        addPhoto: '📷 Dish',
+        savedCatalog: 'Saved to catalog',
+        addedWaiter: 'Added to waiter card',
+        emptyCatalog: 'Scan a menu to build your food library.',
+        emptyWaiter: 'Add dishes from Scanner or Guide.',
+        notePlaceholder: 'Note / City...',
+        cancelBtn: 'Close',
+        saveBtn: 'Save'
+      },
+      es: {
+        tagline: 'Decodificador visual India',
+        btnCamera: 'Cámara',
+        btnGallery: 'Galería',
+        demoLabel: 'Menús demo instantáneos',
+        analyzing: 'Analizando...',
+        catalogTitle: 'Catálogo',
+        filterAll: 'Todos',
+        filterSafe: 'Estómago Seguro',
+        filterMild: 'Suave ≤ 2',
+        filterVeg: 'Vegetariano',
+        waiterHeader: 'Mostrar al camarero',
+        clearBtn: 'Vaciar',
+        reqLessSpicy: 'Menos picante',
+        reqNoIce: 'Sin hielo',
+        reqWater: 'Agua embotellada',
+        reqVeg: '100% Vegetariano',
+        totalLabel: 'Total estimado',
+        guideTitle: 'Guía sin conexión',
+        catBread: 'Panes',
+        catMain: 'Platos',
+        catStreet: 'Callejero',
+        catDrink: 'Bebidas',
+        navScan: 'Escanear',
+        navCatalog: 'Catálogo',
+        navWaiter: 'Camarero',
+        navGuide: 'Guía',
+        gaugeSpice: 'Picante',
+        gaugeHygiene: 'Estómago',
+        gaugeRichness: 'Riqueza',
+        gaugeProtein: 'Proteínas',
+        filterProtein: '💪 Proteínas +',
+        hygieneSafe: 'Seguro',
+        hygieneWarn: 'Cuidado',
+        hygieneRisk: 'Riesgo',
+        addWaiter: '+ Camarero',
+        addPhoto: '📷 Plato',
+        savedCatalog: 'Guardado en catálogo',
+        addedWaiter: 'Añadido al pedido',
+        emptyCatalog: 'Escanea un menú para crear tu biblioteca.',
+        emptyWaiter: 'Añade platos desde Escáner o Guía.',
+        notePlaceholder: 'Nota / Ciudad...',
+        cancelBtn: 'Cerrar',
+        saveBtn: 'Guardar'
+      },
+      de: {
+        tagline: 'Visueller Indien-Menü-Decoder',
+        btnCamera: 'Kamera',
+        btnGallery: 'Galerie',
+        demoLabel: 'Sofort-Demo-Menüs',
+        analyzing: 'Visuelle Analyse...',
+        catalogTitle: 'Katalog',
+        filterAll: 'Alle',
+        filterSafe: 'Magenfreundlich',
+        filterMild: 'Mild ≤ 2',
+        filterVeg: 'Vegetarisch',
+        waiterHeader: 'Kellner zeigen',
+        clearBtn: 'Leeren',
+        reqLessSpicy: 'Weniger scharf',
+        reqNoIce: 'Ohne Eis',
+        reqWater: 'Wasserflasche',
+        reqVeg: '100% Vegetarisch',
+        totalLabel: 'Geschätzt',
+        guideTitle: 'Offline-Kompass',
+        catBread: 'Brote',
+        catMain: 'Hauptgerichte',
+        catStreet: 'Streetfood',
+        catDrink: 'Getränke',
+        navScan: 'Scannen',
+        navCatalog: 'Katalog',
+        navWaiter: 'Kellner',
+        navGuide: 'Kompass',
+        gaugeSpice: 'Schärfe',
+        gaugeHygiene: 'Magen',
+        gaugeRichness: 'Fülle',
+        gaugeProtein: 'Proteine',
+        filterProtein: '💪 Proteinreich',
+        hygieneSafe: 'Sicher',
+        hygieneWarn: 'Vorsicht',
+        hygieneRisk: 'Risiko',
+        addWaiter: '+ Kellner',
+        addPhoto: '📷 Foto',
+        savedCatalog: 'Im Katalog gespeichert',
+        addedWaiter: 'Zur Kellnerkarte hinzugefügt',
+        emptyCatalog: 'Scanne ein Menü für deine Bibliothek.',
+        emptyWaiter: 'Gerichte aus Scanner oder Kompass wählen.',
+        notePlaceholder: 'Notiz / Stadt...',
+        cancelBtn: 'Schließen',
+        saveBtn: 'Speichern'
+      },
+      it: {
+        tagline: 'Decodificatore visivo India',
+        btnCamera: 'Fotocamera',
+        btnGallery: 'Galleria',
+        demoLabel: 'Menu demo istantanei',
+        analyzing: 'Analisi visiva...',
+        catalogTitle: 'Catalogo',
+        filterAll: 'Tutti',
+        filterSafe: 'Stomaco Sicuro',
+        filterMild: 'Delicato ≤ 2',
+        filterVeg: 'Vegetariano',
+        waiterHeader: 'Mostra al cameriere',
+        clearBtn: 'Svuota',
+        reqLessSpicy: 'Meno piccante',
+        reqNoIce: 'Senza ghiaccio',
+        reqWater: 'Acqua in bottiglia',
+        reqVeg: '100% Vegetariano',
+        totalLabel: 'Totale stimato',
+        guideTitle: 'Guida Offline',
+        catBread: 'Pani',
+        catMain: 'Piatti',
+        catStreet: 'Street Food',
+        catDrink: 'Bevande',
+        navScan: 'Scansiona',
+        navCatalog: 'Catalogo',
+        navWaiter: 'Cameriere',
+        navGuide: 'Guida',
+        gaugeSpice: 'Piccante',
+        gaugeHygiene: 'Stomaco',
+        gaugeRichness: 'Ricchezza',
+        gaugeProtein: 'Proteine',
+        filterProtein: '💪 Proteine +',
+        hygieneSafe: 'Sicuro',
+        hygieneWarn: 'Cautela',
+        hygieneRisk: 'Rischio',
+        addWaiter: '+ Cameriere',
+        addPhoto: '📷 Piatto',
+        savedCatalog: 'Salvato nel catalogo',
+        addedWaiter: 'Aggiunto per il cameriere',
+        emptyCatalog: 'Scansiona un menu per creare la tua libreria.',
+        emptyWaiter: 'Aggiungi piatti da Scanner o Guida.',
+        notePlaceholder: 'Nota / Città...',
+        cancelBtn: 'Chiudi',
+        saveBtn: 'Salva'
+      },
+      pt: {
+        tagline: 'Decodificador visual Índia',
+        btnCamera: 'Câmera',
+        btnGallery: 'Galeria',
+        demoLabel: 'Menus demo instantâneos',
+        analyzing: 'Análise visual...',
+        catalogTitle: 'Catálogo',
+        filterAll: 'Todos',
+        filterSafe: 'Estômago Seguro',
+        filterMild: 'Suave ≤ 2',
+        filterVeg: 'Vegetariano',
+        waiterHeader: 'Mostrar ao garçom',
+        clearBtn: 'Limpar',
+        reqLessSpicy: 'Menos picante',
+        reqNoIce: 'Sem gelo',
+        reqWater: 'Água engarrafada',
+        reqVeg: '100% Vegetariano',
+        totalLabel: 'Total estimado',
+        guideTitle: 'Guia Offline',
+        catBread: 'Pães',
+        catMain: 'Pratos',
+        catStreet: 'Rua',
+        catDrink: 'Bebidas',
+        navScan: 'Escanear',
+        navCatalog: 'Catálogo',
+        navWaiter: 'Garçom',
+        navGuide: 'Guia',
+        gaugeSpice: 'Pimenta',
+        gaugeHygiene: 'Estômago',
+        gaugeRichness: 'Riqueza',
+        gaugeProtein: 'Proteínas',
+        filterProtein: '💪 Proteínas +',
+        hygieneSafe: 'Seguro',
+        hygieneWarn: 'Cautela',
+        hygieneRisk: 'Risco',
+        addWaiter: '+ Garçom',
+        addPhoto: '📷 Prato',
+        savedCatalog: 'Salvo no catálogo',
+        addedWaiter: 'Adicionado ao pedido',
+        emptyCatalog: 'Escaneie um menu para criar sua biblioteca.',
+        emptyWaiter: 'Adicione pratos do Scanner ou Guia.',
+        notePlaceholder: 'Nota / Cidade...',
+        cancelBtn: 'Fechar',
+        saveBtn: 'Salvar'
+      }
+    };
 
-      /* Demo Menus Data */
-      const DEMO_MENUS = {
-        delhi: {
-          title: "Dhaba Hindi · Old Delhi",
-          dishes: [
-            {
-              id: "demo-dal-makhani",
-              protein: 2,
-              proteinGrams: 14,
-              name: "Dal Makhani",
-              localScript: "दाल मखनी",
-              essence: {
-                fr: "Lentilles noires crémeuses mijotées",
-                en: "Creamy slow-cooked black lentils",
-                es: "Lentejas negras cremosas",
-                de: "Cremige schwarze Linsen",
-                it: "Lenticchie nere cremose",
-                pt: "Lentilhas pretas cremosas",
-              },
-              emoji: "🍲",
-              category: "main",
-              priceINR: 180,
-              spice: 2,
-              hygiene: 1,
-              richness: 3,
-              veg: true,
-              allergens: ["🥛"],
-            },
-            {
-              id: "demo-paneer-tikka",
-              protein: 3,
-              proteinGrams: 24,
-              name: "Paneer Tikka",
-              localScript: "पनीर टिक्का",
-              essence: {
-                fr: "Fromage grillé au tandoor",
-                en: "Tandoor grilled cottage cheese",
-                es: "Queso asado al tandoor",
-                de: "Tandoor-Grillkäse",
-                it: "Formaggio grigliato tandoor",
-                pt: "Queijo grelhado tandoor",
-              },
-              emoji: "🍢",
-              category: "main",
-              priceINR: 240,
-              spice: 3,
-              hygiene: 1,
-              richness: 2,
-              veg: true,
-              allergens: ["🥛"],
-            },
-            {
-              id: "demo-garlic-naan",
-              protein: 1,
-              proteinGrams: 6,
-              name: "Garlic Naan",
-              localScript: "गार्लिक नान",
-              essence: {
-                fr: "Pain plat ail & beurre",
-                en: "Garlic butter tandoor flatbread",
-                es: "Pan plano ajo y mantequilla",
-                de: "Knoblauch-Fladenbrot",
-                it: "Pane piatto aglio e burro",
-                pt: "Pão achatado alho e manteiga",
-              },
-              emoji: "🫓",
-              category: "bread",
-              priceINR: 65,
-              spice: 1,
-              hygiene: 1,
-              richness: 2,
-              veg: true,
-              allergens: ["🌾", "🥛"],
-            },
-            {
-              id: "demo-laal-maas",
-              protein: 3,
-              proteinGrams: 28,
-              name: "Laal Maas",
-              localScript: "लाल मांस",
-              essence: {
-                fr: "Agneau aux piments rouges",
-                en: "Fiery red chili mutton",
-                es: "Cordero muy picante",
-                de: "Feuriges Lamm-Curry",
-                it: "Agnello al peperoncino rosso",
-                pt: "Cordeiro com pimenta vermelha",
-              },
-              emoji: "🍖",
-              category: "main",
-              priceINR: 340,
-              spice: 5,
-              hygiene: 1,
-              richness: 3,
-              veg: false,
-              allergens: [],
-            },
-          ],
-        },
-        kerala: {
-          title: "Toddy Shop · Fort Kochi",
-          dishes: [
-            {
-              id: "demo-appam-stew",
-              protein: 1,
-              proteinGrams: 5,
-              name: "Appam & Veg Stew",
-              localScript: "അപ്പം വെജ് സ്റ്റ്യൂ",
-              essence: {
-                fr: "Crêpe riz & lait coco doux",
-                en: "Rice hopper & coconut stew",
-                es: "Crepe de arroz y coco",
-                de: "Reispfannkuchen & Kokos-Ragout",
-                it: "Crespella di riso e cocco",
-                pt: "Crepe de arroz e coco",
-              },
-              emoji: "🥞",
-              category: "main",
-              priceINR: 140,
-              spice: 1,
-              hygiene: 1,
-              richness: 2,
-              veg: true,
-              allergens: [],
-            },
-            {
-              id: "demo-fish-moilee",
-              protein: 3,
-              proteinGrams: 26,
-              name: "Kerala Fish Moilee",
-              localScript: "മീൻ മോളി",
-              essence: {
-                fr: "Poisson poché coco curcuma",
-                en: "Turmeric coconut fish curry",
-                es: "Pescado en leche de coco",
-                de: "Kurkuma-Kokos-Fischcurry",
-                it: "Pesce al latte di cocco",
-                pt: "Peixe ao leite de coco",
-              },
-              emoji: "🐟",
-              category: "main",
-              priceINR: 290,
-              spice: 2,
-              hygiene: 1,
-              richness: 2,
-              veg: false,
-              allergens: ["🐟"],
-            },
-            {
-              id: "demo-beef-fry",
-              protein: 3,
-              proteinGrams: 30,
-              name: "Kerala Beef Ularthiyathu",
-              localScript: "ബീഫ് ഉലർത്തിയത്",
-              essence: {
-                fr: "Bœuf rôti poivre noir & coco",
-                en: "Black pepper coconut roast beef",
-                es: "Ternera asada pimienta negra",
-                de: "Pfeffer-Kokos-Rindfleisch",
-                it: "Manzo arrosto pepe e cocco",
-                pt: "Carne assada pimenta e coco",
-              },
-              emoji: "🥩",
-              category: "main",
-              priceINR: 260,
-              spice: 4,
-              hygiene: 1,
-              richness: 3,
-              veg: false,
-              allergens: [],
-            },
-            {
-              id: "demo-pazham-pori",
-              protein: 1,
-              proteinGrams: 2,
-              name: "Pazham Pori",
-              localScript: "പഴം പൊരി",
-              essence: {
-                fr: "Beignet banane plantain mûre",
-                en: "Crispy ripe plantain fritter",
-                es: "Buñuelo de plátano maduro",
-                de: "Gebackene Kochbanane",
-                it: "Frittella di platano maturo",
-                pt: "Bolinho de banana-da-terra",
-              },
-              emoji: "🍌",
-              category: "street",
-              priceINR: 45,
-              spice: 1,
-              hygiene: 1,
-              richness: 2,
-              veg: true,
-              allergens: ["🌾"],
-            },
-          ],
-        },
-        mumbai: {
-          title: "Street-Food · Chowpatty Mumbai",
-          dishes: [
-            {
-              id: "demo-vada-pav",
-              protein: 1,
-              proteinGrams: 6,
-              name: "Vada Pav",
-              localScript: "वड़ा पाव",
-              essence: {
-                fr: "Burger pomme de terre épicée",
-                en: "Spiced potato fritter bun",
-                es: "Bocadillo de patata especiada",
-                de: "Würziges Kartoffel-Brötchen",
-                it: "Panino con frittella di patate",
-                pt: "Sanduíche de bolinho de batata",
-              },
-              emoji: "🍔",
-              category: "street",
-              priceINR: 35,
-              spice: 3,
-              hygiene: 2,
-              richness: 2,
-              veg: true,
-              allergens: ["🌾"],
-            },
-            {
-              id: "demo-pani-puri",
-              protein: 1,
-              proteinGrams: 4,
-              name: "Pani Puri",
-              localScript: "पानी पूरी",
-              essence: {
-                fr: "Coques croustillantes eau menthe",
-                en: "Crispy shells with mint water",
-                es: "Esferas crujientes agua menta",
-                de: "Knusperkugeln mit Minzwasser",
-                it: "Sfere croccanti acqua menta",
-                pt: "Esferas crocantes água menta",
-              },
-              emoji: "🫧",
-              category: "street",
-              priceINR: 50,
-              spice: 3,
-              hygiene: 3,
-              richness: 1,
-              veg: true,
-              allergens: ["🌾"],
-            },
-            {
-              id: "demo-pav-bhaji",
-              protein: 1,
-              proteinGrams: 9,
-              name: "Pav Bhaji",
-              localScript: "पाव भाजी",
-              essence: {
-                fr: "Purée légumes épicés & pain",
-                en: "Buttered spiced vegetable mash",
-                es: "Puré de verduras especiado",
-                de: "Würziges Gemüse-Püree & Brot",
-                it: "Purè di verdure speziato",
-                pt: "Purê de legumes temperado",
-              },
-              emoji: "🥘",
-              category: "street",
-              priceINR: 120,
-              spice: 3,
-              hygiene: 1,
-              richness: 3,
-              veg: true,
-              allergens: ["🌾", "🥛"],
-            },
-            {
-              id: "demo-masala-chai",
-              protein: 1,
-              proteinGrams: 2,
-              name: "Cutting Masala Chai",
-              localScript: "मसाला चाय",
-              essence: {
-                fr: "Thé noir bouilli cardamome lait",
-                en: "Boiled cardamom milk tea",
-                es: "Té negro hervido con cardamomo",
-                de: "Gekochter Kardamom-Milchtee",
-                it: "Tè nero bollito al cardamomo",
-                pt: "Chá preto fervido com cardamomo",
-              },
-              emoji: "☕",
-              category: "drink",
-              priceINR: 25,
-              spice: 1,
-              hygiene: 1,
-              richness: 1,
-              veg: true,
-              allergens: ["🥛"],
-            },
-          ],
-        },
-      };
+    /* Demo Menus Data */
+    const DEMO_MENUS = {
+      delhi: {
+        title: 'Dhaba Hindi · Old Delhi',
+        dishes: [
+          {
+            id: 'demo-dal-makhani', protein: 2, proteinGrams: 14,
+            name: 'Dal Makhani',
+            localScript: 'दाल मखनी',
+            essence: { fr: 'Lentilles noires crémeuses mijotées', en: 'Creamy slow-cooked black lentils', es: 'Lentejas negras cremosas', de: 'Cremige schwarze Linsen', it: 'Lenticchie nere cremose', pt: 'Lentilhas pretas cremosas' },
+            emoji: '🍲',
+            category: 'main',
+            priceINR: 180,
+            spice: 2,
+            hygiene: 1,
+            richness: 3,
+            veg: true,
+            allergens: ['🥛']
+          },
+          {
+            id: 'demo-paneer-tikka', protein: 3, proteinGrams: 24,
+            name: 'Paneer Tikka',
+            localScript: 'पनीर टिक्का',
+            essence: { fr: 'Fromage grillé au tandoor', en: 'Tandoor grilled cottage cheese', es: 'Queso asado al tandoor', de: 'Tandoor-Grillkäse', it: 'Formaggio grigliato tandoor', pt: 'Queijo grelhado tandoor' },
+            emoji: '🍢',
+            category: 'main',
+            priceINR: 240,
+            spice: 3,
+            hygiene: 1,
+            richness: 2,
+            veg: true,
+            allergens: ['🥛']
+          },
+          {
+            id: 'demo-garlic-naan', protein: 1, proteinGrams: 6,
+            name: 'Garlic Naan',
+            localScript: 'गार्लिक नान',
+            essence: { fr: 'Pain plat ail & beurre', en: 'Garlic butter tandoor flatbread', es: 'Pan plano ajo y mantequilla', de: 'Knoblauch-Fladenbrot', it: 'Pane piatto aglio e burro', pt: 'Pão achatado alho e manteiga' },
+            emoji: '🫓',
+            category: 'bread',
+            priceINR: 65,
+            spice: 1,
+            hygiene: 1,
+            richness: 2,
+            veg: true,
+            allergens: ['🌾', '🥛']
+          },
+          {
+            id: 'demo-laal-maas', protein: 3, proteinGrams: 28,
+            name: 'Laal Maas',
+            localScript: 'लाल मांस',
+            essence: { fr: 'Agneau aux piments rouges', en: 'Fiery red chili mutton', es: 'Cordero muy picante', de: 'Feuriges Lamm-Curry', it: 'Agnello al peperoncino rosso', pt: 'Cordeiro com pimenta vermelha' },
+            emoji: '🍖',
+            category: 'main',
+            priceINR: 340,
+            spice: 5,
+            hygiene: 1,
+            richness: 3,
+            veg: false,
+            allergens: []
+          }
+        ]
+      },
+      kerala: {
+        title: 'Toddy Shop · Fort Kochi',
+        dishes: [
+          {
+            id: 'demo-appam-stew', protein: 1, proteinGrams: 5,
+            name: 'Appam & Veg Stew',
+            localScript: 'അപ്പം വെജ് സ്റ്റ്യൂ',
+            essence: { fr: 'Crêpe riz & lait coco doux', en: 'Rice hopper & coconut stew', es: 'Crepe de arroz y coco', de: 'Reispfannkuchen & Kokos-Ragout', it: 'Crespella di riso e cocco', pt: 'Crepe de arroz e coco' },
+            emoji: '🥞',
+            category: 'main',
+            priceINR: 140,
+            spice: 1,
+            hygiene: 1,
+            richness: 2,
+            veg: true,
+            allergens: []
+          },
+          {
+            id: 'demo-fish-moilee', protein: 3, proteinGrams: 26,
+            name: 'Kerala Fish Moilee',
+            localScript: 'മീൻ മോളി',
+            essence: { fr: 'Poisson poché coco curcuma', en: 'Turmeric coconut fish curry', es: 'Pescado en leche de coco', de: 'Kurkuma-Kokos-Fischcurry', it: 'Pesce al latte di cocco', pt: 'Peixe ao leite de coco' },
+            emoji: '🐟',
+            category: 'main',
+            priceINR: 290,
+            spice: 2,
+            hygiene: 1,
+            richness: 2,
+            veg: false,
+            allergens: ['🐟']
+          },
+          {
+            id: 'demo-beef-fry', protein: 3, proteinGrams: 30,
+            name: 'Kerala Beef Ularthiyathu',
+            localScript: 'ബീഫ് ഉലർത്തിയത്',
+            essence: { fr: 'Bœuf rôti poivre noir & coco', en: 'Black pepper coconut roast beef', es: 'Ternera asada pimienta negra', de: 'Pfeffer-Kokos-Rindfleisch', it: 'Manzo arrosto pepe e cocco', pt: 'Carne assada pimenta e coco' },
+            emoji: '🥩',
+            category: 'main',
+            priceINR: 260,
+            spice: 4,
+            hygiene: 1,
+            richness: 3,
+            veg: false,
+            allergens: []
+          },
+          {
+            id: 'demo-pazham-pori', protein: 1, proteinGrams: 2,
+            name: 'Pazham Pori',
+            localScript: 'പഴം പൊരി',
+            essence: { fr: 'Beignet banane plantain mûre', en: 'Crispy ripe plantain fritter', es: 'Buñuelo de plátano maduro', de: 'Gebackene Kochbanane', it: 'Frittella di platano maturo', pt: 'Bolinho de banana-da-terra' },
+            emoji: '🍌',
+            category: 'street',
+            priceINR: 45,
+            spice: 1,
+            hygiene: 1,
+            richness: 2,
+            veg: true,
+            allergens: ['🌾']
+          }
+        ]
+      },
+      mumbai: {
+        title: 'Street-Food · Chowpatty Mumbai',
+        dishes: [
+          {
+            id: 'demo-vada-pav', protein: 1, proteinGrams: 6,
+            name: 'Vada Pav',
+            localScript: 'वड़ा पाव',
+            essence: { fr: 'Burger pomme de terre épicée', en: 'Spiced potato fritter bun', es: 'Bocadillo de patata especiada', de: 'Würziges Kartoffel-Brötchen', it: 'Panino con frittella di patate', pt: 'Sanduíche de bolinho de batata' },
+            emoji: '🍔',
+            category: 'street',
+            priceINR: 35,
+            spice: 3,
+            hygiene: 2,
+            richness: 2,
+            veg: true,
+            allergens: ['🌾']
+          },
+          {
+            id: 'demo-pani-puri', protein: 1, proteinGrams: 4,
+            name: 'Pani Puri',
+            localScript: 'पानी पूरी',
+            essence: { fr: 'Coques croustillantes eau menthe', en: 'Crispy shells with mint water', es: 'Esferas crujientes agua menta', de: 'Knusperkugeln mit Minzwasser', it: 'Sfere croccanti acqua menta', pt: 'Esferas crocantes água menta' },
+            emoji: '🫧',
+            category: 'street',
+            priceINR: 50,
+            spice: 3,
+            hygiene: 3,
+            richness: 1,
+            veg: true,
+            allergens: ['🌾']
+          },
+          {
+            id: 'demo-pav-bhaji', protein: 1, proteinGrams: 9,
+            name: 'Pav Bhaji',
+            localScript: 'पाव भाजी',
+            essence: { fr: 'Purée légumes épicés & pain', en: 'Buttered spiced vegetable mash', es: 'Puré de verduras especiado', de: 'Würziges Gemüse-Püree & Brot', it: 'Purè di verdure speziato', pt: 'Purê de legumes temperado' },
+            emoji: '🥘',
+            category: 'street',
+            priceINR: 120,
+            spice: 3,
+            hygiene: 1,
+            richness: 3,
+            veg: true,
+            allergens: ['🌾', '🥛']
+          },
+          {
+            id: 'demo-masala-chai', protein: 1, proteinGrams: 2,
+            name: 'Cutting Masala Chai',
+            localScript: 'मसाला चाय',
+            essence: { fr: 'Thé noir bouilli cardamome lait', en: 'Boiled cardamom milk tea', es: 'Té negro hervido con cardamomo', de: 'Gekochter Kardamom-Milchtee', it: 'Tè nero bollito al cardamomo', pt: 'Chá preto fervido com cardamomo' },
+            emoji: '☕',
+            category: 'drink',
+            priceINR: 25,
+            spice: 1,
+            hygiene: 1,
+            richness: 1,
+            veg: true,
+            allergens: ['🥛']
+          }
+        ]
+      }
+    };
 
-      /* Offline Guide Reference Database */
-      const OFFLINE_GUIDE = [
-        {
-          id: "g-butter-naan",
-          protein: 1,
-          proteinGrams: 6,
-          name: "Butter Naan",
-          localScript: "बटर नान",
-          essence: {
-            fr: "Pain levé cuit au tandoor",
-            en: "Leavened tandoor flatbread",
-            es: "Pan plano con mantequilla",
-            de: "Tandoor-Fladenbrot",
-            it: "Pane piatto al burro",
-            pt: "Pão naan com manteiga",
-          },
-          emoji: "🫓",
-          category: "bread",
-          priceINR: 55,
-          spice: 1,
-          hygiene: 1,
-          richness: 2,
-          veg: true,
-          allergens: ["🌾", "🥛"],
-        },
-        {
-          id: "g-tandoori-roti",
-          protein: 1,
-          proteinGrams: 7,
-          name: "Tandoori Roti",
-          localScript: "तंदूरी रोटी",
-          essence: {
-            fr: "Galette blé complet sans beurre",
-            en: "Whole wheat plain flatbread",
-            es: "Tortilla integral sin mantequilla",
-            de: "Vollkorn-Fladenbrot",
-            it: "Sfoglia integrale al forno",
-            pt: "Pão integral assado",
-          },
-          emoji: "🫓",
-          category: "bread",
-          priceINR: 30,
-          spice: 1,
-          hygiene: 1,
-          richness: 1,
-          veg: true,
-          allergens: ["🌾"],
-        },
-        {
-          id: "g-masala-dosa",
-          protein: 1,
-          proteinGrams: 8,
-          name: "Masala Dosa",
-          localScript: "मसाला डोसा",
-          essence: {
-            fr: "Crêpe croustillante pomme de terre",
-            en: "Crispy crepe with spiced potato",
-            es: "Crepe crujiente de patata",
-            de: "Knuspriger Kartoffel-Crêpe",
-            it: "Crespella croccante di patate",
-            pt: "Crepe crocante de batata",
-          },
-          emoji: "🌯",
-          category: "main",
-          priceINR: 95,
-          spice: 2,
-          hygiene: 1,
-          richness: 2,
-          veg: true,
-          allergens: [],
-        },
-        {
-          id: "g-idli-sambar",
-          protein: 2,
-          proteinGrams: 10,
-          name: "Idli Sambar",
-          localScript: "इडली सांभर",
-          essence: {
-            fr: "Gâteaux riz vapeur & lentilles",
-            en: "Steamed rice cakes & lentils",
-            es: "Pasteles de arroz al vapor",
-            de: "Gedämpfte Reisküchlein",
-            it: "Tortini di riso al vapore",
-            pt: "Bolinhos de arroz no vapor",
-          },
-          emoji: "⚪",
-          category: "main",
-          priceINR: 70,
-          spice: 2,
-          hygiene: 1,
-          richness: 1,
-          veg: true,
-          allergens: [],
-        },
-        {
-          id: "g-palak-paneer",
-          protein: 3,
-          proteinGrams: 22,
-          name: "Palak Paneer",
-          localScript: "पालक पनीर",
-          essence: {
-            fr: "Fromage frais sauce épinards",
-            en: "Cottage cheese in spinach gravy",
-            es: "Queso fresco en salsa espinacas",
-            de: "Frischkäse in Spinatsauce",
-            it: "Formaggio fresco agli spinaci",
-            pt: "Queijo fresco ao molho espinafre",
-          },
-          emoji: "🥬",
-          category: "main",
-          priceINR: 210,
-          spice: 2,
-          hygiene: 1,
-          richness: 2,
-          veg: true,
-          allergens: ["🥛"],
-        },
-        {
-          id: "g-butter-chicken",
-          protein: 3,
-          proteinGrams: 29,
-          name: "Butter Chicken",
-          localScript: "बटर चिकन",
-          essence: {
-            fr: "Poulet tandoor sauce tomate douce",
-            en: "Mild creamy tomato chicken",
-            es: "Pollo en salsa cremosa tomate",
-            de: "Mildes Tomaten-Sahne-Hähnchen",
-            it: "Pollo cremoso al pomodoro",
-            pt: "Frango cremoso ao tomate",
-          },
-          emoji: "🍗",
-          category: "main",
-          priceINR: 290,
-          spice: 2,
-          hygiene: 1,
-          richness: 3,
-          veg: false,
-          allergens: ["🥛", "🥜"],
-        },
-        {
-          id: "g-chicken-biryani",
-          protein: 3,
-          proteinGrams: 27,
-          name: "Chicken Biryani",
-          localScript: "चिकन बिरयानी",
-          essence: {
-            fr: "Riz basmati parfumé au poulet",
-            en: "Fragrant spiced chicken rice",
-            es: "Arroz basmati especiado con pollo",
-            de: "Gewürzter Hähnchen-Basmatireis",
-            it: "Riso basmati speziato al pollo",
-            pt: "Arroz basmati com frango",
-          },
-          emoji: "🍚",
-          category: "main",
-          priceINR: 250,
-          spice: 3,
-          hygiene: 1,
-          richness: 3,
-          veg: false,
-          allergens: ["🥛"],
-        },
-        {
-          id: "g-chole-bhature",
-          protein: 2,
-          proteinGrams: 15,
-          name: "Chole Bhature",
-          localScript: "छोले भटूरे",
-          essence: {
-            fr: "Pois chiches épicés & pain frit",
-            en: "Spiced chickpeas & fried bread",
-            es: "Garbanzos especiados y pan frito",
-            de: "Würzige Kichererbsen & Brot",
-            it: "Ceci speziati e pane fritto",
-            pt: "Grão-de-bico e pão frito",
-          },
-          emoji: "🍛",
-          category: "street",
-          priceINR: 110,
-          spice: 3,
-          hygiene: 1,
-          richness: 3,
-          veg: true,
-          allergens: ["🌾"],
-        },
-        {
-          id: "g-samosa",
-          protein: 1,
-          proteinGrams: 5,
-          name: "Aloo Samosa",
-          localScript: "समोसा",
-          essence: {
-            fr: "Triangle frit pomme de terre",
-            en: "Fried spiced potato pastry",
-            es: "Empanadilla frita de patata",
-            de: "Frittierte Kartoffeltasche",
-            it: "Triangolo fritto di patate",
-            pt: "Pastel frito de batata",
-          },
-          emoji: "🥟",
-          category: "street",
-          priceINR: 25,
-          spice: 2,
-          hygiene: 1,
-          richness: 2,
-          veg: true,
-          allergens: ["🌾"],
-        },
-        {
-          id: "g-sweet-lassi",
-          protein: 1,
-          proteinGrams: 9,
-          name: "Sweet Lassi",
-          localScript: "मीठी लस्सी",
-          essence: {
-            fr: "Yaourt battu frais sucré",
-            en: "Chilled sweet churned yogurt",
-            es: "Yogur batido frío dulce",
-            de: "Gekühlter süßer Joghurt-Drink",
-            it: "Yogurt frullato fresco dolce",
-            pt: "Iogurte batido gelado doce",
-          },
-          emoji: "🥛",
-          category: "drink",
-          priceINR: 60,
-          spice: 1,
-          hygiene: 2,
-          richness: 2,
-          veg: true,
-          allergens: ["🥛"],
-        },
-        {
-          id: "g-nimbu-pani",
-          protein: 1,
-          proteinGrams: 0,
-          name: "Fresh Lime Soda",
-          localScript: "नींबू पानी",
-          essence: {
-            fr: "Citron vert & eau gazeuse",
-            en: "Fresh lime & soda water",
-            es: "Lima fresca y soda",
-            de: "Limette & Sodawasser",
-            it: "Lime fresco e acqua frizzante",
-            pt: "Limão fresco e água com gás",
-          },
-          emoji: "🍋",
-          category: "drink",
-          priceINR: 45,
-          spice: 1,
-          hygiene: 2,
-          richness: 1,
-          veg: true,
-          allergens: [],
-        },
-        {
-          id: "g-gulab-jamun",
-          protein: 1,
-          proteinGrams: 4,
-          name: "Gulab Jamun",
-          localScript: "गुलाब जामुन",
-          essence: {
-            fr: "Boulette lait frite sirop rose",
-            en: "Fried milk dumpling in syrup",
-            es: "Bolita de leche en almíbar",
-            de: "Frittierte Milchbällchen in Sirup",
-            it: "Pallina di latte allo sciroppo",
-            pt: "Bolinho de leite em calda",
-          },
-          emoji: "🍩",
-          category: "drink",
-          priceINR: 50,
-          spice: 1,
-          hygiene: 1,
-          richness: 3,
-          veg: true,
-          allergens: ["🥛", "🌾"],
-        },
-      ];
+    /* Offline Guide Reference Database */
+    const OFFLINE_GUIDE = [
+      { id: 'g-butter-naan', protein: 1, proteinGrams: 6, name: 'Butter Naan', localScript: 'बटर नान', essence: { fr: 'Pain levé cuit au tandoor', en: 'Leavened tandoor flatbread', es: 'Pan plano con mantequilla', de: 'Tandoor-Fladenbrot', it: 'Pane piatto al burro', pt: 'Pão naan com manteiga' }, emoji: '🫓', category: 'bread', priceINR: 55, spice: 1, hygiene: 1, richness: 2, veg: true, allergens: ['🌾', '🥛'] },
+      { id: 'g-tandoori-roti', protein: 1, proteinGrams: 7, name: 'Tandoori Roti', localScript: 'तंदूरी रोटी', essence: { fr: 'Galette blé complet sans beurre', en: 'Whole wheat plain flatbread', es: 'Tortilla integral sin mantequilla', de: 'Vollkorn-Fladenbrot', it: 'Sfoglia integrale al forno', pt: 'Pão integral assado' }, emoji: '🫓', category: 'bread', priceINR: 30, spice: 1, hygiene: 1, richness: 1, veg: true, allergens: ['🌾'] },
+      { id: 'g-masala-dosa', protein: 1, proteinGrams: 8, name: 'Masala Dosa', localScript: 'मसाला डोसा', essence: { fr: 'Crêpe croustillante pomme de terre', en: 'Crispy crepe with spiced potato', es: 'Crepe crujiente de patata', de: 'Knuspriger Kartoffel-Crêpe', it: 'Crespella croccante di patate', pt: 'Crepe crocante de batata' }, emoji: '🌯', category: 'main', priceINR: 95, spice: 2, hygiene: 1, richness: 2, veg: true, allergens: [] },
+      { id: 'g-idli-sambar', protein: 2, proteinGrams: 10, name: 'Idli Sambar', localScript: 'इडली सांभर', essence: { fr: 'Gâteaux riz vapeur & lentilles', en: 'Steamed rice cakes & lentils', es: 'Pasteles de arroz al vapor', de: 'Gedämpfte Reisküchlein', it: 'Tortini di riso al vapore', pt: 'Bolinhos de arroz no vapor' }, emoji: '⚪', category: 'main', priceINR: 70, spice: 2, hygiene: 1, richness: 1, veg: true, allergens: [] },
+      { id: 'g-palak-paneer', protein: 3, proteinGrams: 22, name: 'Palak Paneer', localScript: 'पालक पनीर', essence: { fr: 'Fromage frais sauce épinards', en: 'Cottage cheese in spinach gravy', es: 'Queso fresco en salsa espinacas', de: 'Frischkäse in Spinatsauce', it: 'Formaggio fresco agli spinaci', pt: 'Queijo fresco ao molho espinafre' }, emoji: '🥬', category: 'main', priceINR: 210, spice: 2, hygiene: 1, richness: 2, veg: true, allergens: ['🥛'] },
+      { id: 'g-butter-chicken', protein: 3, proteinGrams: 29, name: 'Butter Chicken', localScript: 'बटर चिकन', essence: { fr: 'Poulet tandoor sauce tomate douce', en: 'Mild creamy tomato chicken', es: 'Pollo en salsa cremosa tomate', de: 'Mildes Tomaten-Sahne-Hähnchen', it: 'Pollo cremoso al pomodoro', pt: 'Frango cremoso ao tomate' }, emoji: '🍗', category: 'main', priceINR: 290, spice: 2, hygiene: 1, richness: 3, veg: false, allergens: ['🥛', '🥜'] },
+      { id: 'g-chicken-biryani', protein: 3, proteinGrams: 27, name: 'Chicken Biryani', localScript: 'चिकन बिरयानी', essence: { fr: 'Riz basmati parfumé au poulet', en: 'Fragrant spiced chicken rice', es: 'Arroz basmati especiado con pollo', de: 'Gewürzter Hähnchen-Basmatireis', it: 'Riso basmati speziato al pollo', pt: 'Arroz basmati com frango' }, emoji: '🍚', category: 'main', priceINR: 250, spice: 3, hygiene: 1, richness: 3, veg: false, allergens: ['🥛'] },
+      { id: 'g-chole-bhature', protein: 2, proteinGrams: 15, name: 'Chole Bhature', localScript: 'छोले भटूरे', essence: { fr: 'Pois chiches épicés & pain frit', en: 'Spiced chickpeas & fried bread', es: 'Garbanzos especiados y pan frito', de: 'Würzige Kichererbsen & Brot', it: 'Ceci speziati e pane fritto', pt: 'Grão-de-bico e pão frito' }, emoji: '🍛', category: 'street', priceINR: 110, spice: 3, hygiene: 1, richness: 3, veg: true, allergens: ['🌾'] },
+      { id: 'g-samosa', protein: 1, proteinGrams: 5, name: 'Aloo Samosa', localScript: 'समोसा', essence: { fr: 'Triangle frit pomme de terre', en: 'Fried spiced potato pastry', es: 'Empanadilla frita de patata', de: 'Frittierte Kartoffeltasche', it: 'Triangolo fritto di patate', pt: 'Pastel frito de batata' }, emoji: '🥟', category: 'street', priceINR: 25, spice: 2, hygiene: 1, richness: 2, veg: true, allergens: ['🌾'] },
+      { id: 'g-sweet-lassi', protein: 1, proteinGrams: 9, name: 'Sweet Lassi', localScript: 'मीठी लस्सी', essence: { fr: 'Yaourt battu frais sucré', en: 'Chilled sweet churned yogurt', es: 'Yogur batido frío dulce', de: 'Gekühlter süßer Joghurt-Drink', it: 'Yogurt frullato fresco dolce', pt: 'Iogurte batido gelado doce' }, emoji: '🥛', category: 'drink', priceINR: 60, spice: 1, hygiene: 2, richness: 2, veg: true, allergens: ['🥛'] },
+      { id: 'g-nimbu-pani', protein: 1, proteinGrams: 0, name: 'Fresh Lime Soda', localScript: 'नींबू पानी', essence: { fr: 'Citron vert & eau gazeuse', en: 'Fresh lime & soda water', es: 'Lima fresca y soda', de: 'Limette & Sodawasser', it: 'Lime fresco e acqua frizzante', pt: 'Limão fresco e água com gás' }, emoji: '🍋', category: 'drink', priceINR: 45, spice: 1, hygiene: 2, richness: 1, veg: true, allergens: [] },
+      { id: 'g-gulab-jamun', protein: 1, proteinGrams: 4, name: 'Gulab Jamun', localScript: 'गुलाब जामुन', essence: { fr: 'Boulette lait frite sirop rose', en: 'Fried milk dumpling in syrup', es: 'Bolita de leche en almíbar', de: 'Frittierte Milchbällchen in Sirup', it: 'Pallina di latte allo sciroppo', pt: 'Bolinho de leite em calda' }, emoji: '🍩', category: 'drink', priceINR: 50, spice: 1, hygiene: 1, richness: 3, veg: true, allergens: ['🥛', '🌾'] }
+    ];
 
-      /* Application State */
-      const state = {
-        lang: localStorage.getItem("desimenu_lang") || "fr",
-        currency: localStorage.getItem("desimenu_currency") || "EUR",
-        apiKey: localStorage.getItem("desimenu_apikey") || "",
-        catalog: JSON.parse(localStorage.getItem("desimenu_catalog") || "[]"),
-        waiterOrder: JSON.parse(
-          localStorage.getItem("desimenu_waiter") || "[]"
-        ),
-        requests: {
-          lessSpicy: false,
-          noIce: false,
-          bottledWater: false,
-          pureVeg: false,
-        },
-        currentScanDishes: [],
-        catalogFilter: "all",
-        catalogQuery: "",
-        guideCat: "all",
-        guideQuery: "",
-        pendingPhotoDishId: null,
-      };
+    /* Application State */
+    const state = {
+      lang: localStorage.getItem('desimenu_lang') || 'fr',
+      currency: localStorage.getItem('desimenu_currency') || 'EUR',
+      apiKey: localStorage.getItem('desimenu_apikey') || '',
+      catalog: JSON.parse(localStorage.getItem('desimenu_catalog') || '[]'),
+      waiterOrder: JSON.parse(localStorage.getItem('desimenu_waiter') || '[]'),
+      requests: { lessSpicy: false, noIce: false, bottledWater: false, pureVeg: false },
+      currentScanDishes: [],
+      catalogFilter: 'all',
+      catalogQuery: '',
+      guideCat: 'all',
+      guideQuery: '',
+      pendingPhotoDishId: null,
+      lastCapturedBase64: null
+    };
 
-      /* Helpers */
-      function t(key) {
-        return (
-          (I18N[state.lang] && I18N[state.lang][key]) || I18N.fr[key] || key
-        );
+    /* Helpers */
+    function t(key) {
+      return (I18N[state.lang] && I18N[state.lang][key]) || I18N.fr[key] || key;
+    }
+
+    function getEssence(dish) {
+      if (typeof dish.essence === 'string') return dish.essence;
+      return (dish.essence && (dish.essence[state.lang] || dish.essence.en || dish.essence.fr)) || '';
+    }
+
+    function formatPrice(inr) {
+      const cfg = CURRENCIES[state.currency] || CURRENCIES.EUR;
+      const val = (inr * cfg.rate).toFixed(cfg.decimals);
+      return `${cfg.symbol}${val}`;
+    }
+
+    function showToast(msg) {
+      const toast = document.getElementById('toast');
+      toast.textContent = msg;
+      toast.classList.add('show');
+      clearTimeout(toast._timer);
+      toast._timer = setTimeout(() => toast.classList.remove('show'), 2200);
+    }
+
+    function saveState() {
+      localStorage.setItem('desimenu_lang', state.lang);
+      localStorage.setItem('desimenu_currency', state.currency);
+      localStorage.setItem('desimenu_catalog', JSON.stringify(state.catalog));
+      localStorage.setItem('desimenu_waiter', JSON.stringify(state.waiterOrder));
+      updateBadges();
+    }
+
+    function updateBadges() {
+      const catBadge = document.getElementById('catalogBadge');
+      if (state.catalog.length > 0) {
+        catBadge.textContent = state.catalog.length;
+        catBadge.style.display = 'inline-flex';
+      } else {
+        catBadge.style.display = 'none';
       }
 
-      function getEssence(dish) {
-        if (typeof dish.essence === "string") return dish.essence;
-        return (
-          (dish.essence &&
-            (dish.essence[state.lang] || dish.essence.en || dish.essence.fr)) ||
-          ""
-        );
+      const totalQty = state.waiterOrder.reduce((sum, item) => sum + item.qty, 0);
+      const waiterBadge = document.getElementById('waiterBadge');
+      if (totalQty > 0) {
+        waiterBadge.textContent = totalQty;
+        waiterBadge.style.display = 'inline-flex';
+      } else {
+        waiterBadge.style.display = 'none';
       }
+    }
 
-      function formatPrice(inr) {
-        const cfg = CURRENCIES[state.currency] || CURRENCIES.EUR;
-        const val = (inr * cfg.rate).toFixed(cfg.decimals);
-        return `${cfg.symbol}${val}`;
-      }
+    function applyTranslations() {
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        el.textContent = t(key);
+      });
+      renderScanResults();
+      renderCatalog();
+      renderWaiter();
+      renderGuide();
+    }
 
-      function showToast(msg) {
-        const toast = document.getElementById("toast");
-        toast.textContent = msg;
-        toast.classList.add("show");
-        clearTimeout(toast._timer);
-        toast._timer = setTimeout(() => toast.classList.remove("show"), 2200);
-      }
-
-      function saveState() {
-        localStorage.setItem("desimenu_lang", state.lang);
-        localStorage.setItem("desimenu_currency", state.currency);
-        localStorage.setItem("desimenu_catalog", JSON.stringify(state.catalog));
-        localStorage.setItem(
-          "desimenu_waiter",
-          JSON.stringify(state.waiterOrder)
-        );
-        updateBadges();
-      }
-
-      function updateBadges() {
-        const catBadge = document.getElementById("catalogBadge");
-        if (state.catalog.length > 0) {
-          catBadge.textContent = state.catalog.length;
-          catBadge.style.display = "inline-flex";
-        } else {
-          catBadge.style.display = "none";
-        }
-
-        const totalQty = state.waiterOrder.reduce(
-          (sum, item) => sum + item.qty,
-          0
-        );
-        const waiterBadge = document.getElementById("waiterBadge");
-        if (totalQty > 0) {
-          waiterBadge.textContent = totalQty;
-          waiterBadge.style.display = "inline-flex";
-        } else {
-          waiterBadge.style.display = "none";
-        }
-      }
-
-      function applyTranslations() {
-        document.querySelectorAll("[data-i18n]").forEach((el) => {
-          const key = el.getAttribute("data-i18n");
-          el.textContent = t(key);
-        });
-        renderScanResults();
-        renderCatalog();
-        renderWaiter();
-        renderGuide();
-      }
-
-      /* ========================================================================
+    /* ========================================================================
        Visual Gauges & Dish Card Renderer
        ======================================================================== */
-      function getDishProteinInfo(dish) {
-        let grams = dish.proteinGrams;
-        if (grams === undefined || grams === null || isNaN(Number(grams))) {
-          const allRefs = [
-            ...OFFLINE_GUIDE,
-            ...DEMO_MENUS.delhi.dishes,
-            ...DEMO_MENUS.kerala.dishes,
-            ...DEMO_MENUS.mumbai.dishes,
-          ];
-          const match = allRefs.find(
-            (r) => r.name.toLowerCase() === (dish.name || "").toLowerCase()
-          );
-          if (match && match.proteinGrams !== undefined) {
-            grams = match.proteinGrams;
-          } else {
-            grams = dish.veg === false ? 24 : dish.category === "drink" ? 3 : 9;
-          }
+    function getDishProteinInfo(dish) {
+      let grams = dish.proteinGrams;
+      if (grams === undefined || grams === null || isNaN(Number(grams))) {
+        const allRefs = [
+          ...OFFLINE_GUIDE,
+          ...DEMO_MENUS.delhi.dishes,
+          ...DEMO_MENUS.kerala.dishes,
+          ...DEMO_MENUS.mumbai.dishes
+        ];
+        const match = allRefs.find(r => r.name.toLowerCase() === (dish.name || '').toLowerCase());
+        if (match && match.proteinGrams !== undefined) {
+          grams = match.proteinGrams;
+        } else {
+          grams = dish.veg === false ? 24 : (dish.category === 'drink' ? 3 : 9);
         }
-        grams = Math.max(0, Math.round(Number(grams)));
-        const level = grams >= 20 ? 3 : grams >= 10 ? 2 : 1;
-        return { grams, level };
+      }
+      grams = Math.max(0, Math.round(Number(grams)));
+      const level = grams >= 20 ? 3 : (grams >= 10 ? 2 : 1);
+      return { grams, level };
+    }
+
+    function buildGaugesHTML(dish) {
+      const spice = Math.min(5, Math.max(1, Number(dish.spice) || 1));
+      const hygiene = Math.min(3, Math.max(1, Number(dish.hygiene) || 1));
+      const richness = Math.min(3, Math.max(1, Number(dish.richness) || 2));
+      const { grams: proteinGrams, level: proteinLevel } = getDishProteinInfo(dish);
+
+      let spiceBars = '';
+      for (let i = 1; i <= 5; i++) {
+        spiceBars += `<span class="gauge-seg ${i <= spice ? 'spice-' + spice : ''}"></span>`;
       }
 
-      function buildGaugesHTML(dish) {
-        const spice = Math.min(5, Math.max(1, Number(dish.spice) || 1));
-        const hygiene = Math.min(3, Math.max(1, Number(dish.hygiene) || 1));
-        const richness = Math.min(3, Math.max(1, Number(dish.richness) || 2));
-        const { grams: proteinGrams, level: proteinLevel } =
-          getDishProteinInfo(dish);
+      const hygieneClass = hygiene === 1 ? 'hygiene-safe' : (hygiene === 2 ? 'hygiene-warn' : 'hygiene-risk');
+      const hygieneText = hygiene === 1 ? t('hygieneSafe') : (hygiene === 2 ? t('hygieneWarn') : t('hygieneRisk'));
+      const activeHygieneCount = hygiene === 1 ? 3 : (hygiene === 2 ? 2 : 1);
+      let hygieneBars = '';
+      for (let i = 1; i <= 3; i++) {
+        hygieneBars += `<span class="gauge-seg ${i <= activeHygieneCount ? hygieneClass : ''}"></span>`;
+      }
 
-        let spiceBars = "";
-        for (let i = 1; i <= 5; i++) {
-          spiceBars += `<span class="gauge-seg ${
-            i <= spice ? "spice-" + spice : ""
-          }"></span>`;
-        }
+      let richnessDots = '';
+      for (let i = 1; i <= 3; i++) {
+        richnessDots += `<span class="gauge-dot ${i <= richness ? 'active' : ''}"></span>`;
+      }
 
-        const hygieneClass =
-          hygiene === 1
-            ? "hygiene-safe"
-            : hygiene === 2
-            ? "hygiene-warn"
-            : "hygiene-risk";
-        const hygieneText =
-          hygiene === 1
-            ? t("hygieneSafe")
-            : hygiene === 2
-            ? t("hygieneWarn")
-            : t("hygieneRisk");
-        const activeHygieneCount = hygiene === 1 ? 3 : hygiene === 2 ? 2 : 1;
-        let hygieneBars = "";
-        for (let i = 1; i <= 3; i++) {
-          hygieneBars += `<span class="gauge-seg ${
-            i <= activeHygieneCount ? hygieneClass : ""
-          }"></span>`;
-        }
+      let proteinBars = '';
+      for (let i = 1; i <= 3; i++) {
+        proteinBars += `<span class="gauge-seg ${i <= proteinLevel ? 'protein-' + proteinLevel : ''}"></span>`;
+      }
 
-        let richnessDots = "";
-        for (let i = 1; i <= 3; i++) {
-          richnessDots += `<span class="gauge-dot ${
-            i <= richness ? "active" : ""
-          }"></span>`;
-        }
-
-        let proteinBars = "";
-        for (let i = 1; i <= 3; i++) {
-          proteinBars += `<span class="gauge-seg ${
-            i <= proteinLevel ? "protein-" + proteinLevel : ""
-          }"></span>`;
-        }
-
-        return `
+      return `
         <div class="gauges-grid">
           <div class="gauge-block spice-box">
             <div class="gauge-header">
-              <span>🌶️ ${t("gaugeSpice")}</span>
+              <span>🌶️ ${t('gaugeSpice')}</span>
               <span>${spice}/5</span>
             </div>
             <div class="gauge-bars">${spiceBars}</div>
@@ -2636,7 +2139,7 @@ Icône HTML desimenu-v2
 
           <div class="gauge-block hygiene-box-${hygiene}">
             <div class="gauge-header">
-              <span>🛡️ ${t("gaugeHygiene")}</span>
+              <span>🛡️ ${t('gaugeHygiene')}</span>
               <span>${hygieneText}</span>
             </div>
             <div class="gauge-bars">${hygieneBars}</div>
@@ -2644,7 +2147,7 @@ Icône HTML desimenu-v2
 
           <div class="gauge-block richness-box">
             <div class="gauge-header">
-              <span>🧈 ${t("gaugeRichness")}</span>
+              <span>🧈 ${t('gaugeRichness')}</span>
               <span>${richness}/3</span>
             </div>
             <div class="gauge-dots">${richnessDots}</div>
@@ -2652,76 +2155,62 @@ Icône HTML desimenu-v2
 
           <div class="gauge-block protein-box">
             <div class="gauge-header">
-              <span>💪 ${t("gaugeProtein")}</span>
+              <span>💪 ${t('gaugeProtein')}</span>
               <span>~${proteinGrams}g</span>
             </div>
             <div class="gauge-bars">${proteinBars}</div>
           </div>
         </div>
       `;
-      }
+    }
 
-      function createDishCardElement(dish, mode = "scan") {
-        const card = document.createElement("article");
-        const hLvl = Math.min(3, Math.max(1, Number(dish.hygiene) || 1));
-        card.className = `dish-card hygiene-level-${hLvl}`;
+    function createDishCardElement(dish, mode = 'scan') {
+      const card = document.createElement('article');
+      const hLvl = Math.min(3, Math.max(1, Number(dish.hygiene) || 1));
+      card.className = `dish-card hygiene-level-${hLvl}`;
 
-        const thumbContent = dish.photoDataUrl
-          ? `<img src="${dish.photoDataUrl}" alt="${dish.name}" />`
-          : `<span>${dish.emoji || "🍛"}</span>`;
+      const thumbContent = dish.photoDataUrl
+        ? `<img src="${dish.photoDataUrl}" alt="${dish.name}" />`
+        : `<span>${dish.emoji || '🍛'}</span>`;
 
-        const inCatalog = state.catalog.find(
-          (c) => c.name.toLowerCase() === dish.name.toLowerCase()
-        );
-        const isFav = inCatalog && inCatalog.favorite;
+      const inCatalog = state.catalog.find(c => c.name.toLowerCase() === dish.name.toLowerCase());
+      const isFav = inCatalog && inCatalog.favorite;
 
-        const allergenBadges = (dish.allergens || [])
-          .map((a) => `<span class="picto-badge allergen">${a}</span>`)
-          .join("");
+      const allergenBadges = (dish.allergens || [])
+        .map(a => `<span class="picto-badge allergen">${a}</span>`)
+        .join('');
 
-        const vegBadge = dish.veg
-          ? `<span class="picto-badge veg">🌿 Veg</span>`
-          : `<span class="picto-badge non-veg">🍖 Non-Veg</span>`;
+      const vegBadge = dish.veg
+        ? `<span class="picto-badge veg">🌿 Veg</span>`
+        : `<span class="picto-badge non-veg">🍖 Non-Veg</span>`;
 
-        let extraCatalogRow = "";
-        if (mode === "catalog") {
-          const rating = dish.rating || 0;
-          let starsHTML = "";
-          for (let s = 1; s <= 5; s++) {
-            starsHTML += `<button class="star-btn ${
-              s <= rating ? "lit" : ""
-            }" data-star="${s}" data-id="${dish.id}">★</button>`;
-          }
-          extraCatalogRow = `
+      let extraCatalogRow = '';
+      if (mode === 'catalog') {
+        const rating = dish.rating || 0;
+        let starsHTML = '';
+        for (let s = 1; s <= 5; s++) {
+          starsHTML += `<button class="star-btn ${s <= rating ? 'lit' : ''}" data-star="${s}" data-id="${dish.id}">★</button>`;
+        }
+        extraCatalogRow = `
           <div class="catalog-meta-row">
             <div class="star-rating">${starsHTML}</div>
-            <input class="note-input" type="text" value="${(
-              dish.note || ""
-            ).replace(/"/g, "&quot;")}" placeholder="${t(
-            "notePlaceholder"
-          )}" data-note-id="${dish.id}" />
+            <input class="note-input" type="text" value="${(dish.note || '').replace(/"/g, '&quot;')}" placeholder="${t('notePlaceholder')}" data-note-id="${dish.id}" />
           </div>
         `;
-        }
+      }
 
-        card.innerHTML = `
+      card.innerHTML = `
         <div class="dish-top">
           <div class="dish-identity">
             <div class="dish-thumb">${thumbContent}</div>
             <div class="dish-titles">
               <div class="dish-name">${dish.name}</div>
-              ${
-                dish.localScript
-                  ? `<div class="dish-local">${dish.localScript}</div>`
-                  : ""
-              }
+              ${dish.localScript ? `<div class="dish-local">${dish.localScript}</div>` : ''}
               <div class="dish-essence">${getEssence(dish)}</div>
             </div>
           </div>
           <div class="dish-price-col">
-            <div class="price-converted">${formatPrice(
-              dish.priceINR || 100
-            )}</div>
+            <div class="price-converted">${formatPrice(dish.priceINR || 100)}</div>
             <div class="price-inr">₹${dish.priceINR || 100}</div>
           </div>
         </div>
@@ -2734,221 +2223,271 @@ Icône HTML desimenu-v2
             ${allergenBadges}
           </div>
           <div class="card-actions">
-            <button class="action-chip" data-action="photo" data-id="${
-              dish.id
-            }">${t("addPhoto")}</button>
-            <button class="action-chip ${
-              isFav ? "fav-active" : ""
-            }" data-action="fav" data-id="${dish.id}">★</button>
-            <button class="action-chip primary-chip" data-action="waiter" data-id="${
-              dish.id
-            }">${t("addWaiter")}</button>
+            <button class="action-chip" data-action="photo" data-id="${dish.id}">${t('addPhoto')}</button>
+            <button class="action-chip ${isFav ? 'fav-active' : ''}" data-action="fav" data-id="${dish.id}">★</button>
+            <button class="action-chip primary-chip" data-action="waiter" data-id="${dish.id}">${t('addWaiter')}</button>
           </div>
         </div>
         ${extraCatalogRow}
       `;
 
-        // Bind card events
-        card
-          .querySelector('[data-action="waiter"]')
-          .addEventListener("click", () => {
-            addToWaiter(dish);
-          });
+      // Bind card events
+      card.querySelector('[data-action="waiter"]').addEventListener('click', () => {
+        addToWaiter(dish);
+      });
 
-        card
-          .querySelector('[data-action="fav"]')
-          .addEventListener("click", () => {
-            toggleFavorite(dish);
-          });
+      card.querySelector('[data-action="fav"]').addEventListener('click', () => {
+        toggleFavorite(dish);
+      });
 
-        card
-          .querySelector('[data-action="photo"]')
-          .addEventListener("click", () => {
-            upsertCatalog(dish);
-            state.pendingPhotoDishId = dish.name.toLowerCase();
-            document.getElementById("dishPhotoInput").click();
-          });
+      card.querySelector('[data-action="photo"]').addEventListener('click', () => {
+        upsertCatalog(dish);
+        state.pendingPhotoDishId = dish.name.toLowerCase();
+        document.getElementById('dishPhotoInput').click();
+      });
 
-        if (mode === "catalog") {
-          card.querySelectorAll(".star-btn").forEach((btn) => {
-            btn.addEventListener("click", () => {
-              const val = Number(btn.getAttribute("data-star"));
-              const item = state.catalog.find((c) => c.id === dish.id);
-              if (item) {
-                item.rating = val;
-                saveState();
-                renderCatalog();
-              }
-            });
-          });
-
-          const noteInput = card.querySelector(".note-input");
-          noteInput.addEventListener("change", () => {
-            const item = state.catalog.find((c) => c.id === dish.id);
+      if (mode === 'catalog') {
+        card.querySelectorAll('.star-btn').forEach(btn => {
+          btn.addEventListener('click', () => {
+            const val = Number(btn.getAttribute('data-star'));
+            const item = state.catalog.find(c => c.id === dish.id);
             if (item) {
-              item.note = noteInput.value.trim();
+              item.rating = val;
               saveState();
+              renderCatalog();
             }
           });
-        }
+        });
 
-        return card;
+        const noteInput = card.querySelector('.note-input');
+        noteInput.addEventListener('change', () => {
+          const item = state.catalog.find(c => c.id === dish.id);
+          if (item) {
+            item.note = noteInput.value.trim();
+            saveState();
+          }
+        });
       }
 
-      /* ========================================================================
+      return card;
+    }
+
+    /* ========================================================================
        Catalog Auto-Library Logic
        ======================================================================== */
-      function upsertCatalog(dish, extraProps = {}) {
-        const key = dish.name.trim().toLowerCase();
-        const existing = state.catalog.find(
-          (c) => c.name.trim().toLowerCase() === key
-        );
-        if (existing) {
-          Object.assign(existing, extraProps);
-        } else {
-          state.catalog.unshift({
-            ...dish,
-            id:
-              dish.id ||
-              "cat-" +
-                Date.now() +
-                "-" +
-                Math.random().toString(36).slice(2, 6),
-            favorite: false,
-            rating: 0,
-            note: "",
-            savedAt: new Date().toISOString(),
-            ...extraProps,
-          });
-        }
+    function upsertCatalog(dish, extraProps = {}) {
+      const key = dish.name.trim().toLowerCase();
+      const existing = state.catalog.find(c => c.name.trim().toLowerCase() === key);
+      if (existing) {
+        Object.assign(existing, extraProps);
+      } else {
+        state.catalog.unshift({
+          ...dish,
+          id: dish.id || 'cat-' + Date.now() + '-' + Math.random().toString(36).slice(2, 6),
+          favorite: false,
+          rating: 0,
+          note: '',
+          savedAt: new Date().toISOString(),
+          ...extraProps
+        });
+      }
+      saveState();
+    }
+
+    function toggleFavorite(dish) {
+      upsertCatalog(dish);
+      const item = state.catalog.find(c => c.name.trim().toLowerCase() === dish.name.trim().toLowerCase());
+      if (item) {
+        item.favorite = !item.favorite;
         saveState();
+        renderScanResults();
+        renderCatalog();
+        renderGuide();
+        showToast(item.favorite ? '★ ' + dish.name : dish.name);
       }
+    }
 
-      function toggleFavorite(dish) {
-        upsertCatalog(dish);
-        const item = state.catalog.find(
-          (c) => c.name.trim().toLowerCase() === dish.name.trim().toLowerCase()
+    function renderCatalog() {
+      const list = document.getElementById('catalogList');
+      list.innerHTML = '';
+
+      let items = [...state.catalog];
+      if (state.catalogFilter === 'fav') items = items.filter(d => d.favorite);
+      if (state.catalogFilter === 'safe') items = items.filter(d => Number(d.hygiene) === 1);
+      if (state.catalogFilter === 'mild') items = items.filter(d => Number(d.spice) <= 2);
+      if (state.catalogFilter === 'protein') items = items.filter(d => getDishProteinInfo(d).grams >= 18);
+      if (state.catalogFilter === 'veg') items = items.filter(d => d.veg);
+
+      if (state.catalogQuery) {
+        const q = state.catalogQuery.toLowerCase();
+        items = items.filter(d =>
+          d.name.toLowerCase().includes(q) ||
+          getEssence(d).toLowerCase().includes(q) ||
+          (d.note && d.note.toLowerCase().includes(q))
         );
-        if (item) {
-          item.favorite = !item.favorite;
-          saveState();
-          renderScanResults();
-          renderCatalog();
-          renderGuide();
-          showToast(item.favorite ? "★ " + dish.name : dish.name);
-        }
       }
 
-      function renderCatalog() {
-        const list = document.getElementById("catalogList");
-        list.innerHTML = "";
-
-        let items = [...state.catalog];
-        if (state.catalogFilter === "fav")
-          items = items.filter((d) => d.favorite);
-        if (state.catalogFilter === "safe")
-          items = items.filter((d) => Number(d.hygiene) === 1);
-        if (state.catalogFilter === "mild")
-          items = items.filter((d) => Number(d.spice) <= 2);
-        if (state.catalogFilter === "protein")
-          items = items.filter((d) => getDishProteinInfo(d).grams >= 18);
-        if (state.catalogFilter === "veg") items = items.filter((d) => d.veg);
-
-        if (state.catalogQuery) {
-          const q = state.catalogQuery.toLowerCase();
-          items = items.filter(
-            (d) =>
-              d.name.toLowerCase().includes(q) ||
-              getEssence(d).toLowerCase().includes(q) ||
-              (d.note && d.note.toLowerCase().includes(q))
-          );
-        }
-
-        if (items.length === 0) {
-          list.innerHTML = `
+      if (items.length === 0) {
+        list.innerHTML = `
           <div class="empty-state">
             <div class="empty-icon">📚</div>
-            <div>${t("emptyCatalog")}</div>
+            <div>${t('emptyCatalog')}</div>
           </div>
         `;
-          return;
-        }
-
-        items.forEach((dish) => {
-          list.appendChild(createDishCardElement(dish, "catalog"));
-        });
+        return;
       }
 
-      /* ========================================================================
+      items.forEach(dish => {
+        list.appendChild(createDishCardElement(dish, 'catalog'));
+      });
+    }
+
+    /* ========================================================================
        Scanner, Client-Side Compression & Gemini 2.5 Flash Vision
        ======================================================================== */
-      function compressImage(file, maxDim = 1024, quality = 0.75) {
-        return new Promise((resolve, reject) => {
-          const reader = new FileReader();
-          reader.onload = (e) => {
-            const img = new Image();
-            img.onload = () => {
-              let { width, height } = img;
-              if (width > maxDim || height > maxDim) {
-                if (width > height) {
-                  height = Math.round((height * maxDim) / width);
-                  width = maxDim;
-                } else {
-                  width = Math.round((width * maxDim) / height);
-                  height = maxDim;
-                }
+    function compressImage(file, maxDim = 1024, quality = 0.75) {
+      return new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.onload = e => {
+          const img = new Image();
+          img.onload = () => {
+            let { width, height } = img;
+            if (width > maxDim || height > maxDim) {
+              if (width > height) {
+                height = Math.round((height * maxDim) / width);
+                width = maxDim;
+              } else {
+                width = Math.round((width * maxDim) / height);
+                height = maxDim;
               }
-              const canvas = document.createElement("canvas");
-              canvas.width = width;
-              canvas.height = height;
-              const ctx = canvas.getContext("2d");
-              ctx.drawImage(img, 0, 0, width, height);
-              const dataUrl = canvas.toDataURL("image/jpeg", quality);
-              const sizeKB = Math.round((dataUrl.length * 3) / 4 / 1024);
-              resolve({ dataUrl, sizeKB, base64: dataUrl.split(",")[1] });
-            };
-            img.onerror = reject;
-            img.src = e.target.result;
+            }
+            const canvas = document.createElement('canvas');
+            canvas.width = width;
+            canvas.height = height;
+            const ctx = canvas.getContext('2d');
+            ctx.drawImage(img, 0, 0, width, height);
+            const dataUrl = canvas.toDataURL('image/jpeg', quality);
+            const sizeKB = Math.round((dataUrl.length * 3) / 4 / 1024);
+            resolve({ dataUrl, sizeKB, base64: dataUrl.split(',')[1] });
           };
-          reader.onerror = reject;
-          reader.readAsDataURL(file);
-        });
+          img.onerror = reject;
+          img.src = e.target.result;
+        };
+        reader.onerror = reject;
+        reader.readAsDataURL(file);
+      });
+    }
+
+    function sanitizeApiKey(raw) {
+      return (raw || '').trim().replace(/^["']|["']$/g, '');
+    }
+
+    function extractJsonFromText(rawText) {
+      let cleaned = (rawText || '').trim();
+      cleaned = cleaned.replace(/^```(?:json)?\s*/i, '').replace(/\s*```$/i, '').trim();
+      const firstBrace = cleaned.indexOf('{');
+      const lastBrace = cleaned.lastIndexOf('}');
+      if (firstBrace !== -1 && lastBrace !== -1 && lastBrace > firstBrace) {
+        cleaned = cleaned.slice(firstBrace, lastBrace + 1);
       }
+      return JSON.parse(cleaned);
+    }
 
-      async function handleMenuFile(file) {
-        if (!file) return;
-        const { dataUrl, sizeKB, base64 } = await compressImage(
-          file,
-          1024,
-          0.75
-        );
+    function showScanError(title, detail, autoOpenModal = false) {
+      const box = document.getElementById('scanErrorBox');
+      document.getElementById('scanErrorTitle').textContent = title;
+      document.getElementById('scanErrorDetail').textContent = detail;
+      box.style.display = 'flex';
+      if (autoOpenModal) {
+        document.getElementById('apiKeyInput').value = state.apiKey;
+        document.getElementById('apiModal').classList.add('open');
+      }
+    }
 
-        const previewContainer = document.getElementById("previewContainer");
-        document.getElementById("previewImage").src = dataUrl;
-        document.getElementById(
-          "compressionBadge"
-        ).textContent = `${sizeKB} Ko · JPEG`;
-        previewContainer.style.display = "block";
+    function hideScanError() {
+      document.getElementById('scanErrorBox').style.display = 'none';
+    }
 
-        if (!state.apiKey) {
-          showToast("Demo mode (ajoutez une clé Gemini ⚙️ pour le scan réel)");
-          loadDemoMenu("delhi");
-          return;
+    async function callGeminiVision(apiKey, prompt, base64) {
+      const models = ['gemini-2.5-flash', 'gemini-2.0-flash'];
+      let lastError = null;
+
+      for (const model of models) {
+        const bodyPayload = {
+          contents: [{
+            parts: [
+              { text: prompt },
+              { inline_data: { mime_type: 'image/jpeg', data: base64 } }
+            ]
+          }],
+          generationConfig: {
+            responseMimeType: 'application/json',
+            temperature: 0.2
+          }
+        };
+
+        if (model === 'gemini-2.5-flash') {
+          bodyPayload.generationConfig.thinkingConfig = { thinkingBudget: 0 };
         }
 
-        document.getElementById("scanLoader").style.display = "flex";
-        document.getElementById("scanResultsHead").style.display = "none";
-        document.getElementById("scanResultsList").innerHTML = "";
+        const res = await fetch(
+          `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${encodeURIComponent(apiKey)}`,
+          {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(bodyPayload)
+          }
+        );
 
+        if (res.ok) {
+          return await res.json();
+        }
+
+        let errMsg = `HTTP ${res.status}`;
         try {
-          const prompt = `Analyze this Indian restaurant menu image. Return ONLY valid JSON (no markdown) with this exact structure:
+          const errJson = await res.json();
+          if (errJson?.error?.message) {
+            errMsg = `HTTP ${res.status} (${model}) : ${errJson.error.message}`;
+          }
+        } catch (_) {}
+
+        lastError = new Error(errMsg);
+        // Only try fallback model if the model itself wasn't found/supported (404 or 400)
+        if (res.status !== 404 && res.status !== 400) {
+          throw lastError;
+        }
+      }
+
+      throw lastError || new Error('Échec de connexion à Gemini');
+    }
+
+    async function analyzeCapturedBase64(base64) {
+      if (!base64) return;
+      hideScanError();
+
+      const cleanKey = sanitizeApiKey(state.apiKey);
+      if (!cleanKey) {
+        showScanError(
+          '🔑 Clé API Gemini manquante',
+          'Ajoutez votre clé API Google AI Studio (AIza...) pour analyser les plats de votre photo. Aucun menu démo n’a été chargé.',
+          true
+        );
+        return;
+      }
+
+      document.getElementById('scanLoader').style.display = 'flex';
+      document.getElementById('scanResultsHead').style.display = 'none';
+      document.getElementById('scanResultsList').innerHTML = '';
+
+      try {
+        const prompt = `Analyze this Indian restaurant menu image carefully and extract EVERY visible dish or drink on the menu. Return ONLY valid JSON (no markdown) with this exact structure:
 {
-  "menuTitle": "Detected restaurant or language",
+  "menuTitle": "Detected restaurant name or menu section",
   "dishes": [
     {
-      "name": "Transliterated dish name",
+      "name": "Transliterated dish name as written on the menu",
       "localScript": "Original script if present (Devanagari/Malayalam/Tamil) or Hindi equivalent",
-      "essence": "Max 4 words ultra-concise summary in language code '${state.lang}'",
+      "essence": "Max 5 words ultra-concise summary in language code '${state.lang}'",
       "emoji": "Single food emoji",
       "category": "main|bread|street|drink",
       "priceINR": 150,
@@ -2962,140 +2501,135 @@ Icône HTML desimenu-v2
     }
   ]
 }
-Rules: spice is 1..5 (European palate), hygiene is 1 (safe cooked), 2 (caution), or 3 (high street-food water/raw risk), richness is 1..3, proteinGrams is estimated grams of protein per standard serving, protein is 1 (<10g), 2 (10-19g), or 3 (>=20g).`;
+Rules: extract all readable dishes from the photo; if price is missing estimate typical INR price; spice is 1..5 (European palate), hygiene is 1 (safe cooked), 2 (caution), or 3 (high street-food water/raw risk), richness is 1..3, proteinGrams is estimated grams of protein per standard serving, protein is 1 (<10g), 2 (10-19g), or 3 (>=20g).`;
 
-          const res = await fetch(
-            `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${encodeURIComponent(
-              state.apiKey
-            )}`,
-            {
-              method: "POST",
-              headers: { "Content-Type": "application/json" },
-              body: JSON.stringify({
-                contents: [
-                  {
-                    parts: [
-                      { text: prompt },
-                      {
-                        inline_data: { mime_type: "image/jpeg", data: base64 },
-                      },
-                    ],
-                  },
-                ],
-                generationConfig: { responseMimeType: "application/json" },
-              }),
-            }
-          );
-
-          if (!res.ok) throw new Error("API Error " + res.status);
-          const data = await res.json();
-          const rawText =
-            data.candidates?.[0]?.content?.parts?.[0]?.text || "{}";
-          const parsed = JSON.parse(rawText);
-
-          state.currentScanDishes = (parsed.dishes || []).map((d, idx) => ({
-            ...d,
-            id: "scan-" + Date.now() + "-" + idx,
-          }));
-
-          state.currentScanDishes.forEach((d) => upsertCatalog(d));
-          document.getElementById("detectedMenuTitle").textContent =
-            parsed.menuTitle || "Menu";
-          renderScanResults();
-          showToast(
-            `${state.currentScanDishes.length} plats → ${t("savedCatalog")}`
-          );
-        } catch (err) {
-          console.error(err);
-          showToast("Erreur API — bascule sur démo");
-          loadDemoMenu("kerala");
-        } finally {
-          document.getElementById("scanLoader").style.display = "none";
+        const data = await callGeminiVision(cleanKey, prompt, base64);
+        const parts = data.candidates?.[0]?.content?.parts || [];
+        const rawText = parts.map(p => p.text || '').join('
+').trim();
+        if (!rawText) {
+          throw new Error('Réponse vide renvoyée par Gemini (image trop floue ou bloquée).');
         }
-      }
 
-      function loadDemoMenu(key) {
-        const demo = DEMO_MENUS[key];
-        if (!demo) return;
-        state.currentScanDishes = demo.dishes.map((d) => ({ ...d }));
-        state.currentScanDishes.forEach((d) => upsertCatalog(d));
-        document.getElementById("detectedMenuTitle").textContent = demo.title;
+        const parsed = extractJsonFromText(rawText);
+        const dishes = Array.isArray(parsed.dishes) ? parsed.dishes : [];
+
+        if (dishes.length === 0) {
+          throw new Error('Aucun plat lisible détecté sur cette photo. Essayez de rapprocher l’appareil du texte du menu.');
+        }
+
+        state.currentScanDishes = dishes.map((d, idx) => ({
+          ...d,
+          id: 'scan-' + Date.now() + '-' + idx
+        }));
+
+        state.currentScanDishes.forEach(d => upsertCatalog(d));
+        document.getElementById('detectedMenuTitle').textContent = parsed.menuTitle || 'Menu scanné';
         renderScanResults();
-        showToast(t("savedCatalog"));
+        showToast(`${state.currentScanDishes.length} plats détectés → ${t('savedCatalog')}`);
+      } catch (err) {
+        console.error('Gemini Vision error:', err);
+        showScanError(
+          '⚠️ Impossible de décoder la photo',
+          err.message || 'Erreur inconnue lors de l’appel à Gemini.'
+        );
+      } finally {
+        document.getElementById('scanLoader').style.display = 'none';
+      }
+    }
+
+    async function handleMenuFile(file) {
+      if (!file) return;
+      hideScanError();
+      try {
+        const { dataUrl, sizeKB, base64 } = await compressImage(file, 1280, 0.82);
+        state.lastCapturedBase64 = base64;
+
+        const previewContainer = document.getElementById('previewContainer');
+        document.getElementById('previewImage').src = dataUrl;
+        document.getElementById('compressionBadge').textContent = `${sizeKB} Ko · JPEG`;
+        previewContainer.style.display = 'block';
+
+        await analyzeCapturedBase64(base64);
+      } catch (err) {
+        console.error('Image read error:', err);
+        showScanError('⚠️ Lecture photo impossible', err.message || 'Format d’image non supporté.');
+      }
+    }
+
+    function loadDemoMenu(key) {
+      const demo = DEMO_MENUS[key];
+      if (!demo) return;
+      hideScanError();
+      state.currentScanDishes = demo.dishes.map(d => ({ ...d }));
+      state.currentScanDishes.forEach(d => upsertCatalog(d));
+      document.getElementById('detectedMenuTitle').textContent = demo.title;
+      renderScanResults();
+      showToast(t('savedCatalog'));
+    }
+
+    function renderScanResults() {
+      const head = document.getElementById('scanResultsHead');
+      const list = document.getElementById('scanResultsList');
+      list.innerHTML = '';
+
+      if (state.currentScanDishes.length === 0) {
+        head.style.display = 'none';
+        return;
       }
 
-      function renderScanResults() {
-        const head = document.getElementById("scanResultsHead");
-        const list = document.getElementById("scanResultsList");
-        list.innerHTML = "";
+      head.style.display = 'flex';
+      document.getElementById('detectedCount').textContent = state.currentScanDishes.length;
+      state.currentScanDishes.forEach(dish => {
+        const catalogVersion = state.catalog.find(c => c.name.toLowerCase() === dish.name.toLowerCase()) || dish;
+        list.appendChild(createDishCardElement(catalogVersion, 'scan'));
+      });
+    }
 
-        if (state.currentScanDishes.length === 0) {
-          head.style.display = "none";
-          return;
-        }
-
-        head.style.display = "flex";
-        document.getElementById("detectedCount").textContent =
-          state.currentScanDishes.length;
-        state.currentScanDishes.forEach((dish) => {
-          const catalogVersion =
-            state.catalog.find(
-              (c) => c.name.toLowerCase() === dish.name.toLowerCase()
-            ) || dish;
-          list.appendChild(createDishCardElement(catalogVersion, "scan"));
-        });
-      }
-
-      /* ========================================================================
+    /* ========================================================================
        Waiter Card & TTS Pronunciation
        ======================================================================== */
-      function addToWaiter(dish) {
-        const existing = state.waiterOrder.find(
-          (i) => i.name.toLowerCase() === dish.name.toLowerCase()
-        );
-        if (existing) {
-          existing.qty += 1;
-        } else {
-          state.waiterOrder.push({
-            name: dish.name,
-            localScript: dish.localScript || dish.name,
-            priceINR: dish.priceINR || 100,
-            qty: 1,
-          });
-        }
-        saveState();
-        renderWaiter();
-        showToast(t("addedWaiter"));
+    function addToWaiter(dish) {
+      const existing = state.waiterOrder.find(i => i.name.toLowerCase() === dish.name.toLowerCase());
+      if (existing) {
+        existing.qty += 1;
+      } else {
+        state.waiterOrder.push({
+          name: dish.name,
+          localScript: dish.localScript || dish.name,
+          priceINR: dish.priceINR || 100,
+          qty: 1
+        });
       }
+      saveState();
+      renderWaiter();
+      showToast(t('addedWaiter'));
+    }
 
-      function speakText(text) {
-        if (!("speechSynthesis" in window)) return;
-        window.speechSynthesis.cancel();
-        const utter = new SpeechSynthesisUtterance(text);
-        utter.lang = "hi-IN";
-        utter.rate = 0.9;
-        window.speechSynthesis.speak(utter);
-      }
+    function speakText(text) {
+      if (!('speechSynthesis' in window)) return;
+      window.speechSynthesis.cancel();
+      const utter = new SpeechSynthesisUtterance(text);
+      utter.lang = 'hi-IN';
+      utter.rate = 0.9;
+      window.speechSynthesis.speak(utter);
+    }
 
-      function renderWaiter() {
-        const container = document.getElementById("waiterItemsList");
-        container.innerHTML = "";
+    function renderWaiter() {
+      const container = document.getElementById('waiterItemsList');
+      container.innerHTML = '';
 
-        if (state.waiterOrder.length === 0) {
-          container.innerHTML = `<div style="text-align:center;color:#A8A29E;padding:18px 8px;font-size:13px;">${t(
-            "emptyWaiter"
-          )}</div>`;
-        } else {
-          state.waiterOrder.forEach((item, idx) => {
-            const row = document.createElement("div");
-            row.className = "waiter-item";
-            row.innerHTML = `
+      if (state.waiterOrder.length === 0) {
+        container.innerHTML = `<div style="text-align:center;color:#A8A29E;padding:18px 8px;font-size:13px;">${t('emptyWaiter')}</div>`;
+      } else {
+        state.waiterOrder.forEach((item, idx) => {
+          const row = document.createElement('div');
+          row.className = 'waiter-item';
+          row.innerHTML = `
             <div>
               <div class="waiter-script">${item.localScript}</div>
               <div class="waiter-phonetic">${item.name}</div>
-              <div class="waiter-translated">₹${
-                item.priceINR * item.qty
-              } · ${formatPrice(item.priceINR * item.qty)}</div>
+              <div class="waiter-translated">₹${item.priceINR * item.qty} · ${formatPrice(item.priceINR * item.qty)}</div>
             </div>
             <div class="waiter-controls">
               <button class="tts-btn" aria-label="Listen">🔊</button>
@@ -3107,259 +2641,267 @@ Rules: spice is 1..5 (European palate), hygiene is 1 (safe cooked), 2 (caution),
             </div>
           `;
 
-            row
-              .querySelector(".tts-btn")
-              .addEventListener("click", () => speakText(item.name));
-            row
-              .querySelector('[data-delta="-1"]')
-              .addEventListener("click", () => {
-                item.qty -= 1;
-                if (item.qty <= 0) state.waiterOrder.splice(idx, 1);
-                saveState();
-                renderWaiter();
-              });
-            row
-              .querySelector('[data-delta="1"]')
-              .addEventListener("click", () => {
-                item.qty += 1;
-                saveState();
-                renderWaiter();
-              });
-
-            container.appendChild(row);
+          row.querySelector('.tts-btn').addEventListener('click', () => speakText(item.name));
+          row.querySelector('[data-delta="-1"]').addEventListener('click', () => {
+            item.qty -= 1;
+            if (item.qty <= 0) state.waiterOrder.splice(idx, 1);
+            saveState();
+            renderWaiter();
           });
-        }
-
-        const totalINR = state.waiterOrder.reduce(
-          (sum, i) => sum + i.priceINR * i.qty,
-          0
-        );
-        document.getElementById(
-          "waiterTotalDisplay"
-        ).textContent = `₹${totalINR} · ${formatPrice(totalINR)}`;
-      }
-
-      /* ========================================================================
-       Offline Guide Tab
-       ======================================================================== */
-      function renderGuide() {
-        const list = document.getElementById("guideList");
-        list.innerHTML = "";
-
-        let items = [...OFFLINE_GUIDE];
-        if (state.guideCat !== "all") {
-          items = items.filter((d) => d.category === state.guideCat);
-        }
-        if (state.guideQuery) {
-          const q = state.guideQuery.toLowerCase();
-          items = items.filter(
-            (d) =>
-              d.name.toLowerCase().includes(q) ||
-              getEssence(d).toLowerCase().includes(q)
-          );
-        }
-
-        items.forEach((dish) => {
-          const catalogVersion =
-            state.catalog.find(
-              (c) => c.name.toLowerCase() === dish.name.toLowerCase()
-            ) || dish;
-          list.appendChild(createDishCardElement(catalogVersion, "guide"));
-        });
-      }
-
-      /* ========================================================================
-       Event Bindings & Init
-       ======================================================================== */
-      document.addEventListener("DOMContentLoaded", () => {
-        const langSelect = document.getElementById("langSelect");
-        const currencySelect = document.getElementById("currencySelect");
-        langSelect.value = state.lang;
-        currencySelect.value = state.currency;
-
-        if (state.apiKey) {
-          document.getElementById("apiKeyBtn").classList.add("has-key");
-        }
-
-        langSelect.addEventListener("change", () => {
-          state.lang = langSelect.value;
-          saveState();
-          applyTranslations();
-        });
-
-        currencySelect.addEventListener("change", () => {
-          state.currency = currencySelect.value;
-          saveState();
-          renderScanResults();
-          renderCatalog();
-          renderWaiter();
-          renderGuide();
-        });
-
-        // Navigation tabs
-        document.querySelectorAll(".nav-item").forEach((btn) => {
-          btn.addEventListener("click", () => {
-            const target = btn.getAttribute("data-tab");
-            document
-              .querySelectorAll(".nav-item")
-              .forEach((b) => b.classList.remove("active"));
-            document
-              .querySelectorAll(".tab-panel")
-              .forEach((p) => p.classList.remove("active"));
-            btn.classList.add("active");
-            document.getElementById("tab-" + target).classList.add("active");
-          });
-        });
-
-        // Camera & Gallery triggers
-        document
-          .getElementById("cameraTriggerBtn")
-          .addEventListener("click", () => {
-            document.getElementById("cameraInput").click();
-          });
-        document
-          .getElementById("galleryTriggerBtn")
-          .addEventListener("click", () => {
-            document.getElementById("galleryInput").click();
-          });
-        document
-          .getElementById("cameraInput")
-          .addEventListener("change", (e) => handleMenuFile(e.target.files[0]));
-        document
-          .getElementById("galleryInput")
-          .addEventListener("change", (e) => handleMenuFile(e.target.files[0]));
-
-        // Real dish photo capture for Catalog
-        document
-          .getElementById("dishPhotoInput")
-          .addEventListener("change", async (e) => {
-            const file = e.target.files[0];
-            if (!file || !state.pendingPhotoDishId) return;
-            const { dataUrl } = await compressImage(file, 720, 0.8);
-            const item = state.catalog.find(
-              (c) => c.name.trim().toLowerCase() === state.pendingPhotoDishId
-            );
-            if (item) {
-              item.photoDataUrl = dataUrl;
-              saveState();
-              renderScanResults();
-              renderCatalog();
-              renderGuide();
-              showToast("📸 " + item.name);
-            }
-            state.pendingPhotoDishId = null;
-            e.target.value = "";
-          });
-
-        // Demo menu buttons
-        document.querySelectorAll(".demo-chip").forEach((chip) => {
-          chip.addEventListener("click", () =>
-            loadDemoMenu(chip.getAttribute("data-demo"))
-          );
-        });
-
-        // Catalog filters & search
-        document
-          .querySelectorAll("#catalogFilters .filter-pill")
-          .forEach((pill) => {
-            pill.addEventListener("click", () => {
-              document
-                .querySelectorAll("#catalogFilters .filter-pill")
-                .forEach((p) => p.classList.remove("active"));
-              pill.classList.add("active");
-              state.catalogFilter = pill.getAttribute("data-filter");
-              renderCatalog();
-            });
-          });
-        document
-          .getElementById("catalogSearch")
-          .addEventListener("input", (e) => {
-            state.catalogQuery = e.target.value;
-            renderCatalog();
-          });
-
-        // Export Catalog JSON
-        document
-          .getElementById("exportCatalogBtn")
-          .addEventListener("click", () => {
-            const blob = new Blob([JSON.stringify(state.catalog, null, 2)], {
-              type: "application/json",
-            });
-            const url = URL.createObjectURL(blob);
-            const a = document.createElement("a");
-            a.href = url;
-            a.download = "desimenu-catalog.json";
-            a.click();
-            URL.revokeObjectURL(url);
-          });
-
-        // Waiter request tiles
-        document.querySelectorAll(".req-tile").forEach((tile) => {
-          tile.addEventListener("click", () => {
-            const req = tile.getAttribute("data-req");
-            state.requests[req] = !state.requests[req];
-            tile.classList.toggle("active", state.requests[req]);
-            if (state.requests[req]) {
-              speakText(tile.querySelector(".req-local").textContent);
-            }
-          });
-        });
-
-        document
-          .getElementById("clearWaiterBtn")
-          .addEventListener("click", () => {
-            state.waiterOrder = [];
+          row.querySelector('[data-delta="1"]').addEventListener('click', () => {
+            item.qty += 1;
             saveState();
             renderWaiter();
           });
 
-        // Offline Guide filters & search
-        document
-          .querySelectorAll("#guideFilters .filter-pill")
-          .forEach((pill) => {
-            pill.addEventListener("click", () => {
-              document
-                .querySelectorAll("#guideFilters .filter-pill")
-                .forEach((p) => p.classList.remove("active"));
-              pill.classList.add("active");
-              state.guideCat = pill.getAttribute("data-cat");
-              renderGuide();
-            });
-          });
-        document
-          .getElementById("guideSearch")
-          .addEventListener("input", (e) => {
-            state.guideQuery = e.target.value;
-            renderGuide();
-          });
-
-        // API Key Modal
-        const apiModal = document.getElementById("apiModal");
-        document.getElementById("apiKeyBtn").addEventListener("click", () => {
-          document.getElementById("apiKeyInput").value = state.apiKey;
-          apiModal.classList.add("open");
+          container.appendChild(row);
         });
-        document
-          .getElementById("closeModalBtn")
-          .addEventListener("click", () => {
-            apiModal.classList.remove("open");
-          });
-        document
-          .getElementById("saveApiKeyBtn")
-          .addEventListener("click", () => {
-            state.apiKey = document.getElementById("apiKeyInput").value.trim();
-            localStorage.setItem("desimenu_apikey", state.apiKey);
-            document
-              .getElementById("apiKeyBtn")
-              .classList.toggle("has-key", Boolean(state.apiKey));
-            apiModal.classList.remove("open");
-            showToast("API Key saved");
-          });
+      }
 
-        updateBadges();
+      const totalINR = state.waiterOrder.reduce((sum, i) => sum + i.priceINR * i.qty, 0);
+      document.getElementById('waiterTotalDisplay').textContent = `₹${totalINR} · ${formatPrice(totalINR)}`;
+    }
+
+    /* ========================================================================
+       Offline Guide Tab
+       ======================================================================== */
+    function renderGuide() {
+      const list = document.getElementById('guideList');
+      list.innerHTML = '';
+
+      let items = [...OFFLINE_GUIDE];
+      if (state.guideCat !== 'all') {
+        items = items.filter(d => d.category === state.guideCat);
+      }
+      if (state.guideQuery) {
+        const q = state.guideQuery.toLowerCase();
+        items = items.filter(d =>
+          d.name.toLowerCase().includes(q) ||
+          getEssence(d).toLowerCase().includes(q)
+        );
+      }
+
+      items.forEach(dish => {
+        const catalogVersion = state.catalog.find(c => c.name.toLowerCase() === dish.name.toLowerCase()) || dish;
+        list.appendChild(createDishCardElement(catalogVersion, 'guide'));
+      });
+    }
+
+    /* ========================================================================
+       Event Bindings & Init
+       ======================================================================== */
+    document.addEventListener('DOMContentLoaded', () => {
+      const langSelect = document.getElementById('langSelect');
+      const currencySelect = document.getElementById('currencySelect');
+      langSelect.value = state.lang;
+      currencySelect.value = state.currency;
+
+      if (state.apiKey) {
+        document.getElementById('apiKeyBtn').classList.add('has-key');
+      }
+
+      langSelect.addEventListener('change', () => {
+        state.lang = langSelect.value;
+        saveState();
         applyTranslations();
       });
-    </script>
-  </body>
+
+      currencySelect.addEventListener('change', () => {
+        state.currency = currencySelect.value;
+        saveState();
+        renderScanResults();
+        renderCatalog();
+        renderWaiter();
+        renderGuide();
+      });
+
+      // Navigation tabs
+      document.querySelectorAll('.nav-item').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const target = btn.getAttribute('data-tab');
+          document.querySelectorAll('.nav-item').forEach(b => b.classList.remove('active'));
+          document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+          btn.classList.add('active');
+          document.getElementById('tab-' + target).classList.add('active');
+        });
+      });
+
+      // Camera & Gallery triggers
+      document.getElementById('cameraTriggerBtn').addEventListener('click', () => {
+        document.getElementById('cameraInput').click();
+      });
+      document.getElementById('galleryTriggerBtn').addEventListener('click', () => {
+        document.getElementById('galleryInput').click();
+      });
+      document.getElementById('cameraInput').addEventListener('change', e => {
+        const f = e.target.files[0];
+        e.target.value = '';
+        handleMenuFile(f);
+      });
+      document.getElementById('galleryInput').addEventListener('change', e => {
+        const f = e.target.files[0];
+        e.target.value = '';
+        handleMenuFile(f);
+      });
+      document.getElementById('retryScanBtn').addEventListener('click', () => {
+        if (state.lastCapturedBase64) analyzeCapturedBase64(state.lastCapturedBase64);
+      });
+      document.getElementById('openKeyFromErrorBtn').addEventListener('click', () => {
+        document.getElementById('apiKeyInput').value = state.apiKey;
+        document.getElementById('apiTestStatus').className = 'api-test-status';
+        document.getElementById('apiModal').classList.add('open');
+      });
+
+      // Real dish photo capture for Catalog
+      document.getElementById('dishPhotoInput').addEventListener('change', async e => {
+        const file = e.target.files[0];
+        if (!file || !state.pendingPhotoDishId) return;
+        const { dataUrl } = await compressImage(file, 720, 0.8);
+        const item = state.catalog.find(c => c.name.trim().toLowerCase() === state.pendingPhotoDishId);
+        if (item) {
+          item.photoDataUrl = dataUrl;
+          saveState();
+          renderScanResults();
+          renderCatalog();
+          renderGuide();
+          showToast('📸 ' + item.name);
+        }
+        state.pendingPhotoDishId = null;
+        e.target.value = '';
+      });
+
+      // Demo menu buttons
+      document.querySelectorAll('.demo-chip').forEach(chip => {
+        chip.addEventListener('click', () => loadDemoMenu(chip.getAttribute('data-demo')));
+      });
+
+      // Catalog filters & search
+      document.querySelectorAll('#catalogFilters .filter-pill').forEach(pill => {
+        pill.addEventListener('click', () => {
+          document.querySelectorAll('#catalogFilters .filter-pill').forEach(p => p.classList.remove('active'));
+          pill.classList.add('active');
+          state.catalogFilter = pill.getAttribute('data-filter');
+          renderCatalog();
+        });
+      });
+      document.getElementById('catalogSearch').addEventListener('input', e => {
+        state.catalogQuery = e.target.value;
+        renderCatalog();
+      });
+
+      // Export Catalog JSON
+      document.getElementById('exportCatalogBtn').addEventListener('click', () => {
+        const blob = new Blob([JSON.stringify(state.catalog, null, 2)], { type: 'application/json' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'desimenu-catalog.json';
+        a.click();
+        URL.revokeObjectURL(url);
+      });
+
+      // Waiter request tiles
+      document.querySelectorAll('.req-tile').forEach(tile => {
+        tile.addEventListener('click', () => {
+          const req = tile.getAttribute('data-req');
+          state.requests[req] = !state.requests[req];
+          tile.classList.toggle('active', state.requests[req]);
+          if (state.requests[req]) {
+            speakText(tile.querySelector('.req-local').textContent);
+          }
+        });
+      });
+
+      document.getElementById('clearWaiterBtn').addEventListener('click', () => {
+        state.waiterOrder = [];
+        saveState();
+        renderWaiter();
+      });
+
+      // Offline Guide filters & search
+      document.querySelectorAll('#guideFilters .filter-pill').forEach(pill => {
+        pill.addEventListener('click', () => {
+          document.querySelectorAll('#guideFilters .filter-pill').forEach(p => p.classList.remove('active'));
+          pill.classList.add('active');
+          state.guideCat = pill.getAttribute('data-cat');
+          renderGuide();
+        });
+      });
+      document.getElementById('guideSearch').addEventListener('input', e => {
+        state.guideQuery = e.target.value;
+        renderGuide();
+      });
+
+      // API Key Modal
+      const apiModal = document.getElementById('apiModal');
+      const apiTestStatus = document.getElementById('apiTestStatus');
+
+      document.getElementById('apiKeyBtn').addEventListener('click', () => {
+        document.getElementById('apiKeyInput').value = state.apiKey;
+        apiTestStatus.className = 'api-test-status';
+        apiModal.classList.add('open');
+      });
+
+      document.getElementById('closeModalBtn').addEventListener('click', () => {
+        apiModal.classList.remove('open');
+      });
+
+      document.getElementById('testApiKeyBtn').addEventListener('click', async () => {
+        const candidate = sanitizeApiKey(document.getElementById('apiKeyInput').value);
+        if (!candidate) {
+          apiTestStatus.className = 'api-test-status err';
+          apiTestStatus.textContent = '❌ Collez d’abord votre clé API (AIza...).';
+          return;
+        }
+        apiTestStatus.className = 'api-test-status';
+        apiTestStatus.style.display = 'block';
+        apiTestStatus.textContent = '⏳ Test de connexion à Gemini...';
+
+        try {
+          const res = await fetch(
+            `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${encodeURIComponent(candidate)}`,
+            {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({
+                contents: [{ parts: [{ text: 'Reply with OK' }] }],
+                generationConfig: { maxOutputTokens: 5 }
+              })
+            }
+          );
+          if (res.ok) {
+            apiTestStatus.className = 'api-test-status ok';
+            apiTestStatus.textContent = '✅ Clé API valide et fonctionnelle ! Cliquez sur Enregistrer.';
+          } else {
+            let msg = `HTTP ${res.status}`;
+            try {
+              const j = await res.json();
+              if (j?.error?.message) msg += ` — ${j.error.message}`;
+            } catch (_) {}
+            apiTestStatus.className = 'api-test-status err';
+            apiTestStatus.textContent = `❌ Clé refusée : ${msg}`;
+          }
+        } catch (err) {
+          apiTestStatus.className = 'api-test-status err';
+          apiTestStatus.textContent = `❌ Erreur réseau : ${err.message}`;
+        }
+      });
+
+      document.getElementById('saveApiKeyBtn').addEventListener('click', () => {
+        state.apiKey = sanitizeApiKey(document.getElementById('apiKeyInput').value);
+        localStorage.setItem('desimenu_apikey', state.apiKey);
+        document.getElementById('apiKeyBtn').classList.toggle('has-key', Boolean(state.apiKey));
+        apiModal.classList.remove('open');
+        showToast(state.apiKey ? '✅ Clé API enregistrée' : 'Clé API effacée');
+        if (state.apiKey && state.lastCapturedBase64) {
+          analyzeCapturedBase64(state.lastCapturedBase64);
+        }
+      });
+
+      updateBadges();
+      applyTranslations();
+    });
+  </script>
+</body>
 </html>
-Analyse…
+Traité et analysé dans le code
