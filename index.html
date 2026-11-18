@@ -1,3 +1,8 @@
+
+
+
+Icône HTML
+desimenu-v5
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -1269,6 +1274,30 @@ html, body {
   transform: translateX(-50%) translateY(0);
 }
 
+
+/* JS Disabled / Quick Look Viewer Warning Banner */
+.js-warning-banner {
+  background: #FEF2F2;
+  border: 2px solid #DC2626;
+  color: #7F1D1D;
+  border-radius: 14px;
+  padding: 13px 14px;
+  font-size: 13px;
+  line-height: 1.45;
+  font-weight: 700;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  box-shadow: 0 4px 12px rgba(185, 28, 28, 0.12);
+}
+.js-warning-banner strong {
+  color: #991B1B;
+  font-size: 14px;
+}
+label.btn {
+  user-select: none;
+  -webkit-user-select: none;
+}
   </style>
 </head>
 <body>
@@ -1310,20 +1339,26 @@ html, body {
 
     <!-- Main Content -->
     <main class="main-content">
+      <div id="jsDisabledBanner" class="js-warning-banner">
+        <strong>⚠️ Aperçu statique sans JavaScript détecté</strong>
+        <span>Vous ouvrez probablement ce fichier dans l’aperçu <em>Fichiers / Quick Look</em> ou une visionneuse intégrée qui bloque les scripts et les boutons.</span>
+        <span>👉 Appuyez sur <strong>Partager ↗</strong> (ou <strong>⋮</strong>) puis choisissez <strong>Ouvrir dans Safari</strong> ou <strong>Ouvrir dans Chrome</strong>.</span>
+      </div>
+
       <!-- TAB 1: SCANNER IA -->
       <section id="tab-scan" class="tab-panel active">
         <div class="scan-card">
           <div class="scan-visual-ring">📸</div>
 
           <div class="scan-actions-row">
-            <button id="cameraTriggerBtn" class="btn btn-primary">
+            <label for="cameraInput" id="cameraTriggerBtn" class="btn btn-primary" role="button" tabindex="0">
               <span>📷</span>
               <span data-i18n="btnCamera">Caméra</span>
-            </button>
-            <button id="galleryTriggerBtn" class="btn btn-secondary">
+            </label>
+            <label for="galleryInput" id="galleryTriggerBtn" class="btn btn-secondary" role="button" tabindex="0">
               <span>🖼️</span>
               <span data-i18n="btnGallery">Galerie</span>
-            </button>
+            </label>
           </div>
 
           <input id="cameraInput" class="hidden-input" type="file" accept="image/*" capture="environment" />
@@ -1505,6 +1540,11 @@ html, body {
   <div id="toast" class="toast"></div>
 
   <script>
+    (function() {
+      var b = document.getElementById('jsDisabledBanner');
+      if (b) b.style.display = 'none';
+    })();
+
     /* ========================================================================
        DesiMenu Application Logic
        ======================================================================== */
@@ -2749,13 +2789,7 @@ Rules: extract all readable dishes from the photo; if price is missing estimate 
         });
       });
 
-      // Camera & Gallery triggers
-      document.getElementById('cameraTriggerBtn').addEventListener('click', () => {
-        document.getElementById('cameraInput').click();
-      });
-      document.getElementById('galleryTriggerBtn').addEventListener('click', () => {
-        document.getElementById('galleryInput').click();
-      });
+      // Camera & Gallery native <label for="..."> triggers (works natively on iOS Safari & Android Chrome)
       document.getElementById('cameraInput').addEventListener('change', e => {
         const f = e.target.files[0];
         e.target.value = '';
