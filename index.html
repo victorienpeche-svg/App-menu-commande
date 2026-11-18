@@ -2,7 +2,7 @@
 
 
 Icône HTML
-desimenu-v5
+desimenu-v6
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -2472,28 +2472,35 @@ label.btn {
       document.getElementById('scanErrorBox').style.display = 'none';
     }
 
-    async function callGeminiVision(apiKey, prompt, base64) {
-      const models = ['gemini-2.5-flash', 'gemini-2.0-flash'];
+    async function discoverActiveGeminiModel(apiKey) {
+      try {
+        const res = await fetch(
+          `https://generativelanguage.googleapis.com/v1beta/models?key=${encodeURIComponent(apiKey)}`
+        );
+        if (!res.ok) return null;
+        const data = await res.json();
+        const models = (data.models || []).filter(m =>
+          Array.isArray(m.supportedGenerationMethods) &&
+          m.supportedGenerationMethods.includes('generateContent') &&
+          typeof m.name === 'string'
+        );
+        const flashFull = models.find(m => /gemini-.*flash/i.test(m.name) && !/lite|8b|tts|image/i.test(m.name));
+        const flashAny = models.find(m => /gemini-.*flash/i.test(m.name) && !/tts|image/i.test(m.name));
+        const anyGemini = models.find(m => /gemini-/i.test(m.name) && !/embedding|tts|image/i.test(m.name));
+        const picked = flashFull || flashAny || anyGemini;
+        return picked ? picked.name.replace(/^models\//, '') : null;
+      } catch (_) {
+        return null;
+      }
+    }
+
+    async function callGeminiWithFallback(apiKey, bodyPayload) {
+      const candidates = ['gemini-3.8-flash', 'gemini-3.5-flash', 'gemini-3.0-flash', 'gemini-2.5-flash'];
+      const tried = new Set();
       let lastError = null;
 
-      for (const model of models) {
-        const bodyPayload = {
-          contents: [{
-            parts: [
-              { text: prompt },
-              { inline_data: { mime_type: 'image/jpeg', data: base64 } }
-            ]
-          }],
-          generationConfig: {
-            responseMimeType: 'application/json',
-            temperature: 0.2
-          }
-        };
-
-        if (model === 'gemini-2.5-flash') {
-          bodyPayload.generationConfig.thinkingConfig = { thinkingBudget: 0 };
-        }
-
+      const tryModel = async (model) => {
+        tried.add(model);
         const res = await fetch(
           `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${encodeURIComponent(apiKey)}`,
           {
@@ -2504,7 +2511,7 @@ label.btn {
         );
 
         if (res.ok) {
-          return await res.json();
+          return { ok: true, model, data: await res.json() };
         }
 
         let errMsg = `HTTP ${res.status}`;
@@ -2515,14 +2522,44 @@ label.btn {
           }
         } catch (_) {}
 
-        lastError = new Error(errMsg);
-        // Only try fallback model if the model itself wasn't found/supported (404 or 400)
-        if (res.status !== 404 && res.status !== 400) {
+        return { ok: false, status: res.status, error: new Error(errMsg) };
+      };
+
+      for (const model of candidates) {
+        const result = await tryModel(model);
+        if (result.ok) return result;
+        lastError = result.error;
+        if (result.status !== 404 && result.status !== 400) {
           throw lastError;
         }
       }
 
+      const discovered = await discoverActiveGeminiModel(apiKey);
+      if (discovered && !tried.has(discovered)) {
+        const result = await tryModel(discovered);
+        if (result.ok) return result;
+        lastError = result.error;
+      }
+
       throw lastError || new Error('Échec de connexion à Gemini');
+    }
+
+    async function callGeminiVision(apiKey, prompt, base64) {
+      const bodyPayload = {
+        contents: [{
+          parts: [
+            { text: prompt },
+            { inline_data: { mime_type: 'image/jpeg', data: base64 } }
+          ]
+        }],
+        generationConfig: {
+          responseMimeType: 'application/json',
+          temperature: 0.2
+        }
+      };
+
+      const result = await callGeminiWithFallback(apiKey, bodyPayload);
+      return result.data;
     }
 
     async function analyzeCapturedBase64(base64) {
@@ -2915,32 +2952,15 @@ Rules: extract all readable dishes from the photo; if price is missing estimate 
         apiTestStatus.textContent = '⏳ Test de connexion à Gemini...';
 
         try {
-          const res = await fetch(
-            `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${encodeURIComponent(candidate)}`,
-            {
-              method: 'POST',
-              headers: { 'Content-Type': 'application/json' },
-              body: JSON.stringify({
-                contents: [{ parts: [{ text: 'Reply with OK' }] }],
-                generationConfig: { maxOutputTokens: 5 }
-              })
-            }
-          );
-          if (res.ok) {
-            apiTestStatus.className = 'api-test-status ok';
-            apiTestStatus.textContent = '✅ Clé API valide et fonctionnelle ! Cliquez sur Enregistrer.';
-          } else {
-            let msg = `HTTP ${res.status}`;
-            try {
-              const j = await res.json();
-              if (j?.error?.message) msg += ` — ${j.error.message}`;
-            } catch (_) {}
-            apiTestStatus.className = 'api-test-status err';
-            apiTestStatus.textContent = `❌ Clé refusée : ${msg}`;
-          }
+          const result = await callGeminiWithFallback(candidate, {
+            contents: [{ parts: [{ text: 'Reply with OK' }] }],
+            generationConfig: { maxOutputTokens: 32 }
+          });
+          apiTestStatus.className = 'api-test-status ok';
+          apiTestStatus.textContent = `✅ Clé API valide (${result.model}) ! Cliquez sur Enregistrer.`;
         } catch (err) {
           apiTestStatus.className = 'api-test-status err';
-          apiTestStatus.textContent = `❌ Erreur réseau : ${err.message}`;
+          apiTestStatus.textContent = `❌ Clé refusée : ${err.message}`;
         }
       });
 
@@ -2967,4 +2987,4 @@ Rules: extract all readable dishes from the photo; if price is missing estimate 
   </script>
 </body>
 </html>
-Traité et analysé dans le code
+Analyse…
