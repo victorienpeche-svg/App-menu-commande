@@ -2,7 +2,7 @@
 
 
 Icône HTML
-desimenu-v6
+desimenu-v7
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -1298,6 +1298,31 @@ label.btn {
   user-select: none;
   -webkit-user-select: none;
 }
+
+.api-input-row {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+.api-input-row .modal-input {
+  flex: 1;
+  min-width: 0;
+}
+.icon-mini-btn {
+  border: 1.5px solid var(--border-strong);
+  background: var(--bg-page);
+  color: var(--text-primary);
+  border-radius: var(--radius-sm);
+  padding: 10px 10px;
+  font-family: var(--font-sans);
+  font-size: 12px;
+  font-weight: 800;
+  cursor: pointer;
+  white-space: nowrap;
+}
+.icon-mini-btn:hover {
+  background: var(--bg-subtle);
+}
   </style>
 </head>
 <body>
@@ -1524,9 +1549,13 @@ label.btn {
     <div class="modal-card">
       <div class="modal-title">🔑 Clé API Gemini (Google AI Studio)</div>
       <p style="font-size:12px;color:var(--text-secondary);line-height:1.4;">
-        Créez votre clé gratuite sur <strong>aistudio.google.com/api-keys</strong> puis collez-la ci-dessous (commence par <code>AIza...</code>).
+        Copiez votre clé personnelle sur <strong>aistudio.google.com/api-keys</strong> (elle commence obligatoirement par <code>AIza...</code>), puis collez-la ci-dessous :
       </p>
-      <input id="apiKeyInput" class="modal-input" type="text" autocomplete="off" spellcheck="false" placeholder="AIzaSy..." />
+      <div class="api-input-row">
+        <input id="apiKeyInput" class="modal-input" type="text" autocomplete="off" spellcheck="false" placeholder="AIzaSy..." />
+        <button id="pasteApiKeyBtn" type="button" class="icon-mini-btn" title="Coller">📋 Coller</button>
+        <button id="clearApiKeyBtn" type="button" class="icon-mini-btn" title="Effacer">✕</button>
+      </div>
       <div id="apiTestStatus" class="api-test-status"></div>
       <div class="modal-actions">
         <button id="testApiKeyBtn" class="btn btn-secondary btn-sm">🧪 Tester la clé</button>
@@ -2443,7 +2472,13 @@ label.btn {
     }
 
     function sanitizeApiKey(raw) {
-      return (raw || '').trim().replace(/^["']|["']$/g, '');
+      const cleaned = (raw || '').trim().replace(/^["']|["']$/g, '');
+      const extracted = cleaned.match(/AIza[A-Za-z0-9_-]{20,}/);
+      return extracted ? extracted[0] : cleaned;
+    }
+
+    function isValidApiKeyFormat(key) {
+      return /^AIza[A-Za-z0-9_-]{25,}$/.test(key || '');
     }
 
     function extractJsonFromText(rawText) {
@@ -2495,7 +2530,7 @@ label.btn {
     }
 
     async function callGeminiWithFallback(apiKey, bodyPayload) {
-      const candidates = ['gemini-3.8-flash', 'gemini-3.5-flash', 'gemini-3.0-flash', 'gemini-2.5-flash'];
+      const candidates = ['gemini-2.5-flash', 'gemini-2.5-flash-lite', 'gemini-3.8-flash'];
       const tried = new Set();
       let lastError = null;
 
@@ -2796,6 +2831,11 @@ Rules: extract all readable dishes from the photo; if price is missing estimate 
       langSelect.value = state.lang;
       currencySelect.value = state.currency;
 
+      state.apiKey = sanitizeApiKey(state.apiKey);
+      if (state.apiKey && !isValidApiKeyFormat(state.apiKey)) {
+        state.apiKey = '';
+        safeSetStorage('desimenu_apikey', '');
+      }
       if (state.apiKey) {
         document.getElementById('apiKeyBtn').classList.add('has-key');
       }
@@ -2936,15 +2976,45 @@ Rules: extract all readable dishes from the photo; if price is missing estimate 
         apiModal.classList.add('open');
       });
 
+      document.getElementById('pasteApiKeyBtn').addEventListener('click', async () => {
+        try {
+          const clip = await navigator.clipboard.readText();
+          const cleaned = sanitizeApiKey(clip);
+          document.getElementById('apiKeyInput').value = cleaned;
+          if (isValidApiKeyFormat(cleaned)) {
+            apiTestStatus.className = 'api-test-status ok';
+            apiTestStatus.textContent = '📋 Clé AIza... collée ! Cliquez sur Tester ou Enregistrer.';
+          } else {
+            apiTestStatus.className = 'api-test-status err';
+            apiTestStatus.textContent = '⚠️ Le presse-papiers ne contient pas une clé AIza... valide.';
+          }
+        } catch (_) {
+          document.getElementById('apiKeyInput').focus();
+          showToast('Appuyez longuement dans le champ pour Coller');
+        }
+      });
+
+      document.getElementById('clearApiKeyBtn').addEventListener('click', () => {
+        document.getElementById('apiKeyInput').value = '';
+        apiTestStatus.className = 'api-test-status';
+        document.getElementById('apiKeyInput').focus();
+      });
+
       document.getElementById('closeModalBtn').addEventListener('click', () => {
         apiModal.classList.remove('open');
       });
 
       document.getElementById('testApiKeyBtn').addEventListener('click', async () => {
         const candidate = sanitizeApiKey(document.getElementById('apiKeyInput').value);
+        document.getElementById('apiKeyInput').value = candidate;
         if (!candidate) {
           apiTestStatus.className = 'api-test-status err';
           apiTestStatus.textContent = '❌ Collez d’abord votre clé API (AIza...).';
+          return;
+        }
+        if (!isValidApiKeyFormat(candidate)) {
+          apiTestStatus.className = 'api-test-status err';
+          apiTestStatus.textContent = '⚠️ Ce texte n’est pas une clé API (il doit commencer par AIza...). Effacez-le et collez votre clé Google AI Studio.';
           return;
         }
         apiTestStatus.className = 'api-test-status';
@@ -2965,7 +3035,13 @@ Rules: extract all readable dishes from the photo; if price is missing estimate 
       });
 
       document.getElementById('saveApiKeyBtn').addEventListener('click', () => {
-        state.apiKey = sanitizeApiKey(document.getElementById('apiKeyInput').value);
+        const candidate = sanitizeApiKey(document.getElementById('apiKeyInput').value);
+        if (candidate && !isValidApiKeyFormat(candidate)) {
+          apiTestStatus.className = 'api-test-status err';
+          apiTestStatus.textContent = '⚠️ Impossible d’enregistrer : la clé doit commencer par AIza...';
+          return;
+        }
+        state.apiKey = candidate;
         safeSetStorage('desimenu_apikey', state.apiKey);
         document.getElementById('apiKeyBtn').classList.toggle('has-key', Boolean(state.apiKey));
         apiModal.classList.remove('open');
@@ -2987,4 +3063,4 @@ Rules: extract all readable dishes from the photo; if price is missing estimate 
   </script>
 </body>
 </html>
-Analyse…
+Traité et analysé dans le code
